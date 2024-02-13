@@ -3,7 +3,7 @@ import * as path from "path";
 import { parse } from "csv-parse";
 import moment from "moment";
 require("dotenv").config();
-let mysql = require("mysql");
+let mysql = require("mysql2");
 
 // Create a connection to the database, make sure ENV variables are set
 let con = mysql.createConnection({
