@@ -23,5 +23,4 @@ User.findByUsername = (username, result) => {
         });
 };
 
-
 module.exports = User;
