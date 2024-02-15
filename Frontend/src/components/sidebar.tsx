@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+'use client';
+import { signOut } from "next-auth/react";
 
 export default function Sidebar() {
   let navbarItems = [
@@ -27,7 +28,10 @@ export default function Sidebar() {
       </nav>
 
       <div className="mt-auto items-center justify-between m-3">
-        <button className="rounded-lg bg-white font-light text-black p-3 w-full hover:bg-opacity-70 duration-200">
+        <button
+          onClick={() => signOut()}
+          className="rounded-lg bg-white font-light text-black p-3 w-full hover:bg-opacity-70 duration-200"
+        >
           Logout
         </button>
       </div>

@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
 
 require('./Routes/test')(app);
 require('./Routes/auth.routes')(app);
+require('./Routes/dog.routes')(app);
 
 const port = 8000;
 app.listen(port, () => {
