@@ -7,4 +7,5 @@ module.exports = (app: any) => {
     router.get('/user/:username', test.findByUsername);
 
     app.use('/api/test', router);
+    
 };
