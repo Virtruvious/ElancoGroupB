@@ -1,9 +1,11 @@
 import express, { Request, Response } from "express";
 import session from 'express-session';
+const cors = require('cors');
 import apiMiddleware from '../Frontend/apiMiddleware'; // Add the missing import statement
 
 const app = express();
 
+app.use(cors());
 app.use(session({
     secret: "elanco-activity-monitor",
     resave: false,
