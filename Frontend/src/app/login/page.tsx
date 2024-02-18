@@ -1,16 +1,16 @@
 export default function LoginPage(){
 
 return (
-    <div className="w-screen h-screen grid grid-cols-2">
-        <div className="bg-elanco h-screen w-screen flex justify-left items-center">
+    <div className="w-screen h-screen flex flex-col sm:flex-row">
+        <div className="bg-elanco w-full sm:w-1/2 flex justify-center items-center">
             <img
                  src="/LogoWhite.png"
                 alt="Elanco Logo"
-                className="p-5 mb-10 w-[40rem] "
+                className="p-5 mb-10 w-[40rem] w-full"
             />
         </div>
-        <div className="bg-white"> 
-            <div className="min-h-screen bg-gray-100 text-gray-800 antialiased px-4 py-3 flex flex-col justify-center sm:py-120">
+        <div className="bg-white w-full sm:w-1/2 flex justify-center items-center"> 
+            <div className="min-h-screen w-full bg-gray-100 text-gray-800 antialiased px-4 py-3 flex flex-col justify-center sm:py-120">
             <div className="relative py-3 sm:max-w-xl mx-auto text-center">
                 <span className="text-2xl font-white">Login to your account</span>
 

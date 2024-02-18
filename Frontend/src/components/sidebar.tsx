@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function Sidebar() {
+export default function Sidebar({ className }) {
   let navbarItems = [
     { name: "Home", href: "#" },
     { name: "Page 1", href: "#" },
@@ -8,7 +8,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className="flex flex-col bg-elanco">
+    <aside className={`flex flex-col bg-elanco ${className}`}>
       <img
         src="/LogoWhite.png"
         alt="Elanco Logo"
