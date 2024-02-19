@@ -66,3 +66,5 @@ export default function App() {
     </LineChart>
   );
 }
+
+//For examples on how to implement graphs, visit https://recharts.org/en-US/examples
