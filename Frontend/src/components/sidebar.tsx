@@ -2,9 +2,10 @@ import { useEffect } from "react";
 
 export default function Sidebar() {
   let navbarItems = [
-    { name: "Home", href: "#" },
-    { name: "Page 1", href: "#" },
-    { name: "Page 2", href: "#" },
+    { name: "Dashboard", href: "#" }, 
+    { name: "Heart Rate Monitor ", href: "#" },
+    { name: "Temperature Tracker ", href: "#" },
+    { name: "Weight Manager", href: "#" },
   ];
 
   return (
