@@ -12,7 +12,7 @@ export default function Home() {
         </div>
         
         <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-0">Displaying data from the previous year.</div>
-        <div className="px-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="px-3 grid grid-cols-1 lg:grid-cols-3">
             {names.map((name) => (
                 <a href="../data/specific" className="
                         flex flex-col
@@ -66,11 +66,17 @@ export default function Home() {
                     <div className="text-base text-center xl:text-end col-span-2">This is the content of<br/>{ name }</div>
                 </div>
             ))}
-            <div className="
-                      col-span-full
+            <div className="col-span-full text-center
+                      grid grid-cols-1 lg:grid-cols-8 gap-y-3
                       m-1 md:m-3 xl:m-5 p-2 md:p-5 xl:p-7
                       border-2 border-gray-200 rounded-xl shadow-md hover:shadow-xl">
-              <div>test</div>
+              <div className="font-bold lg:text-end text-elanco text-2xl md:text-3xl lg:text-5xl col-span-3 self-end">Behavior{/* name */}</div>
+              <img
+                  src="/LogoWhite.png"
+                  alt="Elanco Logo"
+                  className="p-5 w-[24rem] aspect-auto rounded-md row-span-2 col-span-5 bg-elanco mx-auto"
+              />
+              <div className="text-base lg:text-end col-span-3">Legend 1</div>
             </div>
         </div>
 
