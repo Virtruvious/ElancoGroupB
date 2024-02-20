@@ -1,20 +1,27 @@
 .data{
     display: grid;
     grid-template-rows: 0fr 1fr 0fr;
-    transition: 300ms;
+    transition: var(--card-transition-duration);
 }
 .card:hover .data{
     grid-template-rows: 1fr 1fr 1fr;
 }
 .min, .max{
     object-fit: cover;
-    width: 0;
     overflow: hidden;
-    transition: width 300ms;
+    transition: transform var(--card-transition-duration) ease-out;
+}
+.min {
+    transform: rotateX(90deg);
+    transform-origin: bottom;
+}
+.max {
+    transform: rotateX(-90deg);
+    transform-origin: top;
+    transition-delay: 150ms;
 }
 .card:hover .min, .card:hover .max {
-    opacity: 1;
-    width: auto;
+    transform: rotateX(0);
 }
 .card:hover .average{
     border-top-width: 2px;
