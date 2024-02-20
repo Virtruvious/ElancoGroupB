@@ -3,18 +3,21 @@ import { signOut } from "next-auth/react";
 
 export default function Sidebar() {
   let navbarItems = [
-    { name: "Dashboard", href: "#" }, 
-    { name: "Heart Rate Monitor ", href: "#" },
-    { name: "Temperature Tracker ", href: "#" },
-    { name: "Weight Manager", href: "#" },
+    { name: "Dashboard", href: ".." }, 
+    { name: "Heart Rate Monitor ", href: "/heartRate" },
+    { name: "Temperature Tracker ", href: "/temperature" },
+    { name: "Weight Manager", href: "/weight" },
   ];
 
   return (
+
+    
     <aside className="flex flex-col bg-elanco">
       <img
         src="/LogoWhite.png"
         alt="Elanco Logo"
         className="p-5 mb-10 w-[16rem]"
+        
       />
       <nav className="flex flex-col gap-y-3">
         {navbarItems.map((item) => (
@@ -27,6 +30,8 @@ export default function Sidebar() {
           </a>
         ))}
       </nav>
+
+      
 
       <div className="mt-auto items-center justify-between m-3">
         <button
