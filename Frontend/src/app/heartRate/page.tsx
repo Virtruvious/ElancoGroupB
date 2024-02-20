@@ -1,71 +1,29 @@
-'use client'
-import "./styles.css";
-import React from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer
-} from "recharts";
+import Sidebar from "@/components/sidebar";
+import LineGraph from "@/components/charts/heartRate";
 
-
-export default function BPM() {
-
-  const data = [
-    {
-      name: "Day 1", //Edit the name to change the X axis
-      BeatsPerMinute: 4000,
-    },
-    {
-      name: "Day 2",
-      BeatsPerMinute: 3000,
-    },
-    {
-      name: "Day 3",
-      BeatsPerMinute: 2000,
-    },
-    {
-      name: "Day 4",
-      BeatsPerMinute: 2780,
-    },
-    {
-      name: "Day 5",
-      BeatsPerMinute: 1890,
-    },
-    {
-      name: "Day 6",
-      BeatsPerMinute: 2390,
-    },
-    {
-      name: "Day 7",
-      BeatsPerMinute: 3490,
-    }
-  ];
-
+export default function Home() {
   return (
-    <ResponsiveContainer width="100%" height="100%">
-    <LineChart
-      data={data}
-      margin={{
-        top: 5,
-        right: 30,
-        left: 20,
-        bottom: 5
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Line type="monotone" dataKey="BeatsPerMinute" stroke="#0078BE" /> //Edit the data key to change the line name
-    </LineChart>
-    </ResponsiveContainer>
+    <main className="flex flex-row min-h-screen">
+      <Sidebar />
+      <div className="bg-white w-full text-black h-screen overflow-auto">
+        <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-1">
+          <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">Hello! User</div>
+          <div className="text-lg">Let's see how your dog doing.</div>
+        </div>
+        
+        <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-0">Displaying data from the previous year.</div>
+        <div className="px-3 grid grid-cols-1 lg:grid-cols-3">
+            <div className="col-span-full text-center
+                      grid grid-cols-1 lg:grid-cols-8 gap-y-3
+                      m-1 md:m-3 xl:m-5 p-2 md:p-5 xl:p-7
+                      border-2 border-gray-200 rounded-xl shadow-md hover:shadow-xl">
+              <div className="font-bold lg:text-end text-elanco text-2xl md:text-3xl lg:text-5xl col-span-3 self-end">Behavior{/* name */}</div>
+              <div className="p-5 w-full aspect-video rounded-md row-span-2 col-span-5 ml-2"><LineGraph/></div>
+              <div className="text-base lg:text-end col-span-3">Description</div>
+            </div>
+        </div>
+
+      </div>
+    </main>
   );
 }
-
-//For examples on how to implement graphs, visit https://recharts.org/en-US/examples
