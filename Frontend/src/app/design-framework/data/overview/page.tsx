@@ -1,6 +1,6 @@
 import Sidebar from "@/components/sidebar";
 import style from "./style.module.css";
-import BPM from "./../../../heartRate/page";
+import BPM from "@/components/charts/heartRate";
 
 export default function Home() {
     const names = ["Heart Rate", "Calorie Burnt", "Temperature"]
