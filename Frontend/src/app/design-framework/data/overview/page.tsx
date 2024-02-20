@@ -1,4 +1,5 @@
 import Sidebar from "@/components/sidebar";
+import style from "./style.module.css";
 import BPM from "./../../../heartRate/page";
 
 export default function Home() {
@@ -13,7 +14,7 @@ export default function Home() {
         </div>
         
         <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-0">Displaying data from the previous year.</div>
-        <div className="px-3 grid grid-cols-1 lg:grid-cols-3">
+        <div className="px-3 grid grid-cols-1 lg:grid-cols-3 items-center">
             {names.map((name) => (
                 <a href="../data/specific" className="
                         flex flex-col
@@ -39,6 +40,32 @@ export default function Home() {
                     </div>
                 </a>
             ))}
+            {names.map((name) => (
+                <a href="../data/specific" className={`
+                        ${style.card} flex flex-col h-fit
+                        m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
+                        border-2 border-gray-200 rounded-xl shadow-md hover:shadow-xl text-center
+                        transition ease-in-out duration-300
+                        `}>
+                    <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">{ name }</div>
+                    {/* <div className="lg:hidden">This is the content of<br/>{ name }</div> */}
+                    <div className={style.data}>
+                        <div className={style.min}>
+                          <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">72</div>
+                          <div>Minimum</div>
+                        </div>
+                        <div className={style.average}>
+                          <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">87</div>
+                          <div>Average</div>
+                        </div>
+                        <div className={style.max}>
+                          <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">90</div>
+                          <div>Maximum</div>
+                        </div>
+                    </div>
+                </a>
+            ))}
+            {/* 
             {/* {names.map((name) => (
                 <div className="
                         grid grid-cols-1 xl:grid-cols-3
