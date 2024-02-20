@@ -19,6 +19,7 @@ export default function Home() {
                         flex flex-col
                         m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
                         border-2 border-gray-200 rounded-xl shadow-md hover:shadow-xl text-center
+                        transition ease-in-out duration-300
                         ">
                     <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">{ name }</div>
                     {/* <div className="lg:hidden">This is the content of<br/>{ name }</div> */}
@@ -27,7 +28,7 @@ export default function Home() {
                           <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">72</div>
                           <div>Minimum</div>
                         </div>
-                        <div className="border border-2 border-y-0">
+                        <div className="border-2 border-y-0">
                           <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">87</div>
                           <div>Average</div>
                         </div>
@@ -43,6 +44,7 @@ export default function Home() {
                         grid grid-cols-1 xl:grid-cols-3
                         m-2 md:m-3 xl:mx-5 p-2 md:p-5 xl:p-7
                         border-2 border-gray-200 rounded-xl shadow-md hover:shadow-xl
+                        transition ease-in-out duration-300
                         ">
                     <img
                         src="/LogoWhite.png"
@@ -58,6 +60,7 @@ export default function Home() {
                         grid grid-cols-1 xl:grid-cols-3
                         m-1 md:m-3 xl:m-5 p-2 md:p-5 xl:p-7
                         border-2 border-gray-200 rounded-xl shadow-md hover:shadow-xl
+                        transition ease-in-out duration-300
                         ">
                     <div className="row-span-2 m-auto hidden xl:block order-first">
                         <div className="items-center text-6xl font-bold text-elanco justify-center font-mono">87</div>
@@ -70,7 +73,8 @@ export default function Home() {
             <div className="col-span-full text-center
                       grid grid-cols-1 lg:grid-cols-8 gap-y-3
                       m-1 md:m-3 xl:m-5 p-2 md:p-5 xl:p-7
-                      border-2 border-gray-200 rounded-xl shadow-md hover:shadow-xl">
+                      border-2 border-gray-200 rounded-xl shadow-md hover:shadow-xl
+                      transition ease-in-out duration-300">
               <div className="font-bold lg:text-end text-elanco text-2xl md:text-3xl lg:text-5xl col-span-3 self-end">Behavior{/* name */}</div>
               <div className="p-5 w-full aspect-video rounded-md row-span-2 col-span-5 ml-2"><BPM/></div>
               <div className="text-base lg:text-end col-span-3">Description</div>
