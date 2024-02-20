@@ -8,11 +8,12 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  Legend,
+  ResponsiveContainer
 } from "recharts";
 
 
-export default function App() {
+export default function BPM() {
 
   const data = [
     {
@@ -46,9 +47,8 @@ export default function App() {
   ];
 
   return (
+    <ResponsiveContainer width="100%" height="100%">
     <LineChart
-      width={500}
-      height={300}
       data={data}
       margin={{
         top: 5,
@@ -62,8 +62,9 @@ export default function App() {
       <YAxis />
       <Tooltip />
       <Legend />
-      <Line type="monotone" dataKey="BeatsPerMinute" stroke="#82ca9d" /> //Edit the data key to change the line name
+      <Line type="monotone" dataKey="BeatsPerMinute" stroke="#0078BE" /> //Edit the data key to change the line name
     </LineChart>
+    </ResponsiveContainer>
   );
 }
 
