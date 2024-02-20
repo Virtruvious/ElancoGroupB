@@ -1,4 +1,5 @@
 import Sidebar from "@/components/sidebar";
+import BPM from "./../../../heartRate/page";
 
 export default function Home() {
     const names = ["Heart Rate", "Calorie Burnt", "Temperature"]
@@ -37,7 +38,7 @@ export default function Home() {
                     </div>
                 </a>
             ))}
-            {names.map((name) => (
+            {/* {names.map((name) => (
                 <div className="
                         grid grid-cols-1 xl:grid-cols-3
                         m-2 md:m-3 xl:mx-5 p-2 md:p-5 xl:p-7
@@ -65,18 +66,14 @@ export default function Home() {
                     <div className="font-bold text-center xl:text-end text-elanco text-xl md:text-2xl xl:text-3xl col-span-2 self-end">{ name }</div>
                     <div className="text-base text-center xl:text-end col-span-2">This is the content of<br/>{ name }</div>
                 </div>
-            ))}
+            ))} */}
             <div className="col-span-full text-center
                       grid grid-cols-1 lg:grid-cols-8 gap-y-3
                       m-1 md:m-3 xl:m-5 p-2 md:p-5 xl:p-7
                       border-2 border-gray-200 rounded-xl shadow-md hover:shadow-xl">
               <div className="font-bold lg:text-end text-elanco text-2xl md:text-3xl lg:text-5xl col-span-3 self-end">Behavior{/* name */}</div>
-              <img
-                  src="/LogoWhite.png"
-                  alt="Elanco Logo"
-                  className="p-5 w-[24rem] aspect-auto rounded-md row-span-2 col-span-5 bg-elanco mx-auto"
-              />
-              <div className="text-base lg:text-end col-span-3">Legend 1</div>
+              <div className="p-5 w-full aspect-video rounded-md row-span-2 col-span-5 ml-2"><BPM/></div>
+              <div className="text-base lg:text-end col-span-3">Description</div>
             </div>
         </div>
 
