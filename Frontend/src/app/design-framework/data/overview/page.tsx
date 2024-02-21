@@ -4,27 +4,28 @@ import BPM from "@/components/charts/heartRate";
 
 export default function Home() {
     const names = ["Heart Rate", "Calorie Burnt", "Temperature"]
+    const names2 = ["Heart Rate", "Calorie Burnt", "Temperature", "Food Intake"]
   return (
     <main className="flex flex-row min-h-screen">
       <Sidebar />
-      <div className="bg-white w-full text-black h-screen overflow-auto">
-        <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-1">
+      <div className="bg-white w-full text-black h-screen p-4 overflow-y-scroll">
+        <div className="mx-1 md:mx-3 xl:mx-5 p-2 pb-1">
           <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">Hello! User</div>
           <div className="text-lg">Let's see how your dog doing.</div>
         </div>
         
-        <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-0">Displaying data from the previous year.</div>
-        <div className="px-3 grid grid-cols-1 lg:grid-cols-3 items-center">
-            {names.map((name) => (
+        <div className="mx-1 md:mx-3 xl:mx-5 p-2 pb-0">Displaying data from <span className="font-bold">the previous year</span>.</div>
+        <div className="px-2 grid grid-cols-1 lg:grid-cols-3 items-center gap-y-3 lg:h-[330px]">
+            {/* {names.map((name) => (
                 <a href="../data/specific" className="
                         flex flex-col
                         m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
                         border-2 border-gray-200 rounded-xl shadow-md hover:shadow-xl text-center
                         transition ease-in-out duration-300
                         ">
-                    <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">{ name }</div>
+                    <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">{ name }</div> */}
                     {/* <div className="lg:hidden">This is the content of<br/>{ name }</div> */}
-                    <div className="grid grid-cols-3 mt-2">
+                    {/* <div className="grid grid-cols-3 mt-2">
                         <div>
                           <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">72</div>
                           <div>Minimum</div>
@@ -39,12 +40,12 @@ export default function Home() {
                         </div>
                     </div>
                 </a>
-            ))}
+            ))} */}
             {names.map((name) => (
                 <a href="../data/specific" className={`
                         ${style.card} flex flex-col h-fit
                         m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
-                        border-2 border-gray-200 rounded-xl shadow-md hover:shadow-xl text-center
+                        border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
                         transition ease-in-out duration-300
                         `}>
                     <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">{ name }</div>
@@ -65,6 +66,34 @@ export default function Home() {
                     </div>
                 </a>
             ))}
+            </div>
+            {/* Tried carousel
+            <div className="px-2 flex items-center gap-y-3 lg:h-[330px] overflow-x-auto">
+            {names2.map((name) => (
+                <a href="../data/specific" className={`
+                        ${style.card} flex flex-col h-fit
+                        m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
+                        border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg text-center
+                        transition ease-in-out duration-300
+                        `}>
+                    <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">{ name }</div>
+                    <div className={style.data}>
+                        <div className={style.min}>
+                          <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">72</div>
+                          <div>Minimum</div>
+                        </div>
+                        <div className={style.average}>
+                          <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">87</div>
+                          <div>Average</div>
+                        </div>
+                        <div className={style.max}>
+                          <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">90</div>
+                          <div>Maximum</div>
+                        </div>
+                    </div>
+                </a>
+            ))}
+            </div> */}
             {/* 
             {/* {names.map((name) => (
                 <div className="
@@ -97,10 +126,11 @@ export default function Home() {
                     <div className="text-base text-center xl:text-end col-span-2">This is the content of<br/>{ name }</div>
                 </div>
             ))} */}
+          <div className="p-2 lg:py-0 grid grid-cols-1">
             <div className="col-span-full text-center
                       grid grid-cols-1 lg:grid-cols-8 gap-y-3
                       m-1 md:m-3 xl:m-5 p-2 md:p-5 xl:p-7
-                      border-2 border-gray-200 rounded-xl shadow-md hover:shadow-xl
+                      border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg
                       transition ease-in-out duration-300">
               <div className="font-bold lg:text-end text-elanco text-2xl md:text-3xl lg:text-5xl col-span-3 self-end">Behavior{/* name */}</div>
               <div className="p-5 w-full aspect-video rounded-md row-span-2 col-span-5 ml-2"><BPM/></div>
