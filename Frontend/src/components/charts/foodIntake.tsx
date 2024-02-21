@@ -1,54 +1,62 @@
 'use client'
 import React from "react";
 import {
-  LineChart,
-  Line,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
   Legend,
-  ResponsiveContainer
+  ReferenceLine
 } from "recharts";
 
 
-export default function LineGraph() {
-
+export default function BarChartGraph() {
   const data = [
     {
-      name: "Day 1", //Edit the name to change the X axis
-      CaloriesCalories: 4000, //Edit this name and the dataKey below to change the line name
-    },                        //Edit the value to change the Y axis
+      name: "Day 1",
+      Intake: 1200,
+      Outtake: -1000,
+    },
     {
       name: "Day 2",
-      Calories: 3000,
+      Intake: 3000,
+      Outtake: -1398,
     },
     {
       name: "Day 3",
-      Calories: 2000,
+      Intake: 2000,
+      Outtake: -9800,
     },
     {
       name: "Day 4",
-      Calories: 2780,
+      Intake: 2780,
+      Outtake: -3908,
     },
     {
       name: "Day 5",
-      Calories: 1890,
+      Intake: 1890,
+      Outtake: -4800,
     },
     {
       name: "Day 6",
-      Calories: 2390,
+      Intake: 2390,
+      Outtake: -3800,
     },
     {
       name: "Day 7",
-      Calories: 3490,
+      Intake: 3490,
+      Outtake: -4300,
     }
   ];
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
-    <LineChart
+    <BarChart
+      width={900}
+      height={400}
       data={data}
+      stackOffset="sign"
       margin={{
         top: 5,
         right: 30,
@@ -61,10 +69,9 @@ export default function LineGraph() {
       <YAxis />
       <Tooltip />
       <Legend />
-      <Line type="monotone" dataKey="Calories" stroke="#0078BE" /> //Edit the data key to change the line name
-    </LineChart>
-    </ResponsiveContainer>
+      <ReferenceLine y={0} stroke="#000" />
+      <Bar dataKey="Intake" fill="#8884d8" stackId="stack" />
+      <Bar dataKey="Outtake" fill="#82ca9d" stackId="stack" />
+    </BarChart>
   );
 }
-
-//For examples on how to implement graphs, visit https://recharts.org/en-US/examples
