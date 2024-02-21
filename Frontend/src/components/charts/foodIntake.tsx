@@ -11,8 +11,10 @@ import {
   ReferenceLine
 } from "recharts";
 
+import dynamic from "next/dynamic";
 
-export default function BarChartGraph() {
+
+export function BarChartGraph() {
   const data = [
     {
       name: "Day 1",
@@ -73,5 +75,9 @@ export default function BarChartGraph() {
       <Bar dataKey="Intake" fill="#8884d8" stackId="stack" />
       <Bar dataKey="Outtake" fill="#82ca9d" stackId="stack" />
     </BarChart>
+    
   );
+
 }
+
+export default dynamic (() => Promise.resolve(BarChartGraph), {ssr: false})

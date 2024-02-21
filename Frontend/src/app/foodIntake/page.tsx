@@ -1,6 +1,7 @@
 import Sidebar from "@/components/sidebar";
 import BarChartGraph from "@/components/charts/foodIntake";
 
+
 export default function Home() {
   return (
     <main className="flex flex-row min-h-screen">
@@ -12,7 +13,8 @@ export default function Home() {
         </div>
         
         <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-0">Displaying data from the past seven days:</div>
-        <div className="p-5 w-full aspect-video rounded-md row-span-2 col-span-5 ml-2"><BarChartGraph/></div>
+        
+        <div className="p-5 w-full aspect-video rounded-md row-span-2 col-span-5 ml-2"><BarChartGraph/> </div>
 
       </div>
     </main>
