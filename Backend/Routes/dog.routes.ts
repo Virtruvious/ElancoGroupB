@@ -5,8 +5,7 @@ module.exports = (app: any) => {
 
   // Parse JSON bodies for this router
   router.use(express.json());
-
-  router.post("/getDashInfo", dog.getDashboardInfo);
+  router.get("/getDashInfo", dog.getDashboardInfo);
   router.get("/getBPM", dog.getBPM);
   router.get("/getWeight", dog.getWeight);
   router.get("/getTemperature", dog.getTemperature);
