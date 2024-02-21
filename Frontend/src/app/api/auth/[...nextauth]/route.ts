@@ -79,6 +79,9 @@ export const authOptions: AuthOptions = {
   jwt: {
     maxAge: 30 * 60, // 30 minutes
   },
+  pages: {
+    signIn: "/login",
+  },
 };
 
 const handler = NextAuth(authOptions);

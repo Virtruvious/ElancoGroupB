@@ -46,7 +46,7 @@ export default function LineGraph() {
   ];
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="100%" height="80%">
     <LineChart
       data={data}
       margin={{
@@ -58,7 +58,7 @@ export default function LineGraph() {
     >
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name" />
-      <YAxis />
+      <YAxis type="number" domain={[0, 5000]}/>
       <Tooltip />
       <Legend />
       <Line type="monotone" dataKey="BeatsPerMinute" stroke="#0078BE" /> //Edit the data key to change the line name

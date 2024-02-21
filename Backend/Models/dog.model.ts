@@ -52,6 +52,21 @@ Dog.getDashboardInfo = async (user, result) => {
       walking: 0,
       playing: 0,
     },
+    steps: {
+      average: "",
+      max: "",
+      min: "",
+    },
+    carloriesIntake: {
+      average: "",
+      max: "",
+      min: "",
+    },
+    water: {
+      average: "",
+      max: "",
+      min: "",
+    },
   };
 
   if (dogInfo.id !== null) {
@@ -68,7 +83,10 @@ Dog.getDashboardInfo = async (user, result) => {
             counter = 0,
             total = 0,
             caloriesDays = [],
+            steps,
+            carloriesIntake,
             temperature,
+            water,
             behaviour;
 
           // Extracting data from the rows
@@ -94,6 +112,14 @@ Dog.getDashboardInfo = async (user, result) => {
 
           // Array of behaviour values
           behaviour = rows.map((row) => row.behaviour.toLowerCase());
+
+          // Array of steps values
+          steps = rows.map((row) => row.steps);
+          steps = steps.filter((s) => s !== 0);
+
+          // Array of water intake values
+          water = rows.map((row) => row.water);
+          water = water.filter((w) => w !== 0);
 
           // Assigning BPM values to the result
           dataResult.bpm.min = Math.min(...bpm).toString();
@@ -141,6 +167,31 @@ Dog.getDashboardInfo = async (user, result) => {
             (b) => b === "playing"
           ).length;
 
+          // Assigning steps values to the result
+          dataResult.steps.min = Math.min(...steps).toString();
+          dataResult.steps.max = Math.max(...steps).toString();
+          dataResult.steps.average = (
+            steps.reduce((a, b) => a + b, 0) / steps.length
+          ).toFixed(2);
+
+          // Assigning water intake values to the result
+          dataResult.water.min = Math.min(...water).toFixed(2).toString();
+          dataResult.water.max = Math.max(...water).toFixed(2).toString();
+          dataResult.water.average = (
+            water.reduce((a, b) => a + b, 0) / water.length
+          ).toFixed(2);
+
+          //Assigning carlories intake values to the result
+          carloriesIntake = rows.map((row) => row.caloriesIntake);
+          dataResult.carloriesIntake.min = Math.min(...carloriesIntake)
+            .toFixed(2)
+            .toString();
+          dataResult.carloriesIntake.max = Math.max(...carloriesIntake)
+            .toFixed(2)
+            .toString();
+          dataResult.carloriesIntake.average = (
+            carloriesIntake.reduce((a, b) => a + b, 0) / carloriesIntake.length
+          ).toFixed(2);
           result(null, dataResult);
         } else {
           // Not found Doglogs with that owner
@@ -208,6 +259,100 @@ Dog.getWeight = async (user, start, end, result) => {
                 weight: row.weight,
               });
             }
+          });
+
+          result(null, resultData);
+        } else {
+          // Not found Doglogs with that owner
+          result({ kind: "not_found" }, null);
+        }
+      });
+  } else {
+    return null;
+  }
+};
+
+Dog.getTemperature = async (user, start, end, result) => {
+  const dogInfo = await findDog(user.id);
+
+  if (dogInfo !== null) {
+    pool
+      .execute(
+        "SELECT * FROM doglog WHERE Dog_id = ? AND time BETWEEN ? AND ?",
+        [dogInfo.id, start, end]
+      )
+      .then(([rows]) => {
+        if (rows.length !== 0) {
+          let resultData = [];
+
+          resultData = rows.map((row) => {
+            return {
+              time: row.time,
+              temperature: row.temperature.toFixed(2),
+            };
+          });
+
+          result(null, resultData);
+        } else {
+          // Not found Doglogs with that owner
+          result({ kind: "not_found" }, null);
+        }
+      });
+  } else {
+    return null;
+  }
+};
+
+Dog.getWaterIntake = async (user, start, end, result) => {
+  const dogInfo = await findDog(user.id);
+
+  if (dogInfo !== null) {
+    pool
+      .execute(
+        "SELECT * FROM doglog WHERE Dog_id = ? AND time BETWEEN ? AND ?",
+        [dogInfo.id, start, end]
+      )
+      .then(([rows]) => {
+        if (rows.length !== 0) {
+          let resultData = [];
+
+          resultData = rows.map((row) => {
+            return {
+              time: row.time,
+              waterIntake: row.water.toFixed(2),
+            };
+          });
+
+          result(null, resultData);
+        } else {
+          // Not found Doglogs with that owner
+          result({ kind: "not_found" }, null);
+        }
+      });
+  } else {
+    return null;
+  }
+};
+
+Dog.getFoodIntake = async (user, start, end, result) => {
+  const dogInfo = await findDog(user.id);
+
+  if (dogInfo !== null) {
+    pool
+      .execute(
+        "SELECT * FROM doglog WHERE Dog_id = ? AND time BETWEEN ? AND ?",
+        [dogInfo.id, start, end]
+      )
+      .then(([rows]) => {
+        if (rows.length !== 0) {
+          let resultData = [];
+
+          resultData = rows.map((row) => {
+            return {
+              time: row.time,
+              caloriesIntake: row.caloriesIntake.toFixed(2),
+              caloriesBurnt: "-" + row.calorie.toFixed(2),
+            };
           });
 
           result(null, resultData);

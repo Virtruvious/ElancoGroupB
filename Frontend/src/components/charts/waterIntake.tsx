@@ -17,36 +17,36 @@ export default function LineGraph() {
   const data = [
     {
       name: "Day 1", //Edit the name to change the X axis
-      Weight: 4000, //Edit this name and the data key to change the line name
-    },                      //Edit the value to change the Y axis
+      Temperature: 28, //Edit this name and the dataKey below to change the line name
+    },                 //Edit the value to change the Y axis
     {
       name: "Day 2",
-      Weight: 3000,
+      Temperature: 26,
     },
     {
       name: "Day 3",
-      Weight: 2000,
+      Temperature: 24,
     },
     {
       name: "Day 4",
-      Weight: 2780,
+      Temperature: 29,
     },
     {
       name: "Day 5",
-      Weight: 1890,
+      Temperature: 25,
     },
     {
       name: "Day 6",
-      Weight: 2390,
+      Temperature: 26,
     },
     {
       name: "Day 7",
-      Weight: 3490,
+      Temperature: 29,
     }
   ];
 
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer width="100%" height="80%">
     <LineChart
       data={data}
       margin={{
@@ -61,8 +61,8 @@ export default function LineGraph() {
       <YAxis />
       <Tooltip />
       <Legend />
-      <Line type="monotone" dataKey="Weight" stroke="#0078BE" /> //Edit the data key to change the line name
-    </LineChart>                                                        
+      <Line type="monotone" dataKey="Temperature" stroke="#0078BE" /> //Edit the data key to change the line name
+    </LineChart>
     </ResponsiveContainer>
   );
 }

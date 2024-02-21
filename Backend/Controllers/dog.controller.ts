@@ -108,3 +108,90 @@ exports.getWeight = (req, res) => {
     }
   });
 };
+
+exports.getTemperature = (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  const { start, end } = req.body;
+
+  verifyToken(token, (err, decodedUser) => {
+    if (err) { // If the token is invalid
+      return res.sendStatus(403);
+    } else if (validateDate(start) && validateDate(end)) { // If the date is valid
+      dog.getTemperature(decodedUser, start, end, (err, data) => {
+        if (err) { // If logs are not found
+          if (err.kind === "not_found") {
+            res.status(404).send({
+              message: "Logs not found",
+            });
+          } else { // If there is an error
+            res.status(500).send({
+              message: "Error retrieving logs",
+            });
+          }
+        } else { // Success, logs are found
+          res.status(200).send(data);
+        }
+      });
+    } else { // If the date is invalid
+      return res.sendStatus(400);
+    }
+  });
+};
+
+exports.getWaterIntake = (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  const { start, end } = req.body;
+
+  verifyToken(token, (err, decodedUser) => {
+    if (err) { // If the token is invalid
+      return res.sendStatus(403);
+    } else if (validateDate(start) && validateDate(end)) { // If the date is valid
+      dog.getWaterIntake(decodedUser, start, end, (err, data) => {
+        if (err) { // If logs are not found
+          if (err.kind === "not_found") {
+            res.status(404).send({
+              message: "Logs not found",
+            });
+          } else { // If there is an error
+            res.status(500).send({
+              message: "Error retrieving logs",
+            });
+          }
+        } else { // Success, logs are found
+          res.status(200).send(data);
+        }
+      });
+    } else { // If the date is invalid
+      return res.sendStatus(400);
+    }
+  });
+};
+
+exports.getCalories = (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  const { start, end } = req.body;
+
+  verifyToken(token, (err, decodedUser) => {
+    if (err) { // If the token is invalid
+      return res.sendStatus(403);
+    } else if (validateDate(start) && validateDate(end)) { // If the date is valid
+      dog.getFoodIntake(decodedUser, start, end, (err, data) => {
+        if (err) { // If logs are not found
+          if (err.kind === "not_found") {
+            res.status(404).send({
+              message: "Logs not found",
+            });
+          } else { // If there is an error
+            res.status(500).send({
+              message: "Error retrieving logs",
+            });
+          }
+        } else { // Success, logs are found
+          res.status(200).send(data);
+        }
+      });
+    } else { // If the date is invalid
+      return res.sendStatus(400);
+    }
+  });
+};
