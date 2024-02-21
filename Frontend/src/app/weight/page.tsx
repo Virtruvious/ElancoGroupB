@@ -1,5 +1,5 @@
 import Sidebar from "@/components/sidebar";
-import LineGraph from "@/components/charts/weight"; //I have no idea why this gets redlined, it works as intended when running though
+import LineGraph from "@/components/charts/weightFixed"; //I have no idea why this gets redlined, it works as intended when running though
 
 export default function Home() {
   return (
