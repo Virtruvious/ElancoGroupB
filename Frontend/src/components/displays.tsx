@@ -19,7 +19,7 @@ export const DashboardDisplays = (props: any) => {
   }, [currentSet]);
 
   return (
-    <div className="px-3 grid grid-cols-1 lg:grid-cols-3 items-center">
+    <div className="px-2 grid grid-cols-1 lg:grid-cols-3 items-center gap-y-3 lg:h-[330px]">
       {currentSet.map((row: any) => (
         <a
           key={row.title}
@@ -27,14 +27,14 @@ export const DashboardDisplays = (props: any) => {
           className={`
                       ${style.card} flex flex-col h-fit
                       m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
-                      border-2 border-gray-200 rounded-xl shadow-md hover:shadow-xl text-center
+                      border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg focus:shadow-lg outline-elanco text-center
                       transition ease-in-out duration-300
                       `}
         >
           <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">
             {row.title}
           </div>
-          {/* <div className="lg:hidden">This is the content of<br/>{ name }</div> */}
+
           <div className={style.data}>
             <div className={style.min}>
               <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">
