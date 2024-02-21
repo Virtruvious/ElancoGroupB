@@ -7,8 +7,11 @@ module.exports = (app: any) => {
   router.use(express.json());
 
   router.post("/getDashInfo", dog.getDashboardInfo);
-  router.post("/getBPM", dog.getBPM);
-  router.post("/getWeight", dog.getWeight);
+  router.get("/getBPM", dog.getBPM);
+  router.get("/getWeight", dog.getWeight);
+  router.get("/getTemperature", dog.getTemperature);
+  router.get("/getWaterIntake", dog.getWaterIntake);
+  router.get("/getCalories", dog.getCalories);
 
   app.use("/dog", router);
 };

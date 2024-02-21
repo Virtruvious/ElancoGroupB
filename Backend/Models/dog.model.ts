@@ -221,4 +221,98 @@ Dog.getWeight = async (user, start, end, result) => {
   }
 };
 
+Dog.getTemperature = async (user, start, end, result) => {
+  const dogInfo = await findDog(user.id);
+
+  if (dogInfo !== null) {
+    pool
+      .execute(
+        "SELECT * FROM doglog WHERE Dog_id = ? AND time BETWEEN ? AND ?",
+        [dogInfo.id, start, end]
+      )
+      .then(([rows]) => {
+        if (rows.length !== 0) {
+          let resultData = [];
+
+          resultData = rows.map((row) => {
+            return {
+              time: row.time,
+              temperature: row.temperature.toFixed(2),
+            };
+          });
+
+          result(null, resultData);
+        } else {
+          // Not found Doglogs with that owner
+          result({ kind: "not_found" }, null);
+        }
+      });
+  } else {
+    return null;
+  }
+};
+
+Dog.getWaterIntake = async (user, start, end, result) => {
+  const dogInfo = await findDog(user.id);
+
+  if (dogInfo !== null) {
+    pool
+      .execute(
+        "SELECT * FROM doglog WHERE Dog_id = ? AND time BETWEEN ? AND ?",
+        [dogInfo.id, start, end]
+      )
+      .then(([rows]) => {
+        if (rows.length !== 0) {
+          let resultData = [];
+
+          resultData = rows.map((row) => {
+            return {
+              time: row.time,
+              waterIntake: row.water.toFixed(2),
+            };
+          });
+
+          result(null, resultData);
+        } else {
+          // Not found Doglogs with that owner
+          result({ kind: "not_found" }, null);
+        }
+      });
+  } else {
+    return null;
+  }
+};
+
+Dog.getFoodIntake = async (user, start, end, result) => {
+  const dogInfo = await findDog(user.id);
+
+  if (dogInfo !== null) {
+    pool
+      .execute(
+        "SELECT * FROM doglog WHERE Dog_id = ? AND time BETWEEN ? AND ?",
+        [dogInfo.id, start, end]
+      )
+      .then(([rows]) => {
+        if (rows.length !== 0) {
+          let resultData = [];
+
+          resultData = rows.map((row) => {
+            return {
+              time: row.time,
+              caloriesIntake: row.caloriesIntake.toFixed(2),
+              caloriesBurnt: "-" + row.calorie.toFixed(2),
+            };
+          });
+
+          result(null, resultData);
+        } else {
+          // Not found Doglogs with that owner
+          result({ kind: "not_found" }, null);
+        }
+      });
+  } else {
+    return null;
+  }
+};
+
 module.exports = Dog;
