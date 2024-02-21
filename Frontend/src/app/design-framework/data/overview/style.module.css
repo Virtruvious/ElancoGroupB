@@ -1,22 +1,62 @@
+/* ------------ Card data animation ----------- */
 .data{
     display: grid;
     grid-template-rows: 0fr 1fr 0fr;
-    transition: 300ms;
+    transition: var(--card-transition-duration);
 }
-.card:hover .data{
+.card:hover .data,
+.card:focus .data{
     grid-template-rows: 1fr 1fr 1fr;
 }
+
+/* ------------ Min Max data animation ----------- */
 .min, .max{
     object-fit: cover;
-    width: 0;
     overflow: hidden;
-    transition: width 300ms;
+    transition: transform var(--card-transition-duration) ease-out 150ms;
 }
-.card:hover .min, .card:hover .max {
-    opacity: 1;
-    width: auto;
+.min {
+    transform: rotateX(90deg);
+    transform-origin: bottom;
 }
-.card:hover .average{
+.max {
+    transform: rotateX(-90deg);
+    transform-origin: top;
+    /* transition-delay: 150ms; */
+}
+.card:hover .min, .card:hover .max,
+.card:focus .min, .card:focus .max {
+    transform: rotateX(0);
+}
+/* .min {
+    transform-origin: bottom;
+}
+.max {
+    transform-origin: top;
+}
+.min, .max {
+    transform: scaleY(0);
+}
+.card:hover .min,
+.card:hover .max {
+    transform: scaleY(1);
+} */
+
+/* .card:hover .average{
     border-top-width: 2px;
     border-bottom-width: 2px;
+} */
+
+/* ------------ Data separating line animation -----------*/
+.average::before,
+.average::after {
+    display:block;
+    content: '';
+    border-bottom-width: 2px;  
+    transform: scaleX(0);  
+    transition: transform 450ms ease-in-out;
+}
+.card:hover .average::before, .card:hover .average::after,
+.card:focus .average::before, .card:focus .average::after{
+    transform: scaleX(1);
 }
