@@ -31,7 +31,7 @@ export default function Sidebar() {
             <span className="
                 w-0 lg:w-auto group-hover:w-auto whitespace-nowrap
                 scale-x-0 lg:scale-x-100 group-hover:scale-x-100
-                origin-left duration-1000">{item.name}</span>
+                origin-left transition-transform duration-1000">{item.name}</span>
           </a>
         ))}
       </nav>
@@ -51,7 +51,7 @@ export default function Sidebar() {
 
           <span className=" w-0 lg:w-auto group-hover:w-auto whitespace-nowrap
                 scale-x-0 lg:scale-x-100 group-hover:scale-x-100
-                origin-left duration-1000">Logout</span>
+                origin-left transition-transform duration-1000">Logout</span>
         </button>
         
       </div>
