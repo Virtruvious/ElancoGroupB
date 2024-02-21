@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+'use client';
+import { signOut } from "next-auth/react";
 
 export default function Sidebar() {
   let navbarItems = [
-    { name: "Home", href: "#" , icon: ""},
-    { name: "Page 1", href: "#", icon: "" },
-    { name: "Page 2", href: "#", icon: "" },
+    { name: "Dashboard", href: ".." }, 
+    { name: "Heart Rate Monitor ", href: "/heartRate" },
+    { name: "Temperature Tracker ", href: "/temperature" },
+    { name: "Weight Manager", href: "/weight" },
   ];
 
   return (
@@ -13,6 +15,7 @@ export default function Sidebar() {
         src="/LogoWhite.png"
         alt="Elanco Logo"
         className="p-3 lg:p-5 w-[5rem] lg:w-[16rem] group-hover:w-[16rem] duration-1000"
+
       />
       <nav className="flex flex-col gap-y-3 items-center mx-3">
         {navbarItems.map((item) => (
@@ -33,8 +36,13 @@ export default function Sidebar() {
         ))}
       </nav>
 
+      
+
       <div className="mt-auto items-center justify-between m-3">
-        <button className="flex justify-center lg:gap-3 group-hover:gap-3 p-3 
+        
+        <button
+          onClick={() => signOut()}
+          className="flex justify-center lg:gap-3 group-hover:gap-3 p-3 
                 w-full rounded-lg bg-white font-light text-black outline-elanco
                 hover:bg-opacity-70 duration-200">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
@@ -45,6 +53,7 @@ export default function Sidebar() {
                 scale-x-0 lg:scale-x-100 group-hover:scale-x-100
                 origin-left duration-1000">Logout</span>
         </button>
+        
       </div>
     </aside>
   );

@@ -10,7 +10,7 @@ User.checkPassword = (username, password, result) => {
   pool
     .execute("SELECT * FROM user WHERE username = ?", [username])
     .then(([rows]) => {
-      if (rows.length) {
+      if (rows.length == 1) {
         // To be used when password is hashed
         // bcrypt.compare(password, rows[0].password, (err, res) => {
         //     if (res) {
