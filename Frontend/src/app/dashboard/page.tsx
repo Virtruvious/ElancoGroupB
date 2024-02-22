@@ -77,23 +77,23 @@ export default async function Home(req: NextRequest): Promise<any> {
   return (
     <main className="flex flex-row min-h-screen">
       <Sidebar />
-      <div className="bg-white w-full text-black h-screen overflow-auto">
-        <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-1">
+      <div className="bg-white w-full text-black h-screen p-4 overflow-y-scroll">
+        <div className="mx-1 md:mx-3 xl:mx-5 p-2 pb-1">
           <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">
             Hello! User
           </div>
           <div className="text-lg">Let's see how your dog doing.</div>
         </div>
 
-        <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-0">
+        <div className="mx-1 md:mx-3 xl:mx-5 p-2 pb-0">
           Displaying data from the previous year.
         </div>
         <DashboardDisplays props={collection} />
-        <div
-        className="col-span-full text-center
+        <a href="#"
+        className=" text-center
                     grid grid-cols-1 lg:grid-cols-8 gap-y-3
                     m-1 md:m-3 xl:m-5 p-2 md:p-5 xl:p-7
-                    border-2 border-gray-200 rounded-xl shadow-md hover:shadow-xl
+                    border-2 border-gray-200 rounded-xl shadow-md hover:shadow-xl outline-elanco
                     transition ease-in-out duration-300"
       >
         <div className="font-bold lg:text-end text-elanco text-2xl md:text-3xl lg:text-5xl col-span-3 self-end">
@@ -103,7 +103,7 @@ export default async function Home(req: NextRequest): Promise<any> {
           <PieChartGraph data={data.behaviour}  />
         </div>
         <div className="text-base lg:text-end col-span-3">Description</div>
-      </div>
+      </a>
       </div>
     </main>
   );
