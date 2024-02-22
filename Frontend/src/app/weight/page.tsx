@@ -6,6 +6,13 @@ export default function Home() {
     <main className="flex flex-row min-h-screen">
       <Sidebar />
       <div className="bg-white w-full text-black h-screen overflow-auto">
+        <div className="absolute top-0 right-0 text-elanco p-10">
+          <a href="..">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6 cursor-pointer">
+              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="3" d="M20 20L4 4m16 0L4 20" />
+            </svg>
+          </a>
+        </div>
         <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-1">
           <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">Weight</div>
           <div className="text-lg">Let's see how your dog doing.</div>
