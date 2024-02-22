@@ -2,22 +2,18 @@ import { getServerSession } from "next-auth/next";
 import type { NextRequest } from "next/server";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
-import style from "@/app/design-framework/data/overview/style.module.css";
 import Sidebar from "@/components/sidebar";
-import BPM from "@/components/charts/heartRate";
 import PieChartGraph from "@/components/charts/pieChart";
 import axios from "axios";
 import { DashboardDisplays } from "@/components/displays";
 
 export default async function Home(req: NextRequest): Promise<any> {
-  let messge = "Hello";
-
   let token: string;
   const session = await getServerSession(authOptions);
   if (session === null) {
     redirect("/api/auth/signin");
   }
-  const names = ["Heart Rate", "Calorie Burnt", "Temperature"];
+
   const response = await axios.get("http://localhost:8000/dog/getDashInfo", {
     headers: {
       Authorization: `Bearer ${session?.jwt}`,
@@ -25,18 +21,9 @@ export default async function Home(req: NextRequest): Promise<any> {
     },
   });
   token = session?.jwt;
-  const config = {
-    headers: { Authorization: `Bearer ${token}` },
-  };
 
-  const bodyParameters = {
-    key: token,
-  };
-  const reponse = axios.get("http://localhost:8000/dog/getDashInfo", {
-    headers: { Authorization: `Bearer ${session.jwt}` },
-  });
   const data = response.data;
-  var collection = [
+  let collection = [
     {
       title: "Heart Rate",
       average: data.bpm.average,
@@ -74,6 +61,7 @@ export default async function Home(req: NextRequest): Promise<any> {
       min: data.water.min,
     },
   ];
+  
   return (
     <main className="flex flex-row min-h-screen">
       <Sidebar />
