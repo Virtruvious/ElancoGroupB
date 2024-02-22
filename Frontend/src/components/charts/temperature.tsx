@@ -10,7 +10,7 @@ import {
   Legend,
   ResponsiveContainer
 } from "recharts";
-
+import moment from "moment";
 
 export default function LineGraph() {
 
@@ -45,6 +45,28 @@ export default function LineGraph() {
     }
   ];
 
+  function formatXAxisTooltip(tickItem:string) {
+    return moment(tickItem).format('MMMM Do YYYY')
+  }
+
+  function formatXAxis(tickItem:string) {
+    return moment(tickItem).format('MMMM Do YY')
+  }
+
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    label = formatXAxisTooltip(label);
+    if (active && payload && payload.length) {
+      return (
+        <div className="custom-tooltip">
+          <p className="label">{`${label}  : ${payload[0].value} KGs`}</p>
+        </div>
+      );
+    }
+  
+    return null;
+  };
+
+
   return (
     <ResponsiveContainer width="100%" height="80%">
     <LineChart
@@ -59,7 +81,9 @@ export default function LineGraph() {
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name" />
       <YAxis />
-      <Tooltip />
+      <Tooltip 
+      content={<CustomTooltip  />} 
+      />
       <Legend />
       <Line type="monotone" dataKey="Temperature" stroke="#0078BE" /> //Edit the data key to change the line name
     </LineChart>

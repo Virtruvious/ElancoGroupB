@@ -8,7 +8,8 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
-  ReferenceLine
+  ReferenceLine,
+  ResponsiveContainer
 } from "recharts";
 
 import dynamic from "next/dynamic";
@@ -54,6 +55,7 @@ export function BarChartGraph() {
   ];
 
   return (
+    <ResponsiveContainer width="100%" height="80%">
     <BarChart
       width={900}
       height={400}
@@ -75,6 +77,7 @@ export function BarChartGraph() {
       <Bar dataKey="Intake" fill="#8884d8" stackId="stack" />
       <Bar dataKey="Outtake" fill="#82ca9d" stackId="stack" />
     </BarChart>
+    </ResponsiveContainer>
     
   );
 
