@@ -20,19 +20,20 @@ export const LineGraph = (props: any) => {
   }
 
   function formatXAxisTooltip(tickItem: string) {
-    return moment(tickItem).format("MMMM Do YYYY");
+    return moment(tickItem).format("MMMM Do YYYY HH:mm:ss");
   }
-
   const CustomTooltip = ({ active, payload, label }: any) => {
     label = formatXAxisTooltip(label);
     if (active && payload && payload.length) {
       return (
         <div className="rounded-lg bg-white p-2 shadow-lg">
-          <p className="label">{`${label}  : ${payload[0].value} KGs`}</p>
+          <p className="text-gray-700 font-semibold">Date: {`${label}`}</p>
+          <p className="text-gray-700 font-semibold">
+            Weight: {`${payload[0].value}  kg`}
+          </p>
         </div>
       );
     }
-
     return null;
   };
 

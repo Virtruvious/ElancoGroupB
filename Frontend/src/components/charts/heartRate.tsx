@@ -29,7 +29,7 @@ export const LineGraph = (props: any) => {
         <div className="rounded-lg bg-white p-2 shadow-lg">
           <p className="text-gray-700 font-semibold">Date: {`${label}`}</p>
           <p className="text-gray-700 font-semibold">
-            Weight: {`${payload[0].value} kg`}
+            BPM: {`${payload[0].value} `}
           </p>
         </div>
       );
@@ -51,7 +51,9 @@ export const LineGraph = (props: any) => {
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="name" tickFormatter={formatXAxis} />
         <YAxis type="number" domain={[90, 150]} />
-        <Tooltip />
+        <Tooltip
+        content={CustomTooltip}
+        />
         <Legend />
         <Line
           type="monotone"

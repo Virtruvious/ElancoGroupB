@@ -29,7 +29,7 @@ export const LineGraph = (props: any) => {
         <div className="rounded-lg bg-white p-2 shadow-lg">
           <p className="text-gray-700 font-semibold">Date: {`${label}`}</p>
           <p className="text-gray-700 font-semibold">
-            Weight: {`${payload[0].value} kg`}
+            Temperature: {`${payload[0].value} °C`}
           </p>
         </div>
       );
@@ -59,7 +59,6 @@ export const LineGraph = (props: any) => {
           stroke="#0078BE"
           dot={false}
         />{" "}
-        //Edit the data key to change the line name
       </LineChart>
     </ResponsiveContainer>
   );
