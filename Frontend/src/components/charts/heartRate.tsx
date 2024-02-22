@@ -54,11 +54,11 @@ export default function LineGraph() {
   }
 
   const CustomTooltip = ({ active, payload, label }: any) => {
-    label = formatXAxisTooltip(label);
+    //label = formatXAxisTooltip(label);
     if (active && payload && payload.length) {
       return (
         <div className="custom-tooltip">
-          <p className="label">{`${label}  : ${payload[0].value} KGs`}</p>
+          <p className="label">{`${label}  : ${payload[0].value} BPM`}</p>
         </div>
       );
     }
