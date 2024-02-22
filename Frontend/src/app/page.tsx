@@ -97,9 +97,9 @@ export default async function Home(req: NextRequest): Promise<any> {
   }
   
   return (
-    <main className="flex flex-row min-h-screen">
+    <main className="min-h-screen">
       <Sidebar />
-      <div className="bg-white w-full text-black h-screen p-4 overflow-y-scroll">
+      <div className="bg-white text-black w-[cal(100%-72px)] md:w-[cal(100%-244px)] h-screen overflow-auto ml-[72px] md:ml-[244px]">
         <div className="mx-1 md:mx-3 xl:mx-5 p-2 pb-1">
           <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">
             Hello {session.user.name}!
