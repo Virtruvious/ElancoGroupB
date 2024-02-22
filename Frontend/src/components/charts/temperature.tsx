@@ -54,11 +54,11 @@ export default function LineGraph() {
   }
 
   const CustomTooltip = ({ active, payload, label }: any) => {
-    label = formatXAxisTooltip(label);
+    //label = formatXAxisTooltip(label);
     if (active && payload && payload.length) {
       return (
         <div className="custom-tooltip">
-          <p className="label">{`${label}  : ${payload[0].value} KGs`}</p>
+          <p className="label">{`${label}  : ${payload[0].value} °C`}</p>
         </div>
       );
     }
@@ -85,7 +85,7 @@ export default function LineGraph() {
       content={<CustomTooltip  />} 
       />
       <Legend />
-      <Line type="monotone" dataKey="Temperature" stroke="#0078BE" /> //Edit the data key to change the line name
+      <Line type="monotone" dataKey="Temperature" stroke="#0078BE" dot={false} /> //Edit the data key to change the line name
     </LineChart>
     </ResponsiveContainer>
   );
