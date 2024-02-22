@@ -52,15 +52,15 @@ export default function Home() {
                     {/* <div className="lg:hidden">This is the content of<br/>{ name }</div> */}
                     <div className={style.data}>
                         <div className={style.min}>
-                          <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">72</div>
+                          <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">7200.00</div>
                           <div>Minimum</div>
                         </div>
                         <div className={style.average}>
-                          <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">87</div>
+                          <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">8700.00</div>
                           <div>Average</div>
                         </div>
                         <div className={style.max}>
-                          <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">90</div>
+                          <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">9000.00</div>
                           <div>Maximum</div>
                         </div>
                     </div>
