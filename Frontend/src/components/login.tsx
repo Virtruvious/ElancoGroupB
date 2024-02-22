@@ -1,12 +1,17 @@
 "use client";
 import { signIn } from "next-auth/react";
 import { useRef } from "react";
+import { useSearchParams } from "next/navigation";
 
 export const Login = () => {
   const username = useRef("");
   const password = useRef("");
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (!username.current || !password.current) {
+      return;
+    }
 
     await signIn("credentials", {
       username: username.current,
@@ -16,8 +21,16 @@ export const Login = () => {
     });
   };
 
+  const searchParams = useSearchParams();
+  const errors = searchParams ? searchParams.get("error") || "" : "";
+
   return (
     <div>
+      {errors && (
+        <div className="bg-red-500 bg-opacity-50 rounded-lg ring-red-500 ring-2 p-3 my-2">
+          Username or password is incorrect.
+        </div>
+      )}
       <form onSubmit={onSubmit}>
         <input
           type="text"
