@@ -39,9 +39,9 @@ export default function Sidebar() {
             {item.icon}
 
             <span className="
-                w-0 md:w-auto group-hover:w-auto whitespace-nowrap
+                w-0 md:w-[10rem] group-hover:w-[10rem] whitespace-nowrap
                 scale-x-0 md:scale-x-100 group-hover:scale-x-100
-                origin-left transition-transform duration-1000">{item.name}</span>
+                origin-left transition-[transform,width] duration-1000">{item.name}</span>
           </a>
         ))}
       </nav>
@@ -59,9 +59,9 @@ export default function Sidebar() {
             <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
           </svg>
 
-          <span className=" w-0 md:w-auto group-hover:w-auto whitespace-nowrap
+          <span className=" w-0 md:w-[10rem] group-hover:w-[10rem] whitespace-nowrap
                 scale-x-0 md:scale-x-100 group-hover:scale-x-100
-                origin-left transition-transform duration-1000">Logout</span>
+                origin-left transition-[transform,width] duration-1000">Logout</span>
         </button>
         
       </div>
