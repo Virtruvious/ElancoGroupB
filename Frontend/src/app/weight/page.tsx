@@ -37,7 +37,7 @@ export default async function Home() {
           <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">
             Weight
           </div>
-          <div className="text-lg">Let's see how your dog doing.</div>
+          <div className="text-lg">Let's see how your dog is doing.</div>
         </div>
 
         <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-0">

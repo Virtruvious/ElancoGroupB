@@ -45,11 +45,11 @@ export default async function Home() {
           <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">
             Heart Rate
           </div>
-          <div className="text-lg">Let's see how your dog doing.</div>
+          <div className="text-lg">Let's see how your dog is doing.</div>
         </div>
 
         <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-0">
-          Displaying data from the past seven days:
+          Displaying data from the past year:
         </div>
         <div className="p-5 w-full aspect-video rounded-md row-span-2 col-span-5 ml-2">
           <LineGraph props={data} />
