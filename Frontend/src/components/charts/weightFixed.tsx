@@ -27,7 +27,7 @@ export const LineGraph = (props: any) => {
     label = formatXAxisTooltip(label);
     if (active && payload && payload.length) {
       return (
-        <div className="custom-tooltip">
+        <div className="rounded-lg bg-white p-2 shadow-lg">
           <p className="label">{`${label}  : ${payload[0].value} KGs`}</p>
         </div>
       );
@@ -58,10 +58,7 @@ export const LineGraph = (props: any) => {
           stroke="#0078BE"
           dot={false}
         />{" "}
-        //Edit the data key to change the line name
       </LineChart>
     </ResponsiveContainer>
   );
 };
-
-//For examples on how to implement graphs, visit https://recharts.org/en-US/examples
