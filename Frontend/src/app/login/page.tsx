@@ -21,7 +21,7 @@ export default async function LoginPage(req: NextRequest): Promise<any> {
           draggable={false}
         />
       </div>
-      <div className="bg-gray-100 flex justify-center items-center">
+      <div className="bg-gray-100 flex justify-center items-center -mt-3 md:mt-0 rounded-t-xl md:rounded-none">
         <div className="text-gray-800 px-4 py-3 flex flex-col justify-center items-center">
           <div className="py-3 sm:max-w-xl mx-auto text-center">
             <span className="text-2xl font-white">Login to Your Account</span>
