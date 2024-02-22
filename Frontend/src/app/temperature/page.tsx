@@ -1,7 +1,33 @@
 import Sidebar from "@/components/sidebar";
-import LineGraph from "@/components/charts/temperature";
-
-export default function Home() {
+import { LineGraph } from "@/components/charts/temperature"; //I have no idea why this gets redlined, it works as intended when running though
+import axios from "axios";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+  if (session === null) {
+    redirect("/api/auth/signin");
+  }
+  const response = await axios.get("http://localhost:8000/dog/getTemperature", {
+    headers: {
+      Authorization: `Bearer ${session?.jwt}`,
+      "Content-Type": "application/json",
+    },
+    data: {
+      start: "2023-01-01 00:00:00",
+      end: "2023-12-31 23:00:00",
+    },
+  });
+  let data = response.data;
+  //console.log(data);
+  data = data.map((item: any) => {
+    return {
+      name: item.time,
+      Temperature: item.temperature,
+    };
+  });
+  //console.log(data);
   return (
     <main className="flex flex-row min-h-screen">
       <Sidebar />
@@ -14,13 +40,18 @@ export default function Home() {
           </a>
         </div>
         <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-1">
-          <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">Temperature</div>
+          <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">
+            Temperature
+          </div>
           <div className="text-lg">Let's see how your dog doing.</div>
         </div>
-        
-        <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-0">Displaying data from the past seven days:</div>
-        <div className="p-5 w-full aspect-video rounded-md row-span-2 col-span-5 ml-2"><LineGraph/></div>
 
+        <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-0">
+          Displaying data from the past seven days:
+        </div>
+        <div className="p-5 w-full aspect-video rounded-md row-span-2 col-span-5 ml-2">
+          <LineGraph props={data} />
+        </div>
       </div>
     </main>
   );
