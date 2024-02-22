@@ -6,7 +6,7 @@ export default function Home() {
       <Sidebar />
       <div className="bg-white w-full text-black h-screen overflow-auto">
         <div className="absolute top-0 right-0 text-elanco p-10">
-          <a href="../../../dashboard">
+          <a href="../../..">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6 cursor-pointer">
               <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="3" d="M20 20L4 4m16 0L4 20" />
             </svg>
