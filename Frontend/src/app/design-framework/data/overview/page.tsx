@@ -1,6 +1,5 @@
 import Sidebar from "@/components/sidebar";
 import style from "./style.module.css";
-import BPM from "@/components/charts/heartRate";
 
 export default function Home() {
     const names = ["Heart Rate", "Calorie Burnt", "Temperature"]
@@ -133,7 +132,13 @@ export default function Home() {
                       border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg
                       transition ease-in-out duration-300">
               <div className="font-bold lg:text-end text-elanco text-2xl md:text-3xl lg:text-5xl col-span-3 self-end">Behavior{/* name */}</div>
-              <div className="p-5 w-full aspect-video rounded-md row-span-2 col-span-5 ml-2"><BPM/></div>
+              <div className="p-5 w-full aspect-video rounded-md row-span-2 col-span-5 ml-2">
+                <img
+                  src="/LogoWhite.png"
+                  alt="Elanco Logo"
+                  className="bg-elanco"
+                />
+              </div>
               <div className="text-base lg:text-end col-span-3">Description</div>
             </div>
         </div>
