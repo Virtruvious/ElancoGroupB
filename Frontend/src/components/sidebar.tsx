@@ -22,7 +22,7 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className="group flex flex-col md:p-1 bg-elanco absolute min-h-screen w-[72px] md:w-[244px] hover:w-[244px] duration-1000 z-10">
+    <aside className="group flex flex-col md:p-1 bg-elanco absolute min-h-dvh w-[72px] md:w-[244px] hover:w-[244px] duration-1000 z-10">
       <img
         src="/LogoWhite.png"
         alt="Elanco Logo"
