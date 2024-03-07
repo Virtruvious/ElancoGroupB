@@ -38,7 +38,7 @@ const PieChartGraph: React.FC<any> = ({ data }) => {
           cx="50%"
           cy="50%"
           labelLine={false}
-          outerRadius={150}
+          // outerRadius={150}
           fill="#8884d8"
           dataKey="value"
           label={({ name, value }) => `${name}: ${value.toFixed(2)}%`}
