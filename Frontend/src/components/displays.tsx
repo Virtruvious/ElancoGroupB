@@ -23,7 +23,7 @@ export const DashboardDisplays = (props: any) => {
       {currentSet.map((row: any) => (
         <a
           key={row.title}
-          href="../data/specific"
+          href={"../" + row.href}
           className={`
                       ${style.card} flex flex-col h-fit
                       m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
@@ -38,19 +38,19 @@ export const DashboardDisplays = (props: any) => {
           <div className={style.data}>
             <div className={style.min}>
               <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">
-                {row.min}
+                {row.min} {row.units != "" && <span className="-ml-5 text-xl">{row.units} </span>}
               </div>
               <div>Minimum</div>
             </div>
             <div className={style.average}>
               <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">
-                {row.average}
+                {row.average} {row.units != "" && <span className="-ml-5 text-xl">{row.units} </span>}
               </div>
               <div>Average</div>
             </div>
             <div className={style.max}>
               <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">
-                {row.max}
+                {row.max} {row.units != "" && <span className="-ml-5 text-xl">{row.units} </span>}
               </div>
               <div>Maximum</div>
             </div>
