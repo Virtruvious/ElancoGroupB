@@ -1,7 +1,6 @@
 'use client';
 import Sidebar from "@/components/sidebar";
 import style from "./style.module.css";
-import BPM from "@/components/charts/heartRate";
 import { useEffect } from "react";
 
 
@@ -9,29 +8,29 @@ export default function Home() {
     const names = ["Heart Rate", "Calorie Burnt", "Temperature"]
     const names2 = ["Heart Rate", "Calorie Burnt", "Temperature", "Food Intake"]
     useEffect(() => {
-      const cards = document.getElementsByClassName(style.card);
+      let cards = Array.from(document.getElementsByClassName(style.card));
       if (window.matchMedia("(any-pointer:fine").matches) {
-        for (let i = 0; i < cards.length; i++) {
-          cards[i].addEventListener("mouseenter", function() {
-            cards[i].classList.add(style.hover);
+        cards.forEach(card => {
+          card.addEventListener("mouseenter", function() {
+            card.classList.add(style.hover);
           })
-          cards[i].addEventListener("mouseleave", function() {
-            cards[i].classList.remove(style.hover);
+          card.addEventListener("mouseleave", function() {
+            card.classList.remove(style.hover);
           })
-          cards[i].addEventListener("click", function() {
+          card.addEventListener("click", function() {
             window.location.assign("../data/specific") 
           })
-        }
+        });
       }
       if (window.matchMedia("(any-pointer:coarse").matches) {
-        for (let i = 0; i < cards.length; i++) {
-          cards[i].addEventListener("touchstart", function() {
-            cards[i].classList.add(style.hover);
+        cards.forEach(card => {
+          card.addEventListener("touchstart", function() {
+            card.classList.add(style.hover);
           })
-          cards[i].addEventListener("touchend", function() {
-            cards[i].classList.remove(style.hover);
+          card.addEventListener("touchend", function() {
+            card.classList.remove(style.hover);
           })
-          cards[i].addEventListener("click", function() {
+          card.addEventListener("click", function() {
             window.location.assign("../data/specific"); 
           })
           // let touchExpired = 0
@@ -50,7 +49,7 @@ export default function Home() {
           //     touchExpired = e.timeStamp + 500
           //   }
           // })
-        }
+        });
       }
     })
   return (
