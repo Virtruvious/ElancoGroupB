@@ -43,3 +43,29 @@ exports.checkPassword = (req, res) => {
     });
   }
 };
+
+exports.registerUser = (req, res) => {
+  const { username, password } = req.body;
+
+  if (username && password) {
+    auth.registerUser(username, password, (err, data) => {
+      if (err) {
+        if (err.kind === "duplicate") {
+          res.status(409).send({
+            message: "Username already exists",
+          });
+        } else {
+          res.status(500).send({
+            message: "Error creating User",
+          });
+        }
+      } else {
+        res.status(201).send(data);
+      }
+    });
+  } else {
+    res.status(400).send({
+      message: "Username and password cannot be empty",
+    });
+  }
+};
