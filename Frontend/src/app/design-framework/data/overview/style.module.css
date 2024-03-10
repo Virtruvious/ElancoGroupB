@@ -1,10 +1,20 @@
 /* ------------ Card data animation ----------- */
+.card {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    cursor: pointer;
+}
 .data{
     display: grid;
     grid-template-rows: 0fr 1fr 0fr;
     transition: var(--card-transition-duration);
 }
-.card:hover .data,
+/* .card:hover .data,
+.card:focus .data{
+    grid-template-rows: 1fr 1fr 1fr;
+} */
+.card.hover .data,
 .card:focus .data{
     grid-template-rows: 1fr 1fr 1fr;
 }
@@ -24,10 +34,14 @@
     transform-origin: top;
     /* transition-delay: 150ms; */
 }
-.card:hover .min, .card:hover .max,
+.card.hover .min, .card.hover .max,
 .card:focus .min, .card:focus .max {
     transform: rotateX(0);
 }
+/* .card:hover .min, .card:hover .max,
+.card:focus .min, .card:focus .max {
+    transform: rotateX(0);
+} */
 /* .min {
     transform-origin: bottom;
 }
@@ -56,7 +70,11 @@
     transform: scaleX(0);  
     transition: transform 450ms ease-in-out;
 }
-.card:hover .average::before, .card:hover .average::after,
+/* .card:hover .average::before, .card:hover .average::after,
+.card:focus .average::before, .card:focus .average::after{
+    transform: scaleX(1);
+} */
+.card.hover .average::before, .card.hover .average::after,
 .card:focus .average::before, .card:focus .average::after{
     transform: scaleX(1);
 }
