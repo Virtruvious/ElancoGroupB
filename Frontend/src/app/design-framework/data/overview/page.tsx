@@ -1,7 +1,6 @@
 'use client';
 import Sidebar from "@/components/sidebar";
 import style from "./style.module.css";
-import BPM from "@/components/charts/heartRate";
 import { useEffect } from "react";
 
 
