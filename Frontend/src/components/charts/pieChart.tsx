@@ -1,50 +1,54 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { PieChart, Pie, Tooltip, ResponsiveContainer } from "recharts";
+import React from "react";
+import { PieChart, Pie, Tooltip, ResponsiveContainer, Cell } from "recharts";
 
-interface PieChartGraphProps {
-  data: any;
-}
-
-const PieChartGraph: React.FC<PieChartGraphProps> = ({ data }) => {
-  const [data01, setData01] = useState(data);
-  console.log("Data from PieChartGraph: ");
-  console.log(data);
-
-  useEffect(() => {
-    setData01(data);
-  }, [data]);
-
-  var newData = [
-    { name: "Normal", value: data.normal },
-    { name: "Sleeping", value: data.sleeping },
-    { name: "Walking", value: data.walking },
-    { name: "Eating", value: data.eating },
-    { name: "Playing", value: data.playing },
+const PieChartGraph: React.FC<any> = ({ data }) => {
+  let total =
+    data.normal + data.sleeping + data.walking + data.eating + data.playing;
+  let newData = [
+    { name: "Normal", value: (data.normal / total) * 100 },
+    { name: "Sleeping", value: (data.sleeping / total) * 100 },
+    { name: "Walking", value: (data.walking / total) * 100 },
+    { name: "Eating", value: (data.eating / total) * 100 },
+    { name: "Playing", value: (data.playing / total) * 100 },
   ];
+
+  // Hex codes for the pie chart, Elanco blue in 20% darker increments
+  let colors = ["#4b77b9", "#3c5f94", "#2d476f", "#1e304a", "#0f1825"];
+
+  const customTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-white rounded-lg p-2">
+          <p className="text-elanco">
+            {`${payload[0].name} : ${payload[0].value.toFixed(2)}%`}
+          </p>
+        </div>
+      );
+    }
+
+    return null;
+  }
 
   return (
     <ResponsiveContainer width="100%" height="100%">
       <PieChart width={400} height={400}>
         <Pie
-          dataKey="value"
-          isAnimationActive={false}
           data={newData}
           cx="50%"
           cy="50%"
-          outerRadius={80}
+          labelLine={false}
+          // outerRadius={150}
           fill="#8884d8"
-          label
-        />
-        <Pie
           dataKey="value"
-          cx={500}
-          cy={200}
-          innerRadius={40}
-          outerRadius={80}
-          fill="#82ca9d"
-        />
-        <Tooltip />
+          label={({ name, value }) => `${name}: ${value.toFixed(2)}%`}
+          
+        >
+          {newData.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+          ))}
+        </Pie>
+        <Tooltip content={customTooltip} />
       </PieChart>
     </ResponsiveContainer>
   );
