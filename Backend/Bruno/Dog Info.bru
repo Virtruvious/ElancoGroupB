@@ -1,0 +1,15 @@
+meta {
+  name: Dog Info
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://localhost:8000/dog/getDashInfo
+  body: none
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTdXNhbiIsImlhdCI6MTcwOTAyNTk2OSwiZXhwIjoxNzA5MDI3NzY5fQ.pVt0HgARF3S89EYwgh0Shg0PVzmhIYpGdz-Z1mdjwxk
+}

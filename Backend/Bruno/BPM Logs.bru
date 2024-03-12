@@ -1,0 +1,22 @@
+meta {
+  name: BPM Logs
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:8000/dog/getBPM
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJKb3NoIiwiaWF0IjoxNzA4NTA2MTI1LCJleHAiOjE3MDg1MDc5MjV9.hSh47ZQA89lakeNg7_o_mtg38y_UCAyvoyiq9Cp_8K8
+}
+
+body:json {
+  {
+    "start": "2023-01-01 00:00:00",
+    "end": "2023-12-31 23:00:00"
+  }
+}
