@@ -286,8 +286,8 @@ export default function Home() {
               </div>
             </div> 
             <div className="flex justify-center w-full py-2 gap-2">
-              <a href="#item1" className="btn btn-xs bg-elanco font-elanco hover:bg-white hover:text-elanco border-none">1</a> 
-              <a href="#item2" className="btn btn-xs bg-elanco font-elanco hover:bg-white hover:text-elanco border-none">2</a> 
+              <a href="#item1" className="btn btn-xs bg-elanco text-white hover:bg-white hover:text-elanco border-none">1</a> 
+              <a href="#item2" className="btn btn-xs text-elanco bg-white hover:bg-white hover:text-elanco shadow-sm hover:shadow-lg border-none">2</a> 
             </div>
 
       </div>
