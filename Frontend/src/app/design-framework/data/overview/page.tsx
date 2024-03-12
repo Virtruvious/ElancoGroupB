@@ -9,8 +9,9 @@ export default function Home() {
     const names2 = ["Heart Rate", "Calorie Burnt", "Temperature", "Food Intake"]
     useEffect(() => {
       let cards = Array.from(document.getElementsByClassName(style.card));
-      if (window.matchMedia("(any-pointer:fine").matches) {
-        cards.forEach(card => {
+      cards.forEach(card => {
+        let href = card.getAttribute('data-href') || "#"
+        if (window.matchMedia("(any-pointer:fine").matches) {
           card.addEventListener("mouseenter", function() {
             card.classList.add(style.hover);
           })
@@ -18,12 +19,11 @@ export default function Home() {
             card.classList.remove(style.hover);
           })
           card.addEventListener("click", function() {
-            window.location.assign("../data/specific") 
+            window.location.assign(href)
           })
-        });
-      }
-      if (window.matchMedia("(any-pointer:coarse").matches) {
-        cards.forEach(card => {
+        }
+
+        if (window.matchMedia("(any-pointer:coarse").matches) {
           card.addEventListener("touchstart", function() {
             card.classList.add(style.hover);
           })
@@ -31,7 +31,7 @@ export default function Home() {
             card.classList.remove(style.hover);
           })
           card.addEventListener("click", function() {
-            window.location.assign("../data/specific"); 
+            window.location.assign(href)
           })
           // let touchExpired = 0
           // cards[i].addEventListener("click", function(e) {
@@ -49,8 +49,8 @@ export default function Home() {
           //     touchExpired = e.timeStamp + 500
           //   }
           // })
-        });
-      }
+        }
+      });
     })
   return (
     <main className="min-h-dvh">
@@ -90,7 +90,7 @@ export default function Home() {
             ))} */}
             {/* current */}
             {names.map((name) => (
-                <a href="../data/specific" className={`
+                <div data-href="../data/specific" className={`
                         ${style.card} flex flex-col h-fit
                         m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
                         border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
@@ -112,7 +112,7 @@ export default function Home() {
                           <div>Maximum</div>
                         </div>
                     </div>
-                </a>
+                </div>
             ))}
           </div>
             {/* Tried carousel
@@ -196,7 +196,7 @@ export default function Home() {
             <div className="carousel-item h-full">
               <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-y-3 ">
               {names.map((name) => (
-                    <a href="../data/specific" className={`
+                    <div data-href="../data/specific" className={`
                             ${style.card} flex flex-col h-fit
                             m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
                             border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
@@ -218,7 +218,7 @@ export default function Home() {
                               <div>Maximum</div>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 ))}
               </div>
             </div>
@@ -229,7 +229,7 @@ export default function Home() {
               <div id="item1" className="carousel-item w-full">
                 <div className="px-2 grid grid-cols-1 lg:grid-cols-3 items-center gap-y-3 w-full lg:h-[330px]">
                   {names.map((name) => (
-                    <a href="../data/specific" className={`
+                    <div data-href="../data/specific" className={`
                             ${style.card} flex flex-col h-fit
                             m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
                             border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
@@ -251,14 +251,14 @@ export default function Home() {
                               <div>Maximum</div>
                             </div>
                         </div>
-                    </a>
+                    </div>
                   ))}
                 </div> 
               </div>
               <div id="item2" className="carousel-item w-full">
                 <div className="px-2 grid grid-cols-1 lg:grid-cols-3 items-center gap-y-3 w-full lg:h-[330px]">
                     {names.map((name) => (
-                      <a href="../data/specific" className={`
+                      <div data-href="../data/specific" className={`
                               ${style.card} flex flex-col h-fit
                               m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
                               border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
@@ -280,7 +280,7 @@ export default function Home() {
                                 <div>Maximum</div>
                               </div>
                           </div>
-                      </a>
+                      </div>
                     ))}
                 </div>
               </div>
