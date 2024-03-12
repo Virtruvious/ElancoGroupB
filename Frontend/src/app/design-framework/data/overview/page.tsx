@@ -1,21 +1,68 @@
+'use client';
 import Sidebar from "@/components/sidebar";
 import style from "./style.module.css";
-import BPM from "@/components/charts/heartRate";
+import { useEffect } from "react";
+
 
 export default function Home() {
     const names = ["Heart Rate", "Calorie Burnt", "Temperature"]
     const names2 = ["Heart Rate", "Calorie Burnt", "Temperature", "Food Intake"]
+    useEffect(() => {
+      let cards = Array.from(document.getElementsByClassName(style.card));
+      if (window.matchMedia("(any-pointer:fine").matches) {
+        cards.forEach(card => {
+          card.addEventListener("mouseenter", function() {
+            card.classList.add(style.hover);
+          })
+          card.addEventListener("mouseleave", function() {
+            card.classList.remove(style.hover);
+          })
+          card.addEventListener("click", function() {
+            window.location.assign("../data/specific") 
+          })
+        });
+      }
+      if (window.matchMedia("(any-pointer:coarse").matches) {
+        cards.forEach(card => {
+          card.addEventListener("touchstart", function() {
+            card.classList.add(style.hover);
+          })
+          card.addEventListener("touchend", function() {
+            card.classList.remove(style.hover);
+          })
+          card.addEventListener("click", function() {
+            window.location.assign("../data/specific"); 
+          })
+          // let touchExpired = 0
+          // cards[i].addEventListener("click", function(e) {
+          //   cards[i].classList.toggle(style.hover);
+          //   if (touchExpired == 0) {
+          //     touchExpired = e.timeStamp + 500
+          //   }
+          //   else if (e.timeStamp <= touchExpired) {
+          //     e.preventDefault();
+          //     window.location.assign("../data/specific");
+          //     touchExpired = 0
+          //   }
+          //   else {
+              
+          //     touchExpired = e.timeStamp + 500
+          //   }
+          // })
+        });
+      }
+    })
   return (
-    <main className="min-h-screen">
+    <main className="min-h-dvh">
       <Sidebar />
-      <div className="bg-white text-black  w-[cal(100%-72px)] md:w-[cal(100%-244px)] h-screen p-4 overflow-y-scroll ml-[72px] md:ml-[244px]">
+      <div className="bg-white text-black  w-[cal(100%-72px)] md:w-[cal(100%-244px)] h-dvh p-4 overflow-y-scroll ml-[72px] md:ml-[244px]">
         <div className="mx-1 md:mx-3 xl:mx-5 p-2 pb-1">
           <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">Hello! User</div>
           <div className="text-lg">Let's see how your dog doing.</div>
         </div>
         
         <div className="mx-1 md:mx-3 xl:mx-5 p-2 pb-0">Displaying data from <span className="font-bold">the previous year</span>.</div>
-        <div className="px-2 grid grid-cols-1 lg:grid-cols-3 items-center gap-y-3 lg:h-[330px]">
+          <div className="px-2 grid grid-cols-1 lg:grid-cols-3 items-center gap-y-3 lg:h-[330px]">
             {/* {names.map((name) => (
                 <a href="../data/specific" className="
                         flex flex-col
@@ -41,6 +88,7 @@ export default function Home() {
                     </div>
                 </a>
             ))} */}
+            {/* current */}
             {names.map((name) => (
                 <a href="../data/specific" className={`
                         ${style.card} flex flex-col h-fit
@@ -66,7 +114,7 @@ export default function Home() {
                     </div>
                 </a>
             ))}
-            </div>
+          </div>
             {/* Tried carousel
             <div className="px-2 flex items-center gap-y-3 lg:h-[330px] overflow-x-auto">
             {names2.map((name) => (
@@ -133,10 +181,114 @@ export default function Home() {
                       border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg
                       transition ease-in-out duration-300">
               <div className="font-bold lg:text-end text-elanco text-2xl md:text-3xl lg:text-5xl col-span-3 self-end">Behavior{/* name */}</div>
-              <div className="p-5 w-full aspect-video rounded-md row-span-2 col-span-5 ml-2"><BPM/></div>
+              <div className="p-5 w-full aspect-video rounded-md row-span-2 col-span-5 ml-2">
+                <img
+                  src="/LogoWhite.png"
+                  alt="Elanco Logo"
+                  className="bg-elanco"
+                />
+              </div>
               <div className="text-base lg:text-end col-span-3">Description</div>
             </div>
+          </div>
+
+          <div className="h-96 lg:h-[330px] carousel carousel-vertical rounded-box px-2">
+            <div className="carousel-item h-full">
+              <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-y-3 ">
+              {names.map((name) => (
+                    <a href="../data/specific" className={`
+                            ${style.card} flex flex-col h-fit
+                            m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
+                            border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
+                            transition ease-in-out duration-300
+                            `}>
+                        <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">{ name }</div>
+                        {/* <div className="lg:hidden">This is the content of<br/>{ name }</div> */}
+                        <div className={style.data}>
+                            <div className={style.min}>
+                              <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">7200.00</div>
+                              <div>Minimum</div>
+                            </div>
+                            <div className={style.average}>
+                              <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">8700.00</div>
+                              <div>Average</div>
+                            </div>
+                            <div className={style.max}>
+                              <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">9000.00</div>
+                              <div>Maximum</div>
+                            </div>
+                        </div>
+                    </a>
+                ))}
+              </div>
+            </div>
+
         </div>
+        
+        <div className="carousel w-full">
+              <div id="item1" className="carousel-item w-full">
+                <div className="px-2 grid grid-cols-1 lg:grid-cols-3 items-center gap-y-3 w-full lg:h-[330px]">
+                  {names.map((name) => (
+                    <a href="../data/specific" className={`
+                            ${style.card} flex flex-col h-fit
+                            m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
+                            border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
+                            transition ease-in-out duration-300
+                            `}>
+                        <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">{ name }</div>
+                        {/* <div className="lg:hidden">This is the content of<br/>{ name }</div> */}
+                        <div className={style.data}>
+                            <div className={style.min}>
+                              <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">7200.00</div>
+                              <div>Minimum</div>
+                            </div>
+                            <div className={style.average}>
+                              <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">8700.00</div>
+                              <div>Average</div>
+                            </div>
+                            <div className={style.max}>
+                              <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">9000.00</div>
+                              <div>Maximum</div>
+                            </div>
+                        </div>
+                    </a>
+                  ))}
+                </div> 
+              </div>
+              <div id="item2" className="carousel-item w-full">
+                <div className="px-2 grid grid-cols-1 lg:grid-cols-3 items-center gap-y-3 w-full lg:h-[330px]">
+                    {names.map((name) => (
+                      <a href="../data/specific" className={`
+                              ${style.card} flex flex-col h-fit
+                              m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
+                              border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
+                              transition ease-in-out duration-300
+                              `}>
+                          <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">{ name }</div>
+                          {/* <div className="lg:hidden">This is the content of<br/>{ name }</div> */}
+                          <div className={style.data}>
+                              <div className={style.min}>
+                                <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">7200.00</div>
+                                <div>Minimum</div>
+                              </div>
+                              <div className={style.average}>
+                                <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">8700.00</div>
+                                <div>Average</div>
+                              </div>
+                              <div className={style.max}>
+                                <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">9000.00</div>
+                                <div>Maximum</div>
+                              </div>
+                          </div>
+                      </a>
+                    ))}
+                </div>
+              </div>
+            </div> 
+            <div className="flex justify-center w-full py-2 gap-2">
+              <a href="#item1" className="btn btn-xs bg-elanco font-elanco hover:bg-white hover:text-elanco border-none">1</a> 
+              <a href="#item2" className="btn btn-xs bg-elanco font-elanco hover:bg-white hover:text-elanco border-none">2</a> 
+            </div>
 
       </div>
     </main>
