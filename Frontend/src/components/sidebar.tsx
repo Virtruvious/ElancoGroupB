@@ -1,5 +1,6 @@
 'use client';
 import { signOut } from "next-auth/react";
+import './sidebar.css';
 
 export default function Sidebar() {
   let navbarItems = [
@@ -22,14 +23,14 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className="group flex flex-col md:p-1 bg-elanco absolute min-h-dvh w-[72px] md:w-[244px] hover:w-[244px] duration-1000 z-10">
+    <aside className="group flex flex-col md:p-1 bg-elanco absolute h-dvh w-[72px] md:w-[244px] hover:w-[244px] duration-1000 z-10">
       <img
         src="/LogoWhite.png"
         alt="Elanco Logo"
         className="p-3 md:p-5 w-[5rem] md:w-[16rem] group-hover:w-[16rem] duration-1000"
 
       />
-      <nav className="flex flex-col gap-y-3 items-center mx-3">
+      <nav className="content overflow-auto flex flex-col gap-y-3 items-center mx-3">
         {navbarItems.map((item) => (
           <a
             key={item.name}
