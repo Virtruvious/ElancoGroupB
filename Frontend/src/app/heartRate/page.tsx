@@ -30,7 +30,7 @@ export default async function Home() {
   });
   //console.log(data);
   return (
-<main className="min-h-screen">
+    <main className="min-h-screen">
       <Sidebar />
       <div className="bg-white text-black w-[cal(100%-72px)] md:w-[cal(100%-244px)] h-screen overflow-auto ml-[72px] md:ml-[244px]">
         <div className="absolute top-0 right-0 text-elanco p-10">
@@ -48,26 +48,41 @@ export default async function Home() {
           <div className="text-lg">Let's see how your dog is doing.</div>
         </div>
 
-        <div className="d-flex p-5 mx-1 md:mx-3 xl:mx-5 s-300 ">
-         <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-          Today
-         </button>
+        <div className="flex p-5 mx-1 md:mx-3 xl:mx-5 s-300 ">
+          <div>
+            <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              Today
+            </button>
 
-         <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-          Last Week
-        </button>
+            <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              Last Week
+            </button>
 
-         <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-          Last Month
-         </button>
+            <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              Last Month
+            </button>
 
-         <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-          Last Year
-         </button>
+            <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              Last Year
+            </button>
 
-         <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
-          All time
-         </button>
+            <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              All time
+            </button>
+          </div>
+
+          <div className="ml-auto ">
+            <form >
+              Date Range: Fromㅤ
+              <label className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-blue-400 rounded shadow">
+                <input type="date" name="party" min="2021-01-01" max="2023-12-31" />
+              </label>
+              ㅤToㅤ 
+              <label className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-blue-400 rounded shadow">
+                <input type="date" name="party" min="2021-01-01" max="2023-12-31" />
+              </label>
+            </form>
+          </div>
 
         </div>
 
