@@ -4,14 +4,14 @@ import axios from "axios";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
+import DateSelect from "@/components/dateSelect";
 
 export default async function Home() {
-  let token: string;
   const session = await getServerSession(authOptions);
   if (session === null) {
     redirect("/api/auth/signin");
   }
-  const response = await axios.get("http://localhost:8000/dog/getWeight", {
+  let response = await axios.get("http://localhost:8000/dog/getWeight", {
     headers: {
       Authorization: `Bearer ${session?.jwt}`,
       "Content-Type": "application/json",
@@ -21,7 +21,7 @@ export default async function Home() {
       end: "2023-12-31 23:00:00",
     },
   });
-  token = session?.jwt;
+
   return (
     <main className="min-h-screen">
       <Sidebar />
@@ -40,9 +40,34 @@ export default async function Home() {
           <div className="text-lg">Let's see how your dog is doing.</div>
         </div>
 
-        <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-0">
-          Displaying data from the past year:
+        <div className="flex p-5 mx-1 md:mx-3 xl:mx-5 s-300 justify-between items-center">
+          <div>
+            <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"> 
+              Today
+            </button>
+
+            <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              Last Week
+            </button>
+
+            <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              Last Month
+            </button>
+
+            <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              Last Year
+            </button>
+
+            <button className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+              All time
+            </button>
+          </div>
+
+          <DateSelect 
+           />
+
         </div>
+
         <div className="p-5 w-full aspect-video rounded-md row-span-2 col-span-5 ml-2">
           <LineGraph props={response.data} />
         </div>
