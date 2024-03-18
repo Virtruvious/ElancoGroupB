@@ -11,7 +11,7 @@ const findDog = async (owner) => {
     .execute("SELECT * FROM dog WHERE User_id = ?", [owner])
     .then(([rows]) => {
       if (rows.length === 1) {
-        console.log(rows);
+        //console.log(rows);
         return rows[0]; // Returning the first row
       } else {
         // Not found Dog with that owner

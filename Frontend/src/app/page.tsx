@@ -10,8 +10,10 @@ import { DashboardDisplays } from "@/components/displays";
 export default async function Home(req: NextRequest): Promise<any> {
   const session = await getServerSession(authOptions);
   if (session === null) {
-    redirect("/api/auth/signin");
+    redirect("/login");
   }
+
+  console.log("Session: ", session)
 
   const response = await axios.get("http://localhost:8000/dog/getDashInfo", {
     headers: {

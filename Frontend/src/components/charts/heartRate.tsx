@@ -14,7 +14,7 @@ import {
 
 export const LineGraph = (props: any) => {
   let data = props.props;
-  console.log(data);
+  //console.log(data);
   function formatXAxis(tickItem: string) {
     return moment(tickItem).format("MMMM Do YY");
   }

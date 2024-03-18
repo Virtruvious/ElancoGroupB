@@ -17,7 +17,7 @@ const verifyToken = (token, callback) => {
 // Validates date format to ensure good requests
 const validateDate = (date) => {
   return moment(date, "YYYY-MM-DD HH:mm:ss", true).isValid();
-}
+};
 
 // Returns an object with all of the information needed for the dashboard
 exports.getDashboardInfo = (req, res) => {
@@ -27,7 +27,7 @@ exports.getDashboardInfo = (req, res) => {
 
   verifyToken(token, (err, decodedUser) => {
     if (err) {
-      return res.sendStatus(403);
+      res.status(403).send({ message: "Invalid Token" });
     } else {
       dog.getDashboardInfo(decodedUser, (err, data) => {
         // console.log("Data: ", data);
@@ -56,25 +56,31 @@ exports.getBPM = (req, res) => {
   const { start, end } = req.body;
 
   verifyToken(token, (err, decodedUser) => {
-    if (err) { // If the token is invalid
+    if (err) {
+      // If the token is invalid
       return res.sendStatus(403);
-    } else if (validateDate(start) && validateDate(end)) { // If the date is valid
+    } else if (validateDate(start) && validateDate(end)) {
+      // If the date is valid
       dog.getBPM(decodedUser, start, end, (err, data) => {
-        if (err) { // If logs are not found
+        if (err) {
+          // If logs are not found
           if (err.kind === "not_found") {
             res.status(404).send({
               message: "Logs not found",
             });
-          } else { // If there is an error
+          } else {
+            // If there is an error
             res.status(500).send({
               message: "Error retrieving logs",
             });
           }
-        } else { // Success, logs are found
+        } else {
+          // Success, logs are found
           res.status(200).send(data);
         }
       });
-    } else { // If the date is invalid
+    } else {
+      // If the date is invalid
       return res.sendStatus(400);
     }
   });
@@ -85,25 +91,31 @@ exports.getWeight = (req, res) => {
   const { start, end } = req.body;
 
   verifyToken(token, (err, decodedUser) => {
-    if (err) { // If the token is invalid
+    if (err) {
+      // If the token is invalid
       return res.sendStatus(403);
-    } else if (validateDate(start) && validateDate(end)) { // If the date is valid
+    } else if (validateDate(start) && validateDate(end)) {
+      // If the date is valid
       dog.getWeight(decodedUser, start, end, (err, data) => {
-        if (err) { // If logs are not found
+        if (err) {
+          // If logs are not found
           if (err.kind === "not_found") {
             res.status(404).send({
               message: "Logs not found",
             });
-          } else { // If there is an error
+          } else {
+            // If there is an error
             res.status(500).send({
               message: "Error retrieving logs",
             });
           }
-        } else { // Success, logs are found
+        } else {
+          // Success, logs are found
           res.status(200).send(data);
         }
       });
-    } else { // If the date is invalid
+    } else {
+      // If the date is invalid
       return res.sendStatus(400);
     }
   });
@@ -114,25 +126,31 @@ exports.getTemperature = (req, res) => {
   const { start, end } = req.body;
 
   verifyToken(token, (err, decodedUser) => {
-    if (err) { // If the token is invalid
+    if (err) {
+      // If the token is invalid
       return res.sendStatus(403);
-    } else if (validateDate(start) && validateDate(end)) { // If the date is valid
+    } else if (validateDate(start) && validateDate(end)) {
+      // If the date is valid
       dog.getTemperature(decodedUser, start, end, (err, data) => {
-        if (err) { // If logs are not found
+        if (err) {
+          // If logs are not found
           if (err.kind === "not_found") {
             res.status(404).send({
               message: "Logs not found",
             });
-          } else { // If there is an error
+          } else {
+            // If there is an error
             res.status(500).send({
               message: "Error retrieving logs",
             });
           }
-        } else { // Success, logs are found
+        } else {
+          // Success, logs are found
           res.status(200).send(data);
         }
       });
-    } else { // If the date is invalid
+    } else {
+      // If the date is invalid
       return res.sendStatus(400);
     }
   });
@@ -143,25 +161,31 @@ exports.getWaterIntake = (req, res) => {
   const { start, end } = req.body;
 
   verifyToken(token, (err, decodedUser) => {
-    if (err) { // If the token is invalid
+    if (err) {
+      // If the token is invalid
       return res.sendStatus(403);
-    } else if (validateDate(start) && validateDate(end)) { // If the date is valid
+    } else if (validateDate(start) && validateDate(end)) {
+      // If the date is valid
       dog.getWaterIntake(decodedUser, start, end, (err, data) => {
-        if (err) { // If logs are not found
+        if (err) {
+          // If logs are not found
           if (err.kind === "not_found") {
             res.status(404).send({
               message: "Logs not found",
             });
-          } else { // If there is an error
+          } else {
+            // If there is an error
             res.status(500).send({
               message: "Error retrieving logs",
             });
           }
-        } else { // Success, logs are found
+        } else {
+          // Success, logs are found
           res.status(200).send(data);
         }
       });
-    } else { // If the date is invalid
+    } else {
+      // If the date is invalid
       return res.sendStatus(400);
     }
   });
@@ -172,25 +196,31 @@ exports.getCalories = (req, res) => {
   const { start, end } = req.body;
 
   verifyToken(token, (err, decodedUser) => {
-    if (err) { // If the token is invalid
+    if (err) {
+      // If the token is invalid
       return res.sendStatus(403);
-    } else if (validateDate(start) && validateDate(end)) { // If the date is valid
+    } else if (validateDate(start) && validateDate(end)) {
+      // If the date is valid
       dog.getFoodIntake(decodedUser, start, end, (err, data) => {
-        if (err) { // If logs are not found
+        if (err) {
+          // If logs are not found
           if (err.kind === "not_found") {
             res.status(404).send({
               message: "Logs not found",
             });
-          } else { // If there is an error
+          } else {
+            // If there is an error
             res.status(500).send({
               message: "Error retrieving logs",
             });
           }
-        } else { // Success, logs are found
+        } else {
+          // Success, logs are found
           res.status(200).send(data);
         }
       });
-    } else { // If the date is invalid
+    } else {
+      // If the date is invalid
       return res.sendStatus(400);
     }
   });
