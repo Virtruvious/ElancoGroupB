@@ -13,7 +13,7 @@ export default async function Home(req: NextRequest): Promise<any> {
     redirect("/login");
   }
 
-  console.log("Session: ", session)
+  // console.log("Session: ", session)
 
   const response = await axios.get("http://localhost:8000/dog/getDashInfo", {
     headers: {

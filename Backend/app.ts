@@ -15,9 +15,10 @@ app.get('/', (req, res) => {
     res.json({ message: 'Welcome to the Elanco Activity Monitor API' });
 });
 
-require('./Routes/test')(app);
 require('./Routes/auth.routes')(app);
 require('./Routes/dog.routes')(app);
+require('./Routes/notif.routes')(app);
+require('./Scripts/generateNotifs')
 
 const port = 8000;
 app.listen(port, () => {

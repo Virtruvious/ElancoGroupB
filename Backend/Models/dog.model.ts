@@ -23,7 +23,7 @@ const findDog = async (owner) => {
 Dog.getDashboardInfo = async (user, result) => {
   const dogInfo = await findDog(user.id);
 
-  //   console.log("Dog ID: ", dogInfo.id);
+  // console.log("Dog ID: ", dogInfo.id);
 
   let dataResult = {
     dogInfo: {
@@ -175,8 +175,12 @@ Dog.getDashboardInfo = async (user, result) => {
           ).toFixed(2);
 
           // Assigning water intake values to the result
-          dataResult.water.min = Math.min(...water).toFixed(2).toString();
-          dataResult.water.max = Math.max(...water).toFixed(2).toString();
+          dataResult.water.min = Math.min(...water)
+            .toFixed(2)
+            .toString();
+          dataResult.water.max = Math.max(...water)
+            .toFixed(2)
+            .toString();
           dataResult.water.average = (
             water.reduce((a, b) => a + b, 0) / water.length
           ).toFixed(2);

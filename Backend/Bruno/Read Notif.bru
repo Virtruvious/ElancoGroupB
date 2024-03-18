@@ -1,0 +1,21 @@
+meta {
+  name: Read Notif
+  type: http
+  seq: 11
+}
+
+post {
+  url: http://localhost:8000/notifs/readNotif
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJKb3NoIiwiaWF0IjoxNzEwNzczNTg4LCJleHAiOjE3MTA3NzUzODh9.upjBoj8QQ00fXvpDGkCXBQZZ68_PzmjTPo3JeNkCxAQ
+}
+
+body:json {
+  {
+    "id": 67
+  }
+}

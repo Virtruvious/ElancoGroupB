@@ -35,7 +35,7 @@ export const Login = () => {
         <input
           type="text"
           placeholder="Username"
-          className="border w-full h-15 px-5 py-5 mt-2  hover:outline-none focus:outline-none focus:ring-1 focus:ring-elanco rounded-lg"
+          className="border w-full h-15 px-5 py-5 mt-2  hover:outline-none focus:outline-none focus:ring-1 focus:ring-elanco rounded-lg bg-white"
           onChange={(e) => {
             username.current = e.target.value;
           }}
@@ -44,7 +44,7 @@ export const Login = () => {
         <input
           type="password"
           placeholder="Password"
-          className="border w-full h-15 px-5 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-elanco rounded-lg"
+          className="border w-full h-15 px-5 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-1 focus:ring-elanco rounded-lg bg-white"
           onChange={(e) => {
             password.current = e.target.value;
           }}

@@ -5,8 +5,6 @@ import { redirect } from "next/navigation";
 import axios from "axios";
 
 export default async function Home(req: NextRequest): Promise<any> {
-  let messge = "Hello";
-
   let token: string;
   const session = await getServerSession(authOptions);
   if (session === null) {
@@ -20,16 +18,7 @@ export default async function Home(req: NextRequest): Promise<any> {
     },
   });
   token = session?.jwt;
-  const config = {
-    headers: { Authorization: `Bearer ${token}` },
-  };
 
-  const bodyParameters = {
-    key: token,
-  };
-  const reponse = axios.get("http://localhost:8000/dog/getDashInfo", {
-    headers: { Authorization: `Bearer ${session.jwt}` },
-  });
   const data = response.data;
   var HBR: { [id: string]: number } = {};
   HBR["average"] = data.bpm.average;
