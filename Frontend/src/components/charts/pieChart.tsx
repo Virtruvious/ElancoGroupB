@@ -35,7 +35,8 @@ const PieChartGraph: React.FC<any> = ({ data }) => {
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <PieChart>
+      <PieChart width={400} height={400}>
+      {/* <PieChart> */}
         <Pie
           data={newData}
           cx="50%"
