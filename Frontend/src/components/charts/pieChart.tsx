@@ -14,7 +14,10 @@ const PieChartGraph: React.FC<any> = ({ data }) => {
   ];
 
   // Hex codes for the pie chart, Elanco blue in 20% darker increments
-  let colors = ["#4b77b9", "#3c5f94", "#2d476f", "#1e304a", "#0f1825"];
+  // let colors = ["#4b77b9", "#3c5f94", "#2d476f", "#1e304a", "#0f1825"];
+
+  // new shade colors
+  let colors = ["#3393cb", "#0078be", "#006098", "#004872", "#00304c"];
 
   const customTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
@@ -32,7 +35,7 @@ const PieChartGraph: React.FC<any> = ({ data }) => {
 
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <PieChart width={400} height={400}>
+      <PieChart>
         <Pie
           data={newData}
           cx="50%"
