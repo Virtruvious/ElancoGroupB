@@ -1,6 +1,5 @@
 'use client';
 import { signOut } from "next-auth/react";
-import './sidebar.css';
 
 export default function Sidebar() {
   let navbarItems = [
