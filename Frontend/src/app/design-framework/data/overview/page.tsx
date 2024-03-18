@@ -9,8 +9,9 @@ export default function Home() {
     const names2 = ["Heart Rate", "Calorie Burnt", "Temperature", "Food Intake"]
     useEffect(() => {
       let cards = Array.from(document.getElementsByClassName(style.card));
-      if (window.matchMedia("(any-pointer:fine").matches) {
-        cards.forEach(card => {
+      cards.forEach(card => {
+        let href = card.getAttribute('data-href') || "#"
+        if (window.matchMedia("(any-pointer:fine").matches) {
           card.addEventListener("mouseenter", function() {
             card.classList.add(style.hover);
           })
@@ -18,12 +19,11 @@ export default function Home() {
             card.classList.remove(style.hover);
           })
           card.addEventListener("click", function() {
-            window.location.assign("../data/specific") 
+            window.location.assign(href)
           })
-        });
-      }
-      if (window.matchMedia("(any-pointer:coarse").matches) {
-        cards.forEach(card => {
+        }
+
+        if (window.matchMedia("(any-pointer:coarse").matches) {
           card.addEventListener("touchstart", function() {
             card.classList.add(style.hover);
           })
@@ -31,7 +31,7 @@ export default function Home() {
             card.classList.remove(style.hover);
           })
           card.addEventListener("click", function() {
-            window.location.assign("../data/specific"); 
+            window.location.assign(href)
           })
           // let touchExpired = 0
           // cards[i].addEventListener("click", function(e) {
@@ -49,13 +49,13 @@ export default function Home() {
           //     touchExpired = e.timeStamp + 500
           //   }
           // })
-        });
-      }
+        }
+      });
     })
   return (
     <main className="min-h-dvh">
       <Sidebar />
-      <div className="bg-white text-black  w-[cal(100%-72px)] md:w-[cal(100%-244px)] h-dvh p-4 overflow-y-scroll ml-[72px] md:ml-[244px]">
+      <div className="bg-white text-black w-[calc(100%-72px)] md:w-[calc(100%-244px)] h-dvh p-4 overflow-y-scroll ml-[72px] md:ml-[244px]">
         <div className="mx-1 md:mx-3 xl:mx-5 p-2 pb-1">
           <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">Hello! User</div>
           <div className="text-lg">Let's see how your dog doing.</div>
@@ -90,7 +90,7 @@ export default function Home() {
             ))} */}
             {/* current */}
             {names.map((name) => (
-                <a href="../data/specific" className={`
+                <div data-href="../data/specific" className={`
                         ${style.card} flex flex-col h-fit
                         m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
                         border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
@@ -112,7 +112,7 @@ export default function Home() {
                           <div>Maximum</div>
                         </div>
                     </div>
-                </a>
+                </div>
             ))}
           </div>
             {/* Tried carousel
@@ -196,7 +196,7 @@ export default function Home() {
             <div className="carousel-item h-full">
               <div className="grid grid-cols-1 lg:grid-cols-3 items-center gap-y-3 ">
               {names.map((name) => (
-                    <a href="../data/specific" className={`
+                    <div data-href="../data/specific" className={`
                             ${style.card} flex flex-col h-fit
                             m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
                             border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
@@ -218,7 +218,7 @@ export default function Home() {
                               <div>Maximum</div>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 ))}
               </div>
             </div>
@@ -226,70 +226,73 @@ export default function Home() {
         </div>
         
         <div className="carousel w-full">
-              <div id="item1" className="carousel-item w-full">
-                <div className="px-2 grid grid-cols-1 lg:grid-cols-3 items-center gap-y-3 w-full lg:h-[330px]">
-                  {names.map((name) => (
-                    <a href="../data/specific" className={`
-                            ${style.card} flex flex-col h-fit
-                            m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
-                            border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
-                            transition ease-in-out duration-300
-                            `}>
-                        <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">{ name }</div>
-                        {/* <div className="lg:hidden">This is the content of<br/>{ name }</div> */}
-                        <div className={style.data}>
-                            <div className={style.min}>
-                              <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">7200.00</div>
-                              <div>Minimum</div>
-                            </div>
-                            <div className={style.average}>
-                              <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">8700.00</div>
-                              <div>Average</div>
-                            </div>
-                            <div className={style.max}>
-                              <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">9000.00</div>
-                              <div>Maximum</div>
-                            </div>
+          
+          <div id="item1" className="carousel-item w-full">
+            <div className="px-2 grid grid-cols-1 lg:grid-cols-3 items-center gap-y-3 w-full lg:h-[330px]">
+              {names.map((name) => (
+                <div data-href="../data/specific" className={`
+                        ${style.card} flex flex-col h-fit
+                        m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
+                        border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
+                        transition ease-in-out duration-300
+                        `}>
+                    <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">{ name }</div>
+                    {/* <div className="lg:hidden">This is the content of<br/>{ name }</div> */}
+                    <div className={style.data}>
+                        <div className={style.min}>
+                          <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">7200.00</div>
+                          <div>Minimum</div>
                         </div>
-                    </a>
-                  ))}
-                </div> 
-              </div>
-              <div id="item2" className="carousel-item w-full">
-                <div className="px-2 grid grid-cols-1 lg:grid-cols-3 items-center gap-y-3 w-full lg:h-[330px]">
-                    {names.map((name) => (
-                      <a href="../data/specific" className={`
-                              ${style.card} flex flex-col h-fit
-                              m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
-                              border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
-                              transition ease-in-out duration-300
-                              `}>
-                          <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">{ name }</div>
-                          {/* <div className="lg:hidden">This is the content of<br/>{ name }</div> */}
-                          <div className={style.data}>
-                              <div className={style.min}>
-                                <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">7200.00</div>
-                                <div>Minimum</div>
-                              </div>
-                              <div className={style.average}>
-                                <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">8700.00</div>
-                                <div>Average</div>
-                              </div>
-                              <div className={style.max}>
-                                <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">9000.00</div>
-                                <div>Maximum</div>
-                              </div>
-                          </div>
-                      </a>
-                    ))}
+                        <div className={style.average}>
+                          <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">8700.00</div>
+                          <div>Average</div>
+                        </div>
+                        <div className={style.max}>
+                          <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">9000.00</div>
+                          <div>Maximum</div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+              ))}
             </div> 
-            <div className="flex justify-center w-full py-2 gap-2">
-              <a href="#item1" className="btn btn-xs bg-elanco text-white hover:bg-white hover:text-elanco border-none">1</a> 
-              <a href="#item2" className="btn btn-xs text-elanco bg-white hover:bg-white hover:text-elanco shadow-sm hover:shadow-lg border-none">2</a> 
-            </div>
+          </div>
 
+          <div id="item2" className="carousel-item w-full">
+            <div className="px-2 grid grid-cols-1 lg:grid-cols-3 items-center gap-y-3 w-full lg:h-[330px]">
+                {names.map((name) => (
+                  <div data-href="../data/specific" className={`
+                          ${style.card} flex flex-col h-fit
+                          m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
+                          border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
+                          transition ease-in-out duration-300
+                          `}>
+                      <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">{ name }</div>
+                      {/* <div className="lg:hidden">This is the content of<br/>{ name }</div> */}
+                      <div className={style.data}>
+                          <div className={style.min}>
+                            <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">7200.00</div>
+                            <div>Minimum</div>
+                          </div>
+                          <div className={style.average}>
+                            <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">8700.00</div>
+                            <div>Average</div>
+                          </div>
+                          <div className={style.max}>
+                            <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">9000.00</div>
+                            <div>Maximum</div>
+                          </div>
+                      </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+
+        </div>
+         
+        <div className="flex justify-center w-full py-2 gap-2">
+          <a href="#item1" className="btn btn-xs bg-elanco text-white hover:bg-white hover:text-elanco border-none">1</a> 
+          <a href="#item2" className="btn btn-xs text-elanco bg-white hover:bg-white hover:text-elanco shadow-sm hover:shadow-lg border-none">2</a> 
+        </div>
       </div>
     </main>
   );
