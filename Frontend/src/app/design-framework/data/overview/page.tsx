@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <main className="min-h-dvh">
       <Sidebar />
-      <div className="bg-white text-black  w-[cal(100%-72px)] md:w-[cal(100%-244px)] h-dvh p-4 overflow-y-scroll ml-[72px] md:ml-[244px]">
+      <div className="bg-white text-black w-[calc(100%-72px)] md:w-[calc(100%-244px)] h-dvh p-4 overflow-y-scroll ml-[72px] md:ml-[244px]">
         <div className="mx-1 md:mx-3 xl:mx-5 p-2 pb-1">
           <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">Hello! User</div>
           <div className="text-lg">Let's see how your dog doing.</div>
