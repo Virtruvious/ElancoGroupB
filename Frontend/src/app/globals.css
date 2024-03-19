@@ -55,4 +55,10 @@ body {
   .notifications::-webkit-scrollbar-thumb:hover{
     background: #555;
   }
+
+  /* unwrapped */
+  .unwrapped-btn {
+    @apply btn btn-circle border-0 border-elanco hover:border-elanco hover:border-2 bg-elanco hover:bg-white text-white hover:text-elanco duration-300
+    /* @apply btn btn-circle glass duration-300 */
+  }
 }
