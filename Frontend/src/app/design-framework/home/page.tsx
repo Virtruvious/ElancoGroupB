@@ -75,7 +75,7 @@ export default function Home() {
           </div>
           <div className="text-lg">Let's see how your dog is doing today!</div>
         </div>
-        <div className="grid grid-cols-3 gap-3 px-2 min-h-96 h-[calc(100dvh-120px)]">
+        <div className="grid grid-cols-3 gap-3 px-3 md:px-4 lg:px-5 min-h-96 h-[calc(100dvh-120px)]">
             <div className="relative overflow-hidden
                             col-span-full xl:col-span-2
                             border-2 rounded-md">
