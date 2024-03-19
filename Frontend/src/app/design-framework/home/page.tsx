@@ -38,9 +38,9 @@ export default function Home() {
   }
 
   useEffect(() => {
-    let showNotification = document.getElementById("showNoti");
-    let hideNotification = document.getElementById("hideNoti");
-    let displayNotification = document.getElementById("notifications");
+    const showNotification = document.getElementById("showNoti");
+    const hideNotification = document.getElementById("hideNoti");
+    const displayNotification = document.getElementById("notifications");
     if (showNotification && displayNotification && hideNotification) {
       showNotification.addEventListener("click", function() {
         displayNotification.classList.remove("ml-[100%]");
@@ -49,12 +49,26 @@ export default function Home() {
         displayNotification.classList.add("ml-[100%]");
       })
     }
+
+    const displayData = document.getElementById("displayData");
+    const toggleData = document.getElementById("toggleData");
+    const icon = document.getElementById("toggleIcon")
+    if (displayData && toggleData && icon) {
+      toggleData.addEventListener("click", function(e) {
+        displayData.classList.toggle("-mb-36");
+        displayData.classList.toggle("sm:-mb-40");
+        displayData.classList.toggle("md:-mb-44");
+        displayData.classList.toggle("lg:-mb-48");
+        icon.classList.toggle("rotate-180");
+        e.stopImmediatePropagation();
+      });
+    }
   });
 
   return (
     <main className="flex flex-row min-h-screen">
       <Sidebar />
-      <div className="bg-white text-black w-full h-dvh overflow-y-scroll scroll-smooth ml-[72px] md:ml-[244px]">
+      <div className="bg-white text-black w-full h-dvh p-1 sm:p-2 overflow-y-scroll scroll-smooth ml-[72px] md:ml-[244px]">
         <div className="mx-1 md:mx-3 xl:mx-5 p-2 pb-1">
           <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">
             Hello User!
@@ -91,7 +105,7 @@ export default function Home() {
               
               <div 
                 id="notifications"
-                className=" absolute ml-[100%] xl:-right-full w-full h-full rounded-md
+                className=" absolute ml-[100%] xl:-right-full w-full h-full rounded-md z-10
                             bg-white/90 overflow-y-scroll notifications
                             transition-all duration-500">
                 {/* <div className="flex flex-col">
@@ -110,6 +124,35 @@ export default function Home() {
                   ))}
                 </div> */}
                 <Notification side={false}></Notification>
+              </div>
+
+              <div
+                className="absolute w-full  z-auto
+                            bottom-0 -mb-36 sm:-mb-40 md:-mb-44 lg:-mb-48
+                            transition-all duration-700 ease-in-out"
+                id="displayData">
+                <div className="bg-slate-400 cursor-pointer" id="toggleData">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="size-6 mx-auto transition-transform duration-500" id="toggleIcon">
+                    <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="4" d="m13 30l12-12l12 12" />
+                  </svg>
+                </div>
+                <div className="grid grid-cols-3 h-36 sm:h-40 md:h-44 lg:h-48 bg-white">
+                  <div className="flex flex-col border-2 text-center justify-center">
+                   <div className="text-elanco text-2xl md:text-3xl font-bold">HeartRate</div>
+                    <div className="text-elanco text-5xl lg:text-6xl font-bold">78</div>
+                    <div className="text-md lg:text-lg">Current</div>                    
+                  </div>
+                  <div className="flex flex-col border-2 text-center justify-center">
+                    <div className="text-elanco text-2xl md:text-3xl font-bold">HeartRate</div>
+                    <div className="text-elanco text-5xl lg:text-6xl font-bold">78</div>
+                    <div className="text-lg">Current</div>                    
+                  </div>
+                  <div className="flex flex-col border-2 text-center justify-center">
+                    <div className="text-elanco text-2xl md:text-3xl font-bold">HeartRate</div>
+                    <div className="text-elanco text-5xl lg:text-6xl font-bold">78</div>
+                    <div className="text-lg">Current</div>                    
+                  </div>
+                </div>
               </div>
 
               <div className="flex flex-col justify-center items-center h-full">
