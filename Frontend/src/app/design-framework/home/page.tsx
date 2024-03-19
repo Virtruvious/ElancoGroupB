@@ -65,6 +65,21 @@ export default function Home() {
     }
   });
 
+  const data = [
+    {
+      title: "Heart Rate",
+      value: "109"
+    },
+    {
+      title: "Temperature",
+      value: "27"
+    },
+    {
+      title: "Breathing Rate",
+      value: "29"
+    }
+  ]
+
   return (
     <main className="flex flex-row min-h-screen">
       <Sidebar />
@@ -137,7 +152,14 @@ export default function Home() {
                   </svg>
                 </div>
                 <div className="grid grid-cols-3 h-36 sm:h-40 md:h-44 lg:h-48 bg-white">
-                  <div className="flex flex-col border-2 text-center justify-center">
+                  {data.map((row) => (
+                    <div className="flex flex-col border-2 text-center justify-center">
+                      <div className="text-elanco text-2xl md:text-3xl font-bold break-words">{row.title}</div>
+                      <div className="text-elanco text-5xl lg:text-6xl font-bold">{row.value}</div>
+                      <div className="text-lg">Current</div>                    
+                    </div>
+                  ))}
+                  {/* <div className="flex flex-col border-2 text-center justify-center">
                    <div className="text-elanco text-2xl md:text-3xl font-bold">HeartRate</div>
                     <div className="text-elanco text-5xl lg:text-6xl font-bold">78</div>
                     <div className="text-md lg:text-lg">Current</div>                    
@@ -151,7 +173,7 @@ export default function Home() {
                     <div className="text-elanco text-2xl md:text-3xl font-bold">HeartRate</div>
                     <div className="text-elanco text-5xl lg:text-6xl font-bold">78</div>
                     <div className="text-lg">Current</div>                    
-                  </div>
+                  </div> */}
                 </div>
               </div>
 
