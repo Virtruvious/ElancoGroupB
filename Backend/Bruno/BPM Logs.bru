@@ -5,13 +5,18 @@ meta {
 }
 
 get {
-  url: http://localhost:8000/dog/getBPM
-  body: json
+  url: http://localhost:8000/dog/getHeart-Rate?start=2023-01-01 00:00:00&end=2023-12-31 23:00:00
+  body: none
   auth: bearer
 }
 
+query {
+  start: 2023-01-01 00:00:00
+  end: 2023-12-31 23:00:00
+}
+
 auth:bearer {
-  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJKb3NoIiwiaWF0IjoxNzA4NTA2MTI1LCJleHAiOjE3MDg1MDc5MjV9.hSh47ZQA89lakeNg7_o_mtg38y_UCAyvoyiq9Cp_8K8
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTdXNhbiIsImlhdCI6MTcxMDg1NTEyOSwiZXhwIjoxNzEwODU2OTI5fQ.jjKTCnr2btEpJFngcCmf-FbvbZHBpo53nvMb-DEwE0w
 }
 
 body:json {

@@ -35,7 +35,6 @@ export default async function Home(req: NextRequest): Promise<any> {
     );
     const data = json(response.data);
     console.log("Data from API: ");
-    console.log("78");
     return data;
   } catch (error) {
     console.error("Error fetching data:", error);

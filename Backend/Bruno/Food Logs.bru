@@ -5,13 +5,18 @@ meta {
 }
 
 get {
-  url: http://localhost:8000/dog/getCalories
-  body: json
+  url: http://localhost:8000/dog/getCalories?start=2023-01-01 00:00:00&end=2023-12-31 23:00:00
+  body: none
   auth: bearer
 }
 
+query {
+  start: 2023-01-01 00:00:00
+  end: 2023-12-31 23:00:00
+}
+
 auth:bearer {
-  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJKb3NoIiwiaWF0IjoxNzEwNzU1MTg1LCJleHAiOjE3MTA3NTY5ODV9.TuW21psqsNShUeobbulMkhVijBsM8L8sZjkhy1gSe_4
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTdXNhbiIsImlhdCI6MTcxMDg1NTEyOSwiZXhwIjoxNzEwODU2OTI5fQ.jjKTCnr2btEpJFngcCmf-FbvbZHBpo53nvMb-DEwE0w
 }
 
 body:json {

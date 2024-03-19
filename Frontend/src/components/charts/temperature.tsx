@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import moment from "moment";
 import {
   LineChart,
   Line,
@@ -11,10 +10,11 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import moment from "moment";
 
 export const LineGraph = (props: any) => {
-  let data = props.props;
-  console.log(data);
+  let realData = props.props;
+
   function formatXAxis(tickItem: string) {
     return moment(tickItem).format("MMMM Do YY");
   }
@@ -22,6 +22,7 @@ export const LineGraph = (props: any) => {
   function formatXAxisTooltip(tickItem: string) {
     return moment(tickItem).format("MMMM Do YYYY HH:mm:ss");
   }
+
   const CustomTooltip = ({ active, payload, label }: any) => {
     label = formatXAxisTooltip(label);
     if (active && payload && payload.length) {
@@ -29,7 +30,7 @@ export const LineGraph = (props: any) => {
         <div className="rounded-lg bg-white p-2 shadow-lg">
           <p className="text-gray-700 font-semibold">Date: {`${label}`}</p>
           <p className="text-gray-700 font-semibold">
-            Temperature: {`${payload[0].value} °C`}
+            Temperature: {`${payload[0].value}°C`}
           </p>
         </div>
       );
@@ -40,7 +41,7 @@ export const LineGraph = (props: any) => {
   return (
     <ResponsiveContainer width="100%" height="80%">
       <LineChart
-        data={data}
+        data={realData}
         margin={{
           top: 5,
           right: 30,
@@ -49,13 +50,13 @@ export const LineGraph = (props: any) => {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" tickFormatter={formatXAxis} />
-        <YAxis domain={[0, 30]} />
-        <Tooltip content={CustomTooltip} />
+        <XAxis dataKey="time" tickFormatter={formatXAxis} />
+        <YAxis type="number" domain={[0, 40]} />
+        <Tooltip content={<CustomTooltip />} />
         <Legend />
         <Line
           type="monotone"
-          dataKey="Temperature"
+          dataKey="temperature"
           stroke="#0078BE"
           dot={false}
         />{" "}
@@ -63,5 +64,3 @@ export const LineGraph = (props: any) => {
     </ResponsiveContainer>
   );
 };
-
-//For examples on how to implement graphs, visit https://recharts.org/en-US/examples

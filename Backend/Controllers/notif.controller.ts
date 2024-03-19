@@ -69,3 +69,33 @@ exports.readNotif = (req, res) => {
     }
   });
 };
+
+exports.getUnwrapped = (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+
+  verifyToken(token, (err, decodedUser) => {
+    if (err) {
+      // If the token is invalid
+      return res.sendStatus(403);
+    } else {
+      notif.getUnwrapped(decodedUser, (err, data) => {
+        if (err) {
+          // If user is not found
+          if (err.kind === "not_found") {
+            res.status(404).send({
+              message: "User not found",
+            });
+          } else {
+            // If there is an error
+            res.status(500).send({
+              message: "Error retrieving logs",
+            });
+          }
+        } else {
+          // Success, logs are found
+          res.status(200).send(data);
+        }
+      });
+    }
+  });
+};

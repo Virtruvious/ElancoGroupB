@@ -53,7 +53,8 @@ exports.getDashboardInfo = (req, res) => {
 // Returns the all BPM logs for a given date range
 exports.getBPM = (req, res) => {
   const token = req.headers.authorization.split(" ")[1];
-  const { start, end } = req.body;
+  const start = req.query.start;
+  const end = req.query.end;
 
   verifyToken(token, (err, decodedUser) => {
     if (err) {
@@ -88,7 +89,8 @@ exports.getBPM = (req, res) => {
 
 exports.getWeight = (req, res) => {
   const token = req.headers.authorization.split(" ")[1];
-  const { start, end } = req.body;
+  const start = req.query.start;
+  const end = req.query.end;
 
   verifyToken(token, (err, decodedUser) => {
     if (err) {
@@ -123,7 +125,8 @@ exports.getWeight = (req, res) => {
 
 exports.getTemperature = (req, res) => {
   const token = req.headers.authorization.split(" ")[1];
-  const { start, end } = req.body;
+  const start = req.query.start;
+  const end = req.query.end;
 
   verifyToken(token, (err, decodedUser) => {
     if (err) {
@@ -158,7 +161,8 @@ exports.getTemperature = (req, res) => {
 
 exports.getWaterIntake = (req, res) => {
   const token = req.headers.authorization.split(" ")[1];
-  const { start, end } = req.body;
+  const start = req.query.start;
+  const end = req.query.end;
 
   verifyToken(token, (err, decodedUser) => {
     if (err) {
@@ -193,7 +197,8 @@ exports.getWaterIntake = (req, res) => {
 
 exports.getCalories = (req, res) => {
   const token = req.headers.authorization.split(" ")[1];
-  const { start, end } = req.body;
+  const start = req.query.start;
+  const end = req.query.end;
 
   verifyToken(token, (err, decodedUser) => {
     if (err) {

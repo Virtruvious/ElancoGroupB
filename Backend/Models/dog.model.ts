@@ -292,7 +292,7 @@ Dog.getTemperature = async (user, start, end, result) => {
           resultData = rows.map((row) => {
             return {
               time: row.time,
-              temperature: row.temperature.toFixed(2),
+              temperature: Math.round(row.temperature * 100) / 100,
             };
           });
 

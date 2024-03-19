@@ -5,13 +5,18 @@ meta {
 }
 
 get {
-  url: http://localhost:8000/dog/getWeight
-  body: json
+  url: http://localhost:8000/dog/getWeight?start=2023-01-01 00:00:00&end=2023-12-31 23:00:00
+  body: none
   auth: bearer
 }
 
+query {
+  start: 2023-01-01 00:00:00
+  end: 2023-12-31 23:00:00
+}
+
 auth:bearer {
-  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTdXNhbiIsImlhdCI6MTcwODUxNDMyOCwiZXhwIjoxNzA4NTE2MTI4fQ.xo_Y87ZEctRuLVognwCPScAKsQDgQGXELgoFwse0SEw
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJTdXNhbiIsImlhdCI6MTcxMDg1NjE1OSwiZXhwIjoxNzEwODU3OTU5fQ.NM6qa3DrI-WqK9rKIKeep3M5nROSmph21orfzNYFLxs
 }
 
 body:json {
