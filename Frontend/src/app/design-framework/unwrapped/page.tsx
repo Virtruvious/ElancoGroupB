@@ -45,12 +45,12 @@ export default function Unwrapped() {
                 {slides.map((slide, index) => (
                     <div id={`slide${index}`} className="carousel-item relative w-full">
                         <div className={`flex flex-col gap-10 justify-center items-center w-full h-full ${slide.bgColor}`}>
-                            <div className={`${slide.txtColor} text-md lg:text-lg`}>{slide.description}</div>
+                            <div className={`${slide.txtColor} text-center text-md lg:text-lg px-14`}>{slide.description}</div>
                             <img
                             src=""
                             alt="dog img"
                             className="bg-orange-400 size-48"/>
-                            <div className={`${slide.txtColor} text-center text-3xl md:text-5xl lg:text-6xl font-bold`}>{slide.main}</div>
+                            <div className={`${slide.txtColor} text-center text-3xl md:text-5xl lg:text-6xl font-bold px-14`}>{slide.main}</div>
                         </div>
                         <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                             <a href={`#slide${index == 0 ? slides.length-1 : index-1}`} className="unwrapped-btn">❮</a> 
