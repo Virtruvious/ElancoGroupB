@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "brain.js": "^1.4.10",
     "cors": "^2.8.5",
     "csv-parse": "^5.5.3",
     "dotenv": "^16.4.1",

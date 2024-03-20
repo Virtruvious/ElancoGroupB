@@ -6,7 +6,7 @@ import { LineGraph } from "@/components/charts/temperature";
 
 export default function Home() {
   const [data, setData] = useState(null);
-  const [start, setStart] = useState("2023-01-01");
+  const [start, setStart] = useState("2023-12-01");
   const [end, setEnd] = useState("2023-12-31");
   const title = "Temperature";
 

@@ -50,7 +50,7 @@ export const LineGraph = (props: any) => {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="time" tickFormatter={formatXAxis} />
-        <YAxis type="number" domain={[7, 8]} />
+        <YAxis type="number" domain={['dataMin - 0.5', 'dataMax + 0.5']} />
         <Tooltip content={<CustomTooltip />} />
         <Legend />
         <Line
