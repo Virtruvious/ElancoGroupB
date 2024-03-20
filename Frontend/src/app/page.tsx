@@ -37,7 +37,7 @@ export default async function Home(req: NextRequest): Promise<any> {
       average: data.caloriesBurnt.average,
       max: data.caloriesBurnt.max,
       min: data.caloriesBurnt.min,
-      href: "/caloriesBurnt",
+      href: "/calorie",
       units: "Kcal",
     },
     {
@@ -61,11 +61,11 @@ export default async function Home(req: NextRequest): Promise<any> {
       average: data.carloriesIntake.average,
       max: data.carloriesIntake.max,
       min: data.carloriesIntake.min,
-      href: "/foodIntake",
+      href: "/calorie",
       units: "Kcal",
     },
     {
-      title: "Water",
+      title: "Water Intake",
       average: data.water.average,
       max: data.water.max,
       min: data.water.min,
