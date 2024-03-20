@@ -128,7 +128,9 @@ export default function Sidebar() {
           <a
             key={item.name}
             href={item.href}
-            className="flex md:gap-3 group-hover:gap-3 p-3 w-full rounded-lg text-white hover:text-elanco hover:bg-white outline-white duration-200"
+            className={`flex md:gap-3 group-hover:gap-3 p-3 w-full rounded-lg
+                        text-white ${item.name == "Unwrapped" ? "bg-gradient-to-br hover:gradient-animate":"hover:text-elanco hover:bg-white outline-white"}
+                        duration-200`}
           >
             {item.icon}
 

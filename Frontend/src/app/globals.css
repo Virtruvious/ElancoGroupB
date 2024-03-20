@@ -72,6 +72,46 @@ body {
       animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
   }
 
+  @keyframes gradient-in {
+    0% {
+      @apply from-indigo-500/0 via-purple-500/0 to-pink-500/0
+    }
+    10% {
+      @apply from-indigo-500/10 via-purple-500/10 to-pink-500/10
+    }
+    20% {
+      @apply from-indigo-500/20 via-purple-500/20 to-pink-500/20
+    }
+    30% {
+      @apply from-indigo-500/30 via-purple-500/30 to-pink-500/30
+    }
+    40% {
+      @apply from-indigo-500/40 via-purple-500/40 to-pink-500/40
+    }
+    50% {
+      @apply from-indigo-500/50 via-purple-500/50 to-pink-500/50
+    }
+    60% {
+      @apply from-indigo-500/60 via-purple-500/60 to-pink-500/60
+    }
+    70% {
+      @apply from-indigo-500/70 via-purple-500/70 to-pink-500/70
+    }
+    80% {
+      @apply from-indigo-500/80 via-purple-500/80 to-pink-500/80
+    }
+    90% {
+      @apply from-indigo-500/90 via-purple-500/90 to-pink-500/90
+    }
+    100% {
+      @apply from-indigo-500 via-purple-500 to-pink-500
+    }
+  }
+  .gradient-animate {
+      animation: gradient-in 200ms;
+      animation-fill-mode: forwards;
+  }
+
   .date {
     color-scheme: white;
   }
