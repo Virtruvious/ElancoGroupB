@@ -57,7 +57,8 @@ export default function ChartBody({
               submit={submit}
             />
           </div>
-
+        </div>
+        
         <div className="p-5 w-full aspect-video rounded-md row-span-2 col-span-5">
           {graph({ props: data })}
         </div>
