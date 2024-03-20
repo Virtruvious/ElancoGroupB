@@ -4,38 +4,38 @@ import { useEffect, useState } from "react";
 import Notification from "@/components/notifications";
 
 export default function Home() {
-  const [notifications, setNotifications] = useState([
-    {
-      title:"Heart Rate",
-      read:false
-    },
-    {
-      title:"Temp",
-      read:false
-    },
-    {
-      title:"Breathing",
-      read:true
-    },
-    {
-      title:"Heart Rate",
-      read:false
-    },
-    {
-      title:"Temp",
-      read:false
-    },
-    {
-      title:"Breathing",
-      read:true
-    }
-  ])
+  // const [notifications, setNotifications] = useState([
+  //   {
+  //     title:"Heart Rate",
+  //     read:false
+  //   },
+  //   {
+  //     title:"Temp",
+  //     read:false
+  //   },
+  //   {
+  //     title:"Breathing",
+  //     read:true
+  //   },
+  //   {
+  //     title:"Heart Rate",
+  //     read:false
+  //   },
+  //   {
+  //     title:"Temp",
+  //     read:false
+  //   },
+  //   {
+  //     title:"Breathing",
+  //     read:true
+  //   }
+  // ])
 
-  const markRead = (index:number) => {
-    const updatedNotifs = [...notifications]
-    updatedNotifs[index].read = true;
-    setNotifications(updatedNotifs)
-  }
+  // const markRead = (index:number) => {
+  //   const updatedNotifs = [...notifications]
+  //   updatedNotifs[index].read = true;
+  //   setNotifications(updatedNotifs)
+  // }
 
   useEffect(() => {
     const showNotification = document.getElementById("showNoti");
@@ -111,8 +111,14 @@ export default function Home() {
                 </svg>
               </div> */}
               
-              <div className="absolute xl:hidden top-2 right-2
+              <div className="absolute xl:hidden top-3 right-3
                               text-elanco cursor-pointer"  id="showNoti">
+                <div className="relative">
+                  <span className="absolute flex h-4 w-4 -top-1 right-0">
+                    <span className="custom-ping absolute inline-flex badge badge-error badge-md aspect-square opacity-75"></span>
+                    <span className="badge inline-flex badge-error badge-md aspect-square text-white">3</span>
+                  </span>
+                </div>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" className="size-8">
                   <path fill="currentColor" d="M4 8a6 6 0 0 1 4.03-5.67a2 2 0 1 1 3.95 0A6 6 0 0 1 16 8v6l3 2v1H1v-1l3-2zm8 10a2 2 0 1 1-4 0z" />
                 </svg>
