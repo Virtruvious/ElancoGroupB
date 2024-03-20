@@ -12,19 +12,19 @@ export default function Unwrapped() {
         {
             description: "The total calorie intake of your dog is equivalent to",
             main: "183 times less than calorie intake of a whale per day!",
-            bgColor: "bg-gradient-to-br from-purple-500 to-violet-900",
+            bgColor: "bg-gradient-to-tl from-indigo-500 via-purple-500 to-pink-500",
             txtColor: "text-white"
         },
         {
             description: "Your dog slept total of",
             main: "4837 hours!",
-            bgColor: "bg-gradient-to-tl from-indigo-500 via-purple-500 to-pink-500",
+            bgColor: "bg-gradient-to-tr from-[#09203F] to-[#537895]",
             txtColor: "text-white"
         },
         {
             description: "Your dog mostly did",
             main: "Running :)",
-            bgColor: "bg-gradient-to-tr from-[#FDFCFB] to-[#E2D1C3]",
+            bgColor: "bg-gradient-to-br from-emerald-600 to-yellow-300",
             txtColor: "text-black"
         }
     ]
