@@ -16,7 +16,7 @@ export default function Home() {
         </div>
         
         <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-1">
-          <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">Food Intake</div>
+          <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">Calorie Monitor</div>
           <div className="text-lg">Let's see how your dog doing.</div>
         </div>
 
