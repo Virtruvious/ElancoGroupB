@@ -32,12 +32,19 @@ export default function Sidebar() {
             </svg>
     },
     {
+      name: "Food Intake",
+      href: "/foodIntake",
+      icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" className="size-6 shrink-0">
+              <path fill="currentColor" fillRule="evenodd" d="M6.75 1A5.75 5.75 0 0 0 1 6.75v.518a2 2 0 0 0 0 3.464v1.518A2.75 2.75 0 0 0 3.75 15h8.5A2.75 2.75 0 0 0 15 12.25v-1.518a2 2 0 0 0 0-3.464V6.75A5.75 5.75 0 0 0 9.25 1zM14 8.5H2a.5.5 0 0 0 0 1h12a.5.5 0 0 0 0-1M13.5 7v-.25A4.25 4.25 0 0 0 9.25 2.5h-2.5A4.25 4.25 0 0 0 2.5 6.75V7zM11 11h2.5v1.25c0 .69-.56 1.25-1.25 1.25h-8.5c-.69 0-1.25-.56-1.25-1.25V11H9l1 1z" clipRule="evenodd" />
+            </svg>
+    },
+    {
       name: "Unwrapped",
       href: "#",
       icon: <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" className="size-6 shrink-0">
               <path fill="currentColor" d="M1664 512h256v1536H256V512h256V384h128v128h896V384h128zm128 128h-128v128h128zm-256 0H640v128h896zm-1024 0H384v128h128zM384 1920h1408V896H384zM256 384V256H128v1408H0V128h256V0h128v128h896V0h128v128h256v128h-256v128h-128V256H384v128zm384 1024v-128h128v128zm256 0v-128h128v128zm256 0v-128h128v128zm256 0v-128h128v128zm-768 256v-128h128v128zm256 0v-128h128v128zm256 0v-128h128v128zm-256-512v-128h128v128zm256 0v-128h128v128zm256 0v-128h128v128z" />
             </svg>
-    },
+    }
     
   ];
 
