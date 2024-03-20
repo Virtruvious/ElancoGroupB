@@ -128,10 +128,13 @@ export default function Sidebar() {
           <a
             key={item.name}
             href={item.href}
-            className={`flex md:gap-3 group-hover:gap-3 p-3 w-full rounded-lg
-                        text-white ${item.name == "Unwrapped" ? "bg-gradient-to-br hover:gradient-animate":"hover:text-elanco hover:bg-white outline-white"}
+            className={`relative flex overflow-hidden md:gap-3 group-hover:gap-3 p-3 w-full rounded-lg
+                        text-white ${item.name == "Unwrapped" ? "group/background":"hover:text-elanco hover:bg-white outline-white"}
                         duration-200`}
           >
+            {item.name == "Unwrapped" ? <div className="absolute top-0 left-0 -z-10 w-full h-full
+                                                        bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 opacity-0
+                                                        group-hover/background:opacity-100 duration-200"></div> :<></>}
             {item.icon}
 
             <span
