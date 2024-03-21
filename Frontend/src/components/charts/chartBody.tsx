@@ -13,9 +13,9 @@ export default function ChartBody({
   submit,
 }: any) {
   return (
-    <main className="min-h-screen">
+    <main className="min-h-dvh">
       <Sidebar />
-      <div className="relative overflow-hidden bg-white text-black w-[cal(100%-72px)] md:w-[cal(100%-244px)] h-screen ml-[72px] md:ml-[244px]">
+      <div className="relative overflow-hidden bg-white text-black w-[cal(100%-72px)] md:w-[cal(100%-244px)] h-dvh ml-[72px] md:ml-[244px]">
         {data === null && (
           <div className="absolute top-0 left-0 w-full h-full z-50 flex justify-center items-center blur-none">
             <div className="text-3xl font-bold text-elanco animate-pulse">
@@ -41,14 +41,14 @@ export default function ChartBody({
               </svg>
             </a>
           </div>
-          <div className="mx-1 md:mx-3 xl:mx-5 p-5 pb-1">
+          <div className="md:mx-3 xl:mx-5 p-5 pb-1">
             <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">
               {title}
             </div>
             <div className="text-lg">Let's see how your dog is doing.</div>
           </div>
 
-          <div className="flex p-5 mx-1 md:mx-3 xl:mx-5 s-300 justify-between items-center">
+          <div className="flex p-5 md:mx-3 xl:mx-5 s-300 justify-between items-center">
             <DateSelect
               start={start}
               end={end}
