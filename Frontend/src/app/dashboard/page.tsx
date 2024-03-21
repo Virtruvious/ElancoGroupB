@@ -120,7 +120,7 @@ export default async function Home(req: NextRequest): Promise<any> {
           href="../behaviour"
           className=" text-center
                     grid grid-cols-1 lg:grid-cols-8 gap-y-3
-                    m-1 md:m-3 xl:m-5 p-2 md:p-5 xl:p-7
+                    m-3 mt-5 md:m-5 lg:mx-3 xl:m-5 p-2 md:p-5 xl:p-7
                     border-2 border-gray-200 rounded-xl shadow-md hover:shadow-xl outline-elanco
                     transition ease-in-out duration-300"
         >

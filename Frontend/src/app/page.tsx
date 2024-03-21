@@ -177,13 +177,13 @@ export default function Home() {
                     className="flex flex-col border-2 text-center justify-center"
                     key={index}
                   >
-                    <div className="text-elanco text-2xl md:text-3xl font-bold break-words">
+                    <div className="text-elanco text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold break-words">
                       {row.title}
                     </div>
-                    <div className="text-elanco text-5xl lg:text-6xl font-bold">
+                    <div className="text-elanco text-4xl sm:text-5xl md:text-6xl font-bold">
                       {row.value}
                     </div>
-                    <div className="text-lg">Current</div>
+                    <div className="text-base md:text-lg">Current</div>
                   </div>
                 ))}
               </div>
