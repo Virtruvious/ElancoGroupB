@@ -100,7 +100,7 @@ export default async function Home(req: NextRequest): Promise<any> {
   }
 
   return (
-    <main className="min-h-screen">
+    <main className="min-h-dvh">
       <Sidebar />
       <div className="bg-white text-black w-[cal(100%-72px)] md:w-[cal(100%-244px)] h-dvh overflow-y-scroll scroll-smooth ml-[72px] md:ml-[244px]">
         <div className="mx-1 md:mx-3 xl:mx-5 p-2 pb-1">

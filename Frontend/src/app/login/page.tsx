@@ -12,7 +12,7 @@ export default async function LoginPage(req: NextRequest): Promise<any> {
   }
 
   return (
-    <div className="w-screen h-screen grid grid-cols-1 md:grid-cols-2">
+    <div className="w-dvw h-dvh grid grid-cols-1 md:grid-cols-2">
       <div className="flex bg-elanco justify-center items-center">
         <img
           src="/LogoWhite.png"
