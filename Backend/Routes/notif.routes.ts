@@ -5,7 +5,7 @@ module.exports = (app: any) => {
 
     router.use(express.json());
     router.get("/getNotifs", notif.getNotifs);
-    router.post("/readNotif", notif.readNotif);
+    router.get("/readNotif", notif.readNotif);
     router.get("/getUnwrapped", notif.getUnwrapped);
 
     app.use("/notifs", router);

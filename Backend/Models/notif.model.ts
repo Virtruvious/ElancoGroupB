@@ -27,7 +27,7 @@ Notifs.getNotifs = async (user, result) => {
   if (dogInfo !== null) {
     pool
       .execute(
-        "SELECT id, date, title, description, markedRead, Dog_id FROM notifications WHERE Dog_id = ?",
+        "SELECT id, date, title, description, markedRead, Dog_id FROM notifications WHERE Dog_id = ? ORDER BY CASE WHEN markedRead = 0 THEN 0 ELSE 1 END, date DESC;",
         [dogInfo.id]
       )
       .then(([rows]) => {
@@ -117,7 +117,6 @@ Notifs.getUnwrapped = async (user, result) => {
           slides.push({
             description: `${dogName} walked a total of ${resultData.steps.total} steps!`,
             main: `That's ${resultData.steps.miles} miles! Or ${resultData.steps.aroundGlobe}% of the globe's circumference!`,
-            bgColour: "bg-gradient-to-br from-[#009245] to-[#FCEE21]",
             txtColour: "text-white",
             icon: "DogRunning",
           });
@@ -133,7 +132,6 @@ Notifs.getUnwrapped = async (user, result) => {
           slides.push({
             description: `${dogName} ate a total of ${resultData.calorie.totalIntake} calories!`,
             main: `That's enough to feed an elephant for ${resultData.calorie.elephantDays} days!`,
-            bgColour: "bg-gradient-to-br from-purple-500 to-violet-900",
             txtColour: "text-white",
             icon: "DogBowl",
           });
@@ -143,7 +141,6 @@ Notifs.getUnwrapped = async (user, result) => {
             main: `That could power a lightbulb for ${Math.round(
               resultData.calorie.totalBurnt / 60 / 24 / 7
             )} weeks!`,
-            bgColour: "bg-gradient-to-tr from-[#FF5F6D] to-[#FFC371]",
             txtColour: "text-white",
             icon: "DogLight",
           });
@@ -157,7 +154,6 @@ Notifs.getUnwrapped = async (user, result) => {
           slides.push({
             description: `${dogName} drank a total of ${resultData.water.total} liters of water!`,
             main: `That's enough to fill ${resultData.water.baths} baths!`,
-            bgColour: "bg-gradient-to-bl from-cyan-500 to-blue-600",
             txtColour: "text-white",
             icon: "DogWater",
           });
@@ -178,8 +174,6 @@ Notifs.getUnwrapped = async (user, result) => {
           slides.push({
             description: `${dogName} breathed a total of ${resultData.breathing.total} times!`,
             main: `That's amount of oxygen would take 1 tree ${resultData.breathing.treeDays} days to produce!`,
-            bgColour:
-              "bg-gradient-to-tl from-indigo-500 via-purple-500 to-pink-500",
             txtColour: "text-white",
             icon: "DogBreath",
           });

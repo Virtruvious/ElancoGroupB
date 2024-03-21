@@ -38,6 +38,7 @@ export default function Sidebar() {
           />
         </svg>
       ),
+      special: true,
     },
     {
       name: "Dashboard",

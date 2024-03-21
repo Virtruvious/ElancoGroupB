@@ -16,8 +16,6 @@ export const Login = () => {
     await signIn("credentials", {
       username: username.current,
       password: password.current,
-      redirect: true,
-      callbackUrl: "/",
     });
   };
 

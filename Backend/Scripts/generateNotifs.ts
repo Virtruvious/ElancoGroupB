@@ -25,7 +25,7 @@ pool.execute("SELECT id FROM notifications").then(([rows]) => {
                       notifications.push([
                         time,
                         "High Temperature",
-                        "Your dog's environment temperature is higher than normal while resting.",
+                        "Your dog's environment temperature was higher than normal while resting.",
                         false,
                         id,
                       ]);
@@ -34,7 +34,7 @@ pool.execute("SELECT id FROM notifications").then(([rows]) => {
                       notifications.push([
                         time,
                         "Low Temperature",
-                        "Your dog's environment temperature is lower than normal while resting.",
+                        "Your dog's environment temperature was lower than normal while resting.",
                         false,
                         id,
                       ]);

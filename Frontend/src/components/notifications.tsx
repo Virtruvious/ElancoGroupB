@@ -1,40 +1,26 @@
 "use client";
-import { useState } from "react";
+import moment from "moment";
 
-export default function Notification({ side }: { side: boolean }) {
-  const [notifications, setNotifications] = useState([
-    {
-      title: "Heart Rate",
-      read: false,
-    },
-    {
-      title: "Temp",
-      read: false,
-    },
-    {
-      title: "Breathing",
-      read: true,
-    },
-    {
-      title: "Heart Rate",
-      read: false,
-    },
-    {
-      title: "Temp",
-      read: false,
-    },
-    {
-      title: "Breathing",
-      read: true,
-    },
-  ]);
+type Notifications = [
+  {
+    id: number;
+    date: string;
+    title: string;
+    description: string;
+    markedRead: boolean;
+    Dog_id: number;
+  }
+];
 
-  const markRead = (index: number) => {
-    const updatedNotifs = [...notifications];
-    updatedNotifs[index].read = true;
-    setNotifications(updatedNotifs);
-  };
-
+export default function Notification({
+  notifications,
+  side,
+  markRead,
+}: {
+  notifications: Notifications;
+  side: boolean;
+  markRead: (index: number, id: number) => void;
+}) {
   return (
     <div className="flex flex-col">
       <div
@@ -54,7 +40,7 @@ export default function Notification({ side }: { side: boolean }) {
             d="M4 8a6 6 0 0 1 4.03-5.67a2 2 0 1 1 3.95 0A6 6 0 0 1 16 8v6l3 2v1H1v-1l3-2zm8 10a2 2 0 1 1-4 0z"
           />
         </svg>
-        Notification
+        Notifications
         <div
           className={`${
             side ? "hidden" : "absolute"
@@ -78,27 +64,38 @@ export default function Notification({ side }: { side: boolean }) {
           </svg>
         </div>
       </div>
-      {notifications.map((noti, index) => (
-        <div
-          key={index}
-          className={`border-y-2 p-3 ${
-            noti.read ? "opacity-60" : "cursor-pointer"
-          }`}
-          onClick={() => markRead(index)}
-        >
-          <div
-            className={`text-elanco ${
-              side ? "text-3xl" : "text-3xl lg:text-4xl"
-            } font-semibold`}
-          >
-            {noti.title}
+      <div className="relative w-full h-full">
+        {notifications[0].id === 0 && (
+          <div className="absolute top-0 left-0 w-full h-full z-50 flex justify-center items-center blur-none">
+            <div className="text-3xl font-bold text-elanco animate-pulse">
+              Loading...
+            </div>
           </div>
-          <div className="text-md">Here comes description.</div>
-          <div>
-            <span className="text-elanco font-semibold">Date: </span>18.3.2024
-          </div>
+        )}
+        <div className={`${notifications[0].id === 0 ? "blur-md" : ""}`}>
+          {notifications.map((notif, index) => (
+            <div
+              key={index}
+              className={`border-y-2 p-3 ${
+                notif.markedRead ? "opacity-60" : "cursor-pointer"
+              }`}
+              onClick={() => markRead(index, notif.id)}
+            >
+              <div
+                className={`text-elanco ${
+                  side ? "text-3xl" : "text-3xl lg:text-4xl"
+                } font-semibold`}
+              >
+                {notif.title}
+              </div>
+              <div className="text-md pb-3">{notif.description}</div>
+              <div className="opacity-50">
+                {moment(notif.date).format("MMMM Do YYYY ha")}
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 }

@@ -1,4 +1,3 @@
-// ChartRequest.js (server-side component)
 "use server";
 import axios from "axios";
 import { getServerSession } from "next-auth/next";

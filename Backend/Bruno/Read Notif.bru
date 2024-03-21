@@ -5,9 +5,13 @@ meta {
 }
 
 post {
-  url: http://localhost:8000/notifs/readNotif
-  body: json
+  url: http://localhost:8000/notifs/readNotif?id=67
+  body: none
   auth: bearer
+}
+
+query {
+  id: 67
 }
 
 auth:bearer {

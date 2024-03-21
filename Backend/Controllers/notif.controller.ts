@@ -42,7 +42,7 @@ exports.getNotifs = (req, res) => {
 
 exports.readNotif = (req, res) => {
   const token = req.headers.authorization.split(" ")[1];
-  const { id } = req.body;
+  const id = req.query.id;
 
   verifyToken(token, (err, decodedUser) => {
     if (err) {
