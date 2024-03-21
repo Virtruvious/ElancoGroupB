@@ -108,7 +108,7 @@ export const DashboardDisplays = (props: any) => {
 
                 <div className="data">
                   <div className="min">
-                    <div className="items-center text-4xl sm:text-5xl font-bold text-elanco justify-center font-mono">
+                    <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">
                       {row.min}{" "}
                       {row.units != "" && (
                         <span className="-ml-5 text-lg sm:text-xl">{row.units} </span>
@@ -117,7 +117,7 @@ export const DashboardDisplays = (props: any) => {
                     <div>Minimum</div>
                   </div>
                   <div className="average">
-                    <div className="items-center text-4xl sm:text-5xl font-bold text-elanco justify-center font-mono">
+                    <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">
                       {row.average}{" "}
                       {row.units != "" && (
                         <span className="-ml-5 text-lg sm:text-xl">{row.units} </span>
@@ -126,7 +126,7 @@ export const DashboardDisplays = (props: any) => {
                     <div>Average</div>
                   </div>
                   <div className="max">
-                    <div className="items-center text-4xl sm:text-5xl font-bold text-elanco justify-center font-mono">
+                    <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">
                       {row.max}{" "}
                       {row.units != "" && (
                         <span className="-ml-5 text-lg sm:text-xl">{row.units} </span>
@@ -159,7 +159,7 @@ export const DashboardDisplays = (props: any) => {
 
                 <div className="data">
                   <div className="min">
-                    <div className="items-center text-4xl sm:text-5xl font-bold text-elanco justify-center font-mono">
+                    <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">
                       {row.min}{" "}
                       {row.units != "" && (
                         <span className="-ml-5 text-lg sm:text-xl">{row.units} </span>
@@ -168,7 +168,7 @@ export const DashboardDisplays = (props: any) => {
                     <div>Minimum</div>
                   </div>
                   <div className="average">
-                    <div className="items-center text-4xl sm:text-5xl font-bold text-elanco justify-center font-mono">
+                    <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">
                       {row.average}{" "}
                       {row.units != "" && (
                         <span className="-ml-5 text-lg sm:text-xl">{row.units} </span>
@@ -177,7 +177,7 @@ export const DashboardDisplays = (props: any) => {
                     <div>Average</div>
                   </div>
                   <div className="max">
-                    <div className="items-center text-4xl sm:text-5xl font-bold text-elanco justify-center font-mono">
+                    <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">
                       {row.max}{" "}
                       {row.units != "" && (
                         <span className="-ml-5 text-lg sm:text-xl">{row.units} </span>
