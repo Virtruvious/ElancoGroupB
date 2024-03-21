@@ -100,7 +100,7 @@ export default function Home() {
   ];
 
   return (
-    <main className="flex flex-row min-h-screen">
+    <main className="flex flex-row min-h-dvh">
       <Sidebar />
       <div className="bg-white text-black w-full h-dvh p-1 sm:p-2 overflow-y-scroll scroll-smooth ml-[72px] md:ml-[244px]">
         <div className="mx-1 md:mx-3 xl:mx-5 p-2 pb-1">
