@@ -115,7 +115,7 @@ export default function Home() {
               className="absolute xl:hidden top-3 right-3 text-elanco cursor-pointer"
               id="showNoti"
             >
-              <div className="relative">
+              <div className={`relative ${getNumUnread() == 0 ? "hidden" : ""}`}>
                 <span className="absolute flex h-4 w-4 -top-1 right-0">
                   <span className="custom-ping absolute inline-flex badge badge-error badge-md aspect-square opacity-75"></span>
                   <span className="badge inline-flex badge-error badge-md aspect-square text-white">
@@ -191,8 +191,13 @@ export default function Home() {
 
             <div className="flex flex-col justify-center items-center h-full">
               <div className="text-md lg:text-lg">Your dog is currently</div>
-              <img src="" alt="dog img" className="bg-orange-400 size-48" />
+              <img
+                // src={`/dog${behaviour}.jpg`}
+                src="/dogSleeping.jpg"
+                alt="dog img"
+                className="size-48" />
               <div className="text-elanco text-5xl lg:text-6xl font-bold">
+                {/* {behaviour == "Normal" ? "Doing Nothing" : behaviour} */}
                 Sleeping
               </div>
             </div>
