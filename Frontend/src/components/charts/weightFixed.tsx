@@ -16,7 +16,7 @@ export const LineGraph = (props: any) => {
   let realData = props.props;
 
   function formatXAxis(tickItem: string) {
-    return moment(tickItem).format("MMMM Do YY");
+    return moment(tickItem).format("MMM Do YY");
   }
 
   function formatXAxisTooltip(tickItem: string) {
@@ -38,7 +38,7 @@ export const LineGraph = (props: any) => {
   };
 
   return (
-    <ResponsiveContainer width="100%" height="80%">
+    <ResponsiveContainer width="100%" height="80%" minWidth={300} minHeight={180}>
       <LineChart
         data={realData}
         margin={{
