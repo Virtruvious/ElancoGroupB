@@ -16,7 +16,7 @@ export const LineGraph = (props: any) => {
   let realData = props.props;
 
   function formatXAxis(tickItem: string) {
-    return moment(tickItem).format("MMMM Do YY");
+    return moment(tickItem).format("MMM Do YY");
   }
 
   function formatXAxisTooltip(tickItem: string) {
