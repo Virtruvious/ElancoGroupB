@@ -55,7 +55,7 @@ export function BarChartGraph() {
   ];
 
   return (
-    <ResponsiveContainer width="100%" height="80%">
+    <ResponsiveContainer width="100%" height="80%" minWidth={300} minHeight={180}>
     <BarChart
       width={900}
       height={400}

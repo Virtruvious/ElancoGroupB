@@ -38,7 +38,7 @@ export const LineGraph = (props: any) => {
   };
 
   return (
-    <ResponsiveContainer width="100%" height="80%">
+    <ResponsiveContainer width="100%" height="80%" minWidth={300} minHeight={180}>
       <LineChart
         data={realData}
         margin={{
