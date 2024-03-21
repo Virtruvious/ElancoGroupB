@@ -20,6 +20,7 @@
   },
   "scripts": {
     "importData": "ts-node-dev --transpile-only processCSV.ts",
-    "start": "ts-node-dev --transpile-only app.ts"
+    "start": "ts-node-dev --transpile-only app.ts",
+    "ml": "ts-node-dev --transpile-only Scripts/ml.ts"
   }
 }

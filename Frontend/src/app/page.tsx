@@ -1,139 +1,210 @@
-import { getServerSession } from "next-auth/next";
-import type { NextRequest } from "next/server";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { redirect } from "next/navigation";
+"use client";
 import Sidebar from "@/components/sidebar";
-import PieChartGraph from "@/components/charts/pieChart";
-import axios from "axios";
-import { DashboardDisplays } from "@/components/displays";
+import { useEffect, useState } from "react";
+import Notification from "@/components/notifications";
+import { NotifRequest, readNotif } from "@/components/notifRequest";
 
-export default async function Home(req: NextRequest): Promise<any> {
-  const session = await getServerSession(authOptions);
-  if (session === null) {
-    redirect("/login");
+type Notifications = [
+  {
+    id: number;
+    date: string;
+    title: string;
+    description: string;
+    markedRead: boolean;
+    Dog_id: number;
+  }
+];
+
+export default function Home() {
+  const [notifications, setNotifications] = useState<Notifications>([
+    {
+      id: 0,
+      date: "2024-01-01T00:00:00.000Z",
+      title: "Loading...",
+      description: "We'll get your notifications soon!",
+      markedRead: false,
+      Dog_id: 0,
+    },
+  ]);
+
+  async function fetchData() {
+    const result = await NotifRequest();
+    setNotifications(result);
   }
 
-  // console.log("Session: ", session)
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-  const response = await axios.get("http://localhost:8000/dog/getDashInfo", {
-    headers: {
-      Authorization: `Bearer ${session?.jwt}`,
-      "Content-Type": "application/json",
-    },
+  const markRead = (index: number, id: number) => {
+    const temp = [...notifications];
+    temp[index].markedRead = true;
+    // @ts-ignore
+    setNotifications(temp);
+
+    readNotif(id);
+  };
+
+  const getNumUnread = () => {
+    if (notifications === null) return 0;
+
+    let count = 0;
+    notifications.forEach((notif) => {
+      if (!notif.markedRead) count++;
+    });
+
+    return count;
+  };
+
+  useEffect(() => {
+    const showNotification = document.getElementById("showNoti");
+    const hideNotification = document.getElementById("hideNoti");
+    const displayNotification = document.getElementById("notifications");
+    if (showNotification && displayNotification && hideNotification) {
+      showNotification.addEventListener("click", function () {
+        displayNotification.classList.remove("ml-[100%]");
+      });
+      hideNotification.addEventListener("click", function () {
+        displayNotification.classList.add("ml-[100%]");
+      });
+    }
+
+    const displayData = document.getElementById("displayData");
+    const toggleData = document.getElementById("toggleData");
+    const icon = document.getElementById("toggleIcon");
+    if (displayData && toggleData && icon) {
+      toggleData.addEventListener("click", function (e) {
+        displayData.classList.toggle("-mb-36");
+        displayData.classList.toggle("sm:-mb-40");
+        displayData.classList.toggle("md:-mb-44");
+        displayData.classList.toggle("lg:-mb-48");
+        icon.classList.toggle("rotate-180");
+        e.stopImmediatePropagation();
+      });
+    }
   });
 
-  const data = response.data;
-  let collection = [
+  const data = [
     {
       title: "Heart Rate",
-      average: data.bpm.average,
-      max: data.bpm.max,
-      min: data.bpm.min,
-      href: "/heartRate",
-      units: "BPM",
-    },
-    {
-      title: "Calorie Burnt",
-      average: data.caloriesBurnt.average,
-      max: data.caloriesBurnt.max,
-      min: data.caloriesBurnt.min,
-      href: "/calorie",
-      units: "Kcal",
+      value: "109",
     },
     {
       title: "Temperature",
-      average: data.temperature.average,
-      max: data.temperature.max,
-      min: data.temperature.min,
-      href: "/temperature",
-      units: "°C",
+      value: "27",
     },
     {
-      title: "Steps",
-      average: data.steps.average,
-      max: data.steps.max,
-      min: data.steps.min,
-      href: "/steps",
-      units: "",
-    },
-    {
-      title: "Calories Intake",
-      average: data.carloriesIntake.average,
-      max: data.carloriesIntake.max,
-      min: data.carloriesIntake.min,
-      href: "/calorie",
-      units: "Kcal",
-    },
-    {
-      title: "Water Intake",
-      average: data.water.average,
-      max: data.water.max,
-      min: data.water.min,
-      href: "/waterIntake",
-      units: "ml",
+      title: "Breathing Rate",
+      value: "29",
     },
   ];
 
-  let highestBehaviour;
-  let highest = -Infinity;
-  for (let key in data.behaviour) {
-    if (data.behaviour[key] > highest && key !== "sleeping") {
-      highest = data.behaviour[key];
-      highestBehaviour = key;
-    }
-  }
-
-  switch (highestBehaviour?.toLowerCase()) {
-    case "normal":
-      highestBehaviour =
-        data.dogInfo.name + " seems to spend a lot of time relaxing!";
-      break;
-    case "walking":
-      highestBehaviour = data.dogInfo.name + " definitely gets their steps in!";
-      break;
-    case "eating":
-      highestBehaviour = data.dogInfo.name + " has quite the appetite!";
-      break;
-    case "playing":
-      highestBehaviour = data.dogInfo.name + " seems to have unlimited energy!";
-      break;
-  }
-
   return (
-    <main className="min-h-screen">
+    <main className="flex flex-row min-h-screen">
       <Sidebar />
-      <div className="bg-white text-black w-[cal(100%-72px)] md:w-[cal(100%-244px)] h-dvh overflow-y-scroll scroll-smooth ml-[72px] md:ml-[244px]">
+      <div className="bg-white text-black w-full h-dvh p-1 sm:p-2 overflow-y-scroll scroll-smooth ml-[72px] md:ml-[244px]">
         <div className="mx-1 md:mx-3 xl:mx-5 p-2 pb-1">
           <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">
-            Hello {session.user.name}!
+            Hello User!
           </div>
-          <div className="text-lg">
-            Let's see how {data.dogInfo.name} is doing today!
-          </div>
+          <div className="text-lg">Let's see how your dog is doing today!</div>
         </div>
+        <div className="grid grid-cols-3 gap-3 px-3 md:px-4 lg:px-5 min-h-96 h-[calc(100dvh-120px)]">
+          <div className="relative overflow-hidden col-span-full xl:col-span-2 border-2 rounded-md">
+            <div
+              className="absolute xl:hidden top-3 right-3 text-elanco cursor-pointer"
+              id="showNoti"
+            >
+              <div className="relative">
+                <span className="absolute flex h-4 w-4 -top-1 right-0">
+                  <span className="custom-ping absolute inline-flex badge badge-error badge-md aspect-square opacity-75"></span>
+                  <span className="badge inline-flex badge-error badge-md aspect-square text-white">
+                    {getNumUnread()}
+                  </span>
+                </span>
+              </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 20 20"
+                className="size-8"
+              >
+                <path
+                  fill="currentColor"
+                  d="M4 8a6 6 0 0 1 4.03-5.67a2 2 0 1 1 3.95 0A6 6 0 0 1 16 8v6l3 2v1H1v-1l3-2zm8 10a2 2 0 1 1-4 0z"
+                />
+              </svg>
+            </div>
 
-        <div className="font-extralight mx-1 md:mx-3 xl:mx-5 p-2 pb-0">
-          Displaying data from the previous year.
+            <div
+              id="notifications"
+              className=" absolute ml-[100%] xl:-right-full w-full h-full rounded-md z-10
+                            bg-white/90 overflow-y-scroll notifications
+                            transition-all duration-500"
+            >
+              <Notification
+                notifications={notifications}
+                side={false}
+                markRead={markRead}
+              ></Notification>
+            </div>
+
+            <div
+              className="absolute w-full  z-auto
+                            bottom-0 -mb-36 sm:-mb-40 md:-mb-44 lg:-mb-48
+                            transition-all duration-700 ease-in-out"
+              id="displayData"
+            >
+              <div className="bg-slate-400 cursor-pointer" id="toggleData">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 48 48"
+                  className="size-6 mx-auto transition-transform duration-500"
+                  id="toggleIcon"
+                >
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="4"
+                    d="m13 30l12-12l12 12"
+                  />
+                </svg>
+              </div>
+              <div className="grid grid-cols-3 h-36 sm:h-40 md:h-44 lg:h-48 bg-white">
+                {data.map((row, index) => (
+                  <div
+                    className="flex flex-col border-2 text-center justify-center"
+                    key={index}
+                  >
+                    <div className="text-elanco text-2xl md:text-3xl font-bold break-words">
+                      {row.title}
+                    </div>
+                    <div className="text-elanco text-5xl lg:text-6xl font-bold">
+                      {row.value}
+                    </div>
+                    <div className="text-lg">Current</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-center items-center h-full">
+              <div className="text-md lg:text-lg">Your dog is currently</div>
+              <img src="" alt="dog img" className="bg-orange-400 size-48" />
+              <div className="text-elanco text-5xl lg:text-6xl font-bold">
+                Sleeping
+              </div>
+            </div>
+          </div>
+          <div className="hidden xl:block border-2 rounded-md overflow-y-scroll notifications">
+            <Notification
+              notifications={notifications}
+              side={true}
+              markRead={markRead}
+            ></Notification>
+          </div>
         </div>
-        <DashboardDisplays props={collection} />
-        <a
-          href="../behaviour"
-          className=" text-center
-                    grid grid-cols-1 lg:grid-cols-8 gap-y-3
-                    m-3 mt-6 md:m-5 lg:m-3 xl:m-5 p-2 md:p-5 xl:p-7
-                    border-2 border-gray-200 rounded-xl shadow-md hover:shadow-xl outline-elanco
-                    transition ease-in-out duration-300"
-        >
-          <div className="font-bold lg:text-end text-elanco text-2xl md:text-3xl lg:text-5xl col-span-3 self-end">
-            Behaviour
-          </div>
-          <div className="p-5 w-full aspect-video rounded-md row-span-2 col-span-5 ml-2">
-            <PieChartGraph data={data.behaviour} />
-          </div>
-          <div className="text-base lg:text-end col-span-3">
-            {highestBehaviour}
-          </div>
-        </a>
       </div>
     </main>
   );
