@@ -106,7 +106,7 @@ export const DashboardDisplays = (props: any) => {
 
     <>
       <div className="carousel w-full">
-        <div id="item1" className="carousel-item w-full">
+        <div id="set1" className="carousel-item w-full">
           <div className="px-2 grid grid-cols-1 lg:grid-cols-3 items-center gap-y-3 w-full lg:h-[330px]">
             {firstHalf.map((row: any) => (
               <div
@@ -114,13 +114,13 @@ export const DashboardDisplays = (props: any) => {
                 data-href={"../" + row.href}
                 className={`
                       ${style.card} flex flex-col h-fit
-                      m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
+                      m-1 md:m-3 lg:mx-1 xl:mx-3 p-2 md:p-3 xl:p-5
                       border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
                       transition ease-in-out duration-300
                       `}
               >
                 <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">
-                  {row.title}
+                  {row.title}{row.title == "Steps" ? <span className="text-gray-600 font-normal text-sm"> per day</span>: <></>}
                 </div>
 
                 <div className={style.data}>
@@ -157,7 +157,7 @@ export const DashboardDisplays = (props: any) => {
           </div>
         </div>
 
-        <div id="item2" className="carousel-item w-full">
+        <div id="set2" className="carousel-item w-full">
           <div className="px-2 grid grid-cols-1 lg:grid-cols-3 items-center gap-y-3 w-full lg:h-[330px]">
             {secondHalf.map((row: any) => (
               <div
@@ -165,13 +165,13 @@ export const DashboardDisplays = (props: any) => {
                 data-href={"../" + row.href}
                 className={`
                       ${style.card} flex flex-col h-fit
-                      m-1 md:m-3 xl:mx-5 p-2 md:p-3 xl:p-5
+                      m-1 md:m-3 lg:mx-1 xl:mx-3 p-2 md:p-3 xl:p-5
                       border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
                       transition ease-in-out duration-300
                       `}
               >
                 <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">
-                  {row.title}
+                  {row.title}{row.title == "Steps" ? <span className="text-gray-600 font-normal text-sm"> per day</span>: <></>}
                 </div>
 
                 <div className={style.data}>
@@ -211,14 +211,14 @@ export const DashboardDisplays = (props: any) => {
 
       <div className="flex justify-center w-full py-2 gap-2">
         <a
-          href="#item1"
-          className="btn btn-xs text-elanco bg-white hover:bg-white hover:text-elanco shadow-sm hover:shadow-lg border-none"
+          href="#set1"
+          className="btn btn-sm text-elanco bg-white hover:bg-white hover:text-elanco hover:shadow-lg border-2 border-gray-200 hover:border-gray-200"
         >
           1
         </a>
         <a
-          href="#item2"
-          className="btn btn-xs text-elanco bg-white hover:bg-white hover:text-elanco shadow-sm hover:shadow-lg border-none"
+          href="#set2"
+          className="btn btn-sm text-elanco bg-white hover:bg-white hover:text-elanco hover:shadow-lg border-2 border-gray-200 hover:border-gray-200"
         >
           2
         </a>
