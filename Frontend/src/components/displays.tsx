@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect } from "react";
-import style from "@/app/design-framework/data/overview/style.module.css";
 
 type dataCard = {
   title: string;
@@ -20,15 +19,15 @@ export const DashboardDisplays = (props: props) => {
   const secondHalf = props.props.slice(3, 6);
 
   useEffect(() => {
-    let cards = Array.from(document.getElementsByClassName(style.card));
+    let cards = Array.from(document.getElementsByClassName("card"));
     cards.forEach((card) => {
       let href = card.getAttribute("data-href") || "#";
       if (window.matchMedia("(any-pointer:fine").matches) {
         card.addEventListener("mouseenter", function () {
-          card.classList.add(style.hover);
+          card.classList.add("hover");
         });
         card.addEventListener("mouseleave", function () {
-          card.classList.remove(style.hover);
+          card.classList.remove("hover");
         });
         card.addEventListener("click", function () {
           window.location.assign(href);
@@ -37,10 +36,10 @@ export const DashboardDisplays = (props: props) => {
 
       if (window.matchMedia("(any-pointer:coarse").matches) {
         card.addEventListener("touchstart", function () {
-          card.classList.add(style.hover);
+          card.classList.add("hover");
         });
         card.addEventListener("touchend", function () {
-          card.classList.remove(style.hover);
+          card.classList.remove("hover");
         });
         card.addEventListener("click", function () {
           window.location.assign(href);
@@ -58,12 +57,12 @@ export const DashboardDisplays = (props: props) => {
               <div
                 key={row.title}
                 data-href={"../" + row.href}
-                className={`
-                      ${style.card} flex flex-col h-fit
+                className="
+                      card flex flex-col h-fit
                       m-1 md:m-3 lg:mx-1 xl:mx-3 p-2 md:p-3 xl:p-5
                       border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
                       transition ease-in-out duration-300
-                      `}
+                      "
               >
                 <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">
                   {row.title}
@@ -77,30 +76,30 @@ export const DashboardDisplays = (props: props) => {
                   )}
                 </div>
 
-                <div className={style.data}>
-                  <div className={style.min}>
+                <div className="data">
+                  <div className="min">
                     <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">
                       {row.min}{" "}
                       {row.units != "" && (
-                        <span className="-ml-5 text-xl">{row.units} </span>
+                        <span className="-ml-5 text-lg sm:text-xl">{row.units} </span>
                       )}
                     </div>
                     <div>Minimum</div>
                   </div>
-                  <div className={style.average}>
+                  <div className="average">
                     <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">
                       {row.average}{" "}
                       {row.units != "" && (
-                        <span className="-ml-5 text-xl">{row.units} </span>
+                        <span className="-ml-5 text-lg sm:text-xl">{row.units} </span>
                       )}
                     </div>
                     <div>Average</div>
                   </div>
-                  <div className={style.max}>
+                  <div className="max">
                     <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">
                       {row.max}{" "}
                       {row.units != "" && (
-                        <span className="-ml-5 text-xl">{row.units} </span>
+                        <span className="-ml-5 text-lg sm:text-xl">{row.units} </span>
                       )}
                     </div>
                     <div>Maximum</div>
@@ -117,12 +116,12 @@ export const DashboardDisplays = (props: props) => {
               <div
                 key={row.title}
                 data-href={"../" + row.href}
-                className={`
-                      ${style.card} flex flex-col h-fit
+                className="
+                      card flex flex-col h-fit
                       m-1 md:m-3 lg:mx-1 xl:mx-3 p-2 md:p-3 xl:p-5
                       border-2 border-gray-200 rounded-xl shadow-sm hover:shadow-lg outline-elanco text-center
                       transition ease-in-out duration-300
-                      `}
+                      "
               >
                 <div className="font-bold text-elanco text-xl md:text-2xl xl:text-3xl">
                   {row.title}
@@ -136,30 +135,30 @@ export const DashboardDisplays = (props: props) => {
                   )}
                 </div>
 
-                <div className={style.data}>
-                  <div className={style.min}>
+                <div className="data">
+                  <div className="min">
                     <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">
                       {row.min}{" "}
                       {row.units != "" && (
-                        <span className="-ml-5 text-xl">{row.units} </span>
+                        <span className="-ml-5 text-lg sm:text-xl">{row.units} </span>
                       )}
                     </div>
                     <div>Minimum</div>
                   </div>
-                  <div className={style.average}>
+                  <div className="average">
                     <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">
                       {row.average}{" "}
                       {row.units != "" && (
-                        <span className="-ml-5 text-xl">{row.units} </span>
+                        <span className="-ml-5 text-lg sm:text-xl">{row.units} </span>
                       )}
                     </div>
                     <div>Average</div>
                   </div>
-                  <div className={style.max}>
+                  <div className="max">
                     <div className="items-center text-5xl font-bold text-elanco justify-center font-mono">
                       {row.max}{" "}
                       {row.units != "" && (
-                        <span className="-ml-5 text-xl">{row.units} </span>
+                        <span className="-ml-5 text-lg sm:text-xl">{row.units} </span>
                       )}
                     </div>
                     <div>Maximum</div>
