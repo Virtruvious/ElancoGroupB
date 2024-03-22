@@ -11,48 +11,41 @@ import {
   ReferenceLine,
   ResponsiveContainer
 } from "recharts";
-
 import dynamic from "next/dynamic";
+import moment from "moment";
 
+type props = {
+  props: [{}];
+};
 
-export function BarChartGraph() {
-  const data = [
-    {
-      name: "Day 1",
-      Intake: 1200,
-      Outtake: -1000,
-    },
-    {
-      name: "Day 2",
-      Intake: 3000,
-      Outtake: -1398,
-    },
-    {
-      name: "Day 3",
-      Intake: 2000,
-      Outtake: -9800,
-    },
-    {
-      name: "Day 4",
-      Intake: 2780,
-      Outtake: -3908,
-    },
-    {
-      name: "Day 5",
-      Intake: 1890,
-      Outtake: -4800,
-    },
-    {
-      name: "Day 6",
-      Intake: 2390,
-      Outtake: -3800,
-    },
-    {
-      name: "Day 7",
-      Intake: 3490,
-      Outtake: -4300,
+export const BarChartGraph = (props: props) => {
+  const data = props.props;
+
+  function formatXAxis(tickItem: string) {
+    return moment(tickItem).format("MMM Do YY");
+  }
+
+  function formatXAxisTooltip(tickItem: string) {
+    return moment(tickItem).format("MMMM Do YYYY");
+  }
+
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    label = formatXAxisTooltip(label);
+    if (active && payload && payload.length) {
+      return (
+        <div className="rounded-lg bg-white p-2 shadow-lg">
+          <p className="text-gray-700 font-light">{`${label}`}</p>
+          <p className="text-elanco font-semibold">
+            Intake: {`${payload[0].value}`} <span className="font-light">kcal</span>
+          </p>
+          <p className="text-[#FF8103] font-semibold">
+            Burnt: {`${payload[1].value}`} <span className="font-light">kcal</span>
+          </p>
+        </div>
+      );
     }
-  ];
+    return null;
+  };
 
   return (
     <ResponsiveContainer width="100%" height="80%">
@@ -69,13 +62,13 @@ export function BarChartGraph() {
       }}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
+      <XAxis dataKey="time" tickFormatter={formatXAxis} />
       <YAxis />
-      <Tooltip />
+      <Tooltip content={<CustomTooltip/>} />
       <Legend />
       <ReferenceLine y={0} stroke="#000" />
-      <Bar dataKey="Intake" fill="#8884d8" stackId="stack" />
-      <Bar dataKey="Outtake" fill="#82ca9d" stackId="stack" />
+      <Bar dataKey="caloriesIntake" fill="#0078BE" stackId="stack" />
+      <Bar dataKey="caloriesBurnt" fill="#FF8103" stackId="stack" />
     </BarChart>
     </ResponsiveContainer>
     

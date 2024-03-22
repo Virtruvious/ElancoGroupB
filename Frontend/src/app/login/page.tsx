@@ -1,10 +1,9 @@
 import { getServerSession } from "next-auth/next";
-import type { NextRequest } from "next/server";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import { Login } from "@/components/login";
 
-export default async function LoginPage(req: NextRequest): Promise<any> {
+export default async function LoginPage() {
   const session = await getServerSession(authOptions);
 
   if (session != null) {

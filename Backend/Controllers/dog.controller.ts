@@ -206,7 +206,7 @@ exports.getCalories = (req, res) => {
       return res.sendStatus(403);
     } else if (validateDate(start) && validateDate(end)) {
       // If the date is valid
-      dog.getFoodIntake(decodedUser, start, end, (err, data) => {
+      dog.getCalories(decodedUser, start, end, (err, data) => {
         if (err) {
           // If logs are not found
           if (err.kind === "not_found") {

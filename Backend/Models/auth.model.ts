@@ -14,7 +14,7 @@ User.checkPassword = (username, password, result) => {
         // To be used when password is hashed
         bcrypt.compare(password, rows[0].password, (err, res) => {
           if (res) {
-            console.log("Found user: ", rows[0]);
+            // console.log("Found user: ", rows[0]);
             result(null, rows[0]);
           } else {
             // Invalid password
@@ -41,7 +41,7 @@ User.registerUser = (username, password, result) => {
         hash,
       ])
       .then(([rows]) => {
-        console.log("Created user: ", rows);
+        // console.log("Created user: ", rows);
         result(null, rows);
       })
       .catch((err) => {

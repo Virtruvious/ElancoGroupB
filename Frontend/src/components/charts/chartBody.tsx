@@ -2,6 +2,17 @@
 import Sidebar from "../sidebar";
 import DateSelect from "../dateSelect";
 
+type props = {
+  title: string;
+  graph: React.FC;
+  data: [{}];
+  start: string;
+  end: string;
+  setStart: (start: string) => void;
+  setEnd: (end: string) => void;
+  submit: () => void;
+};
+
 export default function ChartBody({
   title,
   graph,
@@ -11,7 +22,7 @@ export default function ChartBody({
   setStart,
   setEnd,
   submit,
-}: any) {
+}: props) {
   return (
     <main className="min-h-dvh">
       <Sidebar />
@@ -43,7 +54,7 @@ export default function ChartBody({
           </div>
           <div className="md:mx-3 xl:mx-5 p-5 pb-1">
             <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">
-              {title}
+              {title.replace("-", " ")}
             </div>
             <div className="text-lg">Let's see how your dog is doing.</div>
           </div>
@@ -59,7 +70,7 @@ export default function ChartBody({
           </div>
         </div>
         
-        <div className="p-5 w-full aspect-video rounded-md row-span-2 col-span-5">
+        <div className="-ms-5 sm:ms-0 p-2 sm:p-5 w-full aspect-video rounded-md row-span-2 col-span-5">
           {graph({ props: data })}
         </div>
       </div>

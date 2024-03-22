@@ -1,4 +1,4 @@
-module.exports = (app: any) => {
+module.exports = (app) => {
   const dog = require("../Controllers/dog.controller");
   const express = require("express");
   const router = express.Router();

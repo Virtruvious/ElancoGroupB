@@ -250,11 +250,11 @@ Dog.getWeight = async (user, start, end, result) => {
       .then(([rows]) => {
         if (rows.length !== 0) {
           let resultData = [];
-          let counter = 24;
+          let counter = 23;
 
           // Add each day to the result
           rows.map((row) => {
-            if (counter != 24) {
+            if (counter != 23) {
               counter++;
             } else {
               counter = 0;
@@ -338,7 +338,7 @@ Dog.getWaterIntake = async (user, start, end, result) => {
   }
 };
 
-Dog.getFoodIntake = async (user, start, end, result) => {
+Dog.getCalories = async (user, start, end, result) => {
   const dogInfo = await findDog(user.id);
 
   if (dogInfo !== null) {
@@ -350,13 +350,26 @@ Dog.getFoodIntake = async (user, start, end, result) => {
       .then(([rows]) => {
         if (rows.length !== 0) {
           let resultData = [];
+          let counter = 0;
+          let totalIntake = 0;
+          let totalBurnt = 0;
 
-          resultData = rows.map((row) => {
-            return {
-              time: row.time,
-              caloriesIntake: row.caloriesIntake.toFixed(2),
-              caloriesBurnt: "-" + row.calorie.toFixed(2),
-            };
+          rows.forEach(row => {
+            if (counter === 23) {
+              resultData.push({
+                time: row.time,
+                caloriesIntake: totalIntake.toFixed(2),
+                caloriesBurnt: "-" + totalBurnt.toFixed(2),
+              });
+              
+              counter = 0;
+              totalIntake = 0;
+              totalBurnt = 0;
+            } else {
+              counter++;
+              totalIntake += row.caloriesIntake;
+              totalBurnt += row.calorie;
+            }
           });
 
           result(null, resultData);

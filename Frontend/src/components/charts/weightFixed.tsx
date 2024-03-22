@@ -12,7 +12,11 @@ import {
 } from "recharts";
 import moment from "moment";
 
-export const LineGraph = (props: any) => {
+type props = {
+  props: [{}];
+};
+
+export const LineGraph = (props: props) => {
   let realData = props.props;
 
   function formatXAxis(tickItem: string) {
@@ -20,16 +24,17 @@ export const LineGraph = (props: any) => {
   }
 
   function formatXAxisTooltip(tickItem: string) {
-    return moment(tickItem).format("MMMM Do YYYY HH:mm:ss");
+    return moment(tickItem).format("MMMM Do YYYY");
   }
+
   const CustomTooltip = ({ active, payload, label }: any) => {
     label = formatXAxisTooltip(label);
     if (active && payload && payload.length) {
       return (
         <div className="rounded-lg bg-white p-2 shadow-lg">
-          <p className="text-gray-700 font-semibold">Date: {`${label}`}</p>
-          <p className="text-gray-700 font-semibold">
-            Weight: {`${payload[0].value}  kg`}
+          <p className="text-gray-700 font-light">{`${label}`}</p>
+          <p className="text-elanco font-semibold">
+            {`${payload[0].value}`} <span className="font-light">kg</span>
           </p>
         </div>
       );

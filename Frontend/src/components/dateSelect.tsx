@@ -1,12 +1,20 @@
 "use client";
 
+type props = {
+  start: string;
+  end: string;
+  setStart: (start: string) => void;
+  setEnd: (end: string) => void;
+  submit: () => void;
+};
+
 export default function DateSelect({
   start,
   end,
   setStart,
   setEnd,
   submit,
-}: any) {
+}: props) {
   return (
     <div className="ml-auto">
       <form className="flex flex-col lg:flex-row gap-2">

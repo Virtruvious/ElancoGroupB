@@ -1,4 +1,8 @@
-export const DogRunning = (props: any) => {
+type props = {
+  props: string;
+};
+
+export const DogRunning = (props: props) => {
   const colour = props.props === "text-black" ? "#000000" : "#FFFFFF";
   return (
     <svg version="1.1" id="Capa_1" viewBox="0 0 480.199 480.199">
@@ -45,7 +49,7 @@ export const DogRunning = (props: any) => {
   );
 };
 
-export const DogBowl = (props: any) => {
+export const DogBowl = (props: props) => {
   const colour = props.props === "text-black" ? "#000000" : "#FFFFFF";
 
   return (
@@ -80,7 +84,7 @@ export const DogBowl = (props: any) => {
   );
 };
 
-export const DogWater = (props: any) => {
+export const DogWater = (props: props) => {
   const colour = props.props === "text-black" ? "#000000" : "#FFFFFF";
 
   return (
@@ -93,7 +97,7 @@ export const DogWater = (props: any) => {
   );
 };
 
-export const DogBreath = (props: any) => {
+export const DogBreath = (props: props) => {
   const colour = props.props === "text-black" ? "#000000" : "#FFFFFF";
 
   return (
@@ -117,7 +121,7 @@ export const DogBreath = (props: any) => {
   );
 };
 
-export const DogLight = (props: any) => {
+export const DogLight = (props: props) => {
   const colour = props.props === "text-black" ? "#000000" : "#FFFFFF";
 
   return (

@@ -3,6 +3,9 @@ import Sidebar from "@/components/sidebar";
 import { useEffect, useState } from "react";
 import Notification from "@/components/notifications";
 import { NotifRequest, readNotif } from "@/components/notifRequest";
+import { DogEngine } from "@/components/dogEngine";
+import { setInterval } from "timers";
+import { useRef } from "react";
 
 type Notifications = [
   {
@@ -14,6 +17,24 @@ type Notifications = [
     Dog_id: number;
   }
 ];
+
+type LiveData = {
+  behaviour: string;
+  stats: [
+    {
+      title: string;
+      value: number;
+    },
+    {
+      title: string;
+      value: number;
+    },
+    {
+      title: string;
+      value: number;
+    }
+  ];
+};
 
 export default function Home() {
   const [notifications, setNotifications] = useState<Notifications>([
@@ -27,6 +48,29 @@ export default function Home() {
     },
   ]);
 
+  const [liveData, setLiveData] = useState<LiveData>({
+    behaviour: "",
+    stats: [
+      {
+        title: "Heart Rate",
+        value: 0,
+      },
+      {
+        title: "Temperature",
+        value: 0,
+      },
+      {
+        title: "Breathing Rate",
+        value: 0,
+      },
+    ],
+  });
+
+  async function fetchLiveData() {
+    const result = await DogEngine();
+    setLiveData(result);
+  }
+
   async function fetchData() {
     const result = await NotifRequest();
     setNotifications(result);
@@ -34,12 +78,16 @@ export default function Home() {
 
   useEffect(() => {
     fetchData();
+    fetchLiveData();
   }, []);
 
+  useInterval(() => {
+    fetchLiveData();
+  }, 30000);
+
   const markRead = (index: number, id: number) => {
-    const temp = [...notifications];
+    const temp = [...notifications] as Notifications;
     temp[index].markedRead = true;
-    // @ts-ignore
     setNotifications(temp);
 
     readNotif(id);
@@ -84,20 +132,27 @@ export default function Home() {
     }
   });
 
-  const data = [
-    {
-      title: "Heart Rate",
-      value: "109",
-    },
-    {
-      title: "Temperature",
-      value: "27",
-    },
-    {
-      title: "Breathing Rate",
-      value: "29",
-    },
-  ];
+  // Sourced from https://overreacted.io/making-setinterval-declarative-with-react-hooks/
+  // Helps elviaite the the issues faced with setInterval
+  function useInterval(callback: () => void, delay: number) {
+    const savedCallback = useRef(callback);
+
+    // Remember the latest callback.
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+
+    // Set up the interval.
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        return () => clearInterval(id);
+      }
+    }, [delay]);
+  }
 
   return (
     <main className="flex flex-row min-h-dvh">
@@ -115,14 +170,16 @@ export default function Home() {
               className="absolute xl:hidden top-3 right-3 text-elanco cursor-pointer"
               id="showNoti"
             >
-              <div className={`relative ${getNumUnread() == 0 ? "hidden" : ""}`}>
-                <span className="absolute flex h-4 w-4 -top-1 right-0">
-                  <span className="custom-ping absolute inline-flex badge badge-error badge-md aspect-square opacity-75"></span>
-                  <span className="badge inline-flex badge-error badge-md aspect-square text-white">
-                    {getNumUnread()}
+              {getNumUnread() === 0 && (
+                <div className={`relative`}>
+                  <span className="absolute flex h-4 w-4 -top-1 right-0">
+                    <span className="custom-ping absolute inline-flex badge badge-error badge-md aspect-square opacity-75"></span>
+                    <span className="badge inline-flex badge-error badge-md aspect-square text-white">
+                      {getNumUnread()}
+                    </span>
                   </span>
-                </span>
-              </div>
+                </div>
+              )}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
@@ -172,7 +229,7 @@ export default function Home() {
                 </svg>
               </div>
               <div className="grid grid-cols-3 h-36 sm:h-40 md:h-44 lg:h-48 bg-white">
-                {data.map((row, index) => (
+                {liveData.stats.map((row, index) => (
                   <div
                     className="flex flex-col border-2 text-center justify-center"
                     key={index}
@@ -192,13 +249,12 @@ export default function Home() {
             <div className="flex flex-col justify-center items-center h-full">
               <div className="text-md lg:text-lg">Your dog is currently</div>
               <img
-                // src={`/dog${behaviour}.jpg`}
-                src="/dogSleeping.jpg"
+                src={`/dog${liveData.behaviour}.jpg`}
                 alt="dog img"
-                className="size-48" />
+                className="size-48"
+              />
               <div className="text-elanco text-5xl lg:text-6xl font-bold">
-                {/* {behaviour == "Normal" ? "Doing Nothing" : behaviour} */}
-                Sleeping
+                {liveData.behaviour}
               </div>
             </div>
           </div>
