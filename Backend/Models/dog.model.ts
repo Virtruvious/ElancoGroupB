@@ -354,14 +354,14 @@ Dog.getCalories = async (user, start, end, result) => {
           let totalIntake = 0;
           let totalBurnt = 0;
 
-          rows.forEach(row => {
+          rows.forEach((row) => {
             if (counter === 23) {
               resultData.push({
                 time: row.time,
                 caloriesIntake: totalIntake.toFixed(2),
                 caloriesBurnt: "-" + totalBurnt.toFixed(2),
               });
-              
+
               counter = 0;
               totalIntake = 0;
               totalBurnt = 0;

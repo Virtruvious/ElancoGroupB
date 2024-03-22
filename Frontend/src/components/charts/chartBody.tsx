@@ -5,7 +5,7 @@ import DateSelect from "../dateSelect";
 type props = {
   title: string;
   graph: React.FC;
-  data: [{}];
+  data: [{}] | null;
   start: string;
   end: string;
   setStart: (start: string) => void;

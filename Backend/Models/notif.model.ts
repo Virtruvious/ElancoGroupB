@@ -131,14 +131,14 @@ Notifs.getUnwrapped = async (user, result) => {
 
           slides.push({
             description: `${dogName} ate a total of ${resultData.calorie.totalIntake} calories!`,
-            main: `That's enough to feed an elephant for ${resultData.calorie.elephantDays} days!`,
+            main: `That's enough to feed an elephant for ${Math.round(resultData.calorie.elephantDays)} days!`,
             txtColour: "text-white",
             icon: "DogBowl",
           });
 
           slides.push({
             description: `${dogName} burnt a total of ${resultData.calorie.totalBurnt} calories!`,
-            main: `That could power a lightbulb for ${Math.round(
+            main: `That energy could power a lightbulb for ${Math.round(
               resultData.calorie.totalBurnt / 60 / 24 / 7
             )} weeks!`,
             txtColour: "text-white",
@@ -153,7 +153,7 @@ Notifs.getUnwrapped = async (user, result) => {
 
           slides.push({
             description: `${dogName} drank a total of ${resultData.water.total} liters of water!`,
-            main: `That's enough to fill ${resultData.water.baths} baths!`,
+            main: `That's enough to fill ${Math.round(resultData.water.baths)} baths!`,
             txtColour: "text-white",
             icon: "DogWater",
           });
@@ -173,7 +173,7 @@ Notifs.getUnwrapped = async (user, result) => {
 
           slides.push({
             description: `${dogName} breathed a total of ${resultData.breathing.total} times!`,
-            main: `That's amount of oxygen would take 1 tree ${resultData.breathing.treeDays} days to produce!`,
+            main: `That amount of oxygen would take 1 tree ${Math.round(resultData.breathing.treeDays)} days to produce!`,
             txtColour: "text-white",
             icon: "DogBreath",
           });

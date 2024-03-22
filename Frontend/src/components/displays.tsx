@@ -11,7 +11,7 @@ type dataCard = {
 };
 
 type props = {
-  props: [dataCard];
+  props: dataCard[];
 };
 
 export const DashboardDisplays = (props: props) => {

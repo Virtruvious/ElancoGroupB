@@ -17,7 +17,10 @@ export async function NotifRequest() {
       "Content-Type": "application/json",
     },
   });
-  return response.data;
+  return {
+    data: response.data,
+    session: session,
+  };
 }
 
 export async function readNotif(id: number) {

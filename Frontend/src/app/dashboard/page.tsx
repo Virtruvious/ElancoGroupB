@@ -6,6 +6,15 @@ import PieChartGraph from "@/components/charts/pieChart";
 import axios from "axios";
 import { DashboardDisplays } from "@/components/displays";
 
+type dataCard = {
+  title: string;
+  average: number;
+  min: number;
+  max: number;
+  href: string;
+  units: string;
+};
+
 export default async function Home() {
   const session = await getServerSession(authOptions);
   if (session === null) {
@@ -22,7 +31,7 @@ export default async function Home() {
   });
 
   const data = response.data;
-  let collection = [
+  let collection: dataCard[] = [
     {
       title: "Heart Rate",
       average: data.bpm.average,
@@ -52,7 +61,7 @@ export default async function Home() {
       average: data.steps.average,
       max: data.steps.max,
       min: data.steps.min,
-      href: "/steps",
+      href: "#",
       units: "",
     },
     {
@@ -68,7 +77,7 @@ export default async function Home() {
       average: data.water.average,
       max: data.water.max,
       min: data.water.min,
-      href: "/waterIntake",
+      href: "#",
       units: "ml",
     },
   ];

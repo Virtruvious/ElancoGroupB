@@ -6,6 +6,7 @@ import { NotifRequest, readNotif } from "@/components/notifRequest";
 import { DogEngine } from "@/components/dogEngine";
 import { setInterval } from "timers";
 import { useRef } from "react";
+import type { Session } from "next-auth";
 
 type Notifications = [
   {
@@ -47,6 +48,7 @@ export default function Home() {
       Dog_id: 0,
     },
   ]);
+  const [session, setSession] = useState<Session>();
 
   const [liveData, setLiveData] = useState<LiveData>({
     behaviour: "",
@@ -73,7 +75,8 @@ export default function Home() {
 
   async function fetchData() {
     const result = await NotifRequest();
-    setNotifications(result);
+    setNotifications(result.data);
+    setSession(result.session);
   }
 
   useEffect(() => {
@@ -160,7 +163,7 @@ export default function Home() {
       <div className="bg-white text-black w-full h-dvh p-1 sm:p-2 overflow-y-scroll scroll-smooth ml-[72px] md:ml-[244px]">
         <div className="mx-1 md:mx-3 xl:mx-5 p-2 pb-1">
           <div className="font-extrabold text-elanco text-3xl md:text-4xl xl:text-5xl">
-            Hello User!
+            Hello {session?.user.name}!
           </div>
           <div className="text-lg">Let's see how your dog is doing today!</div>
         </div>
@@ -170,7 +173,7 @@ export default function Home() {
               className="absolute xl:hidden top-3 right-3 text-elanco cursor-pointer"
               id="showNoti"
             >
-              {getNumUnread() === 0 && (
+              {getNumUnread() !== 0 && (
                 <div className={`relative`}>
                   <span className="absolute flex h-4 w-4 -top-1 right-0">
                     <span className="custom-ping absolute inline-flex badge badge-error badge-md aspect-square opacity-75"></span>
@@ -247,15 +250,28 @@ export default function Home() {
             </div>
 
             <div className="flex flex-col justify-center items-center h-full">
-              <div className="text-md lg:text-lg">Your dog is currently</div>
-              <img
-                src={`/dog${liveData.behaviour}.jpg`}
-                alt="dog img"
-                className="size-48"
-              />
-              <div className="text-elanco text-5xl lg:text-6xl font-bold">
-                {liveData.behaviour}
-              </div>
+              {liveData.behaviour === "" && (
+                <div className="absolute top-0 left-0 w-full h-full z-50 flex justify-center items-center blur-none">
+                  <div className="text-3xl font-bold text-elanco animate-pulse">
+                    Loading...
+                  </div>
+                </div>
+              )}
+              {liveData.behaviour !== "" && (
+                <>
+                  <div className="text-md lg:text-lg">
+                    Your dog is currently
+                  </div>
+                  <img
+                    src={`/dog${liveData.behaviour}.jpg`}
+                    alt="dog img"
+                    className="size-48"
+                  />
+                  <div className="text-elanco text-5xl lg:text-6xl font-bold">
+                    {liveData.behaviour}
+                  </div>
+                </>
+              )}
             </div>
           </div>
           <div className="hidden xl:block border-2 rounded-md overflow-y-scroll notifications">
