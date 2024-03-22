@@ -43,8 +43,8 @@ export const authOptions: AuthOptions = {
               console.log("Logged in user: ", user);
               return user;
             }
-          } catch (error: any) {
-            if (error.response.status === 401) {
+          } catch (error) {
+            if ((error as AxiosError).response?.status === 401) {
               // Unauthorized, invalid password
               return null;
             } else {

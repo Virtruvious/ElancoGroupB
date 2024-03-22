@@ -1,5 +1,4 @@
 import { getServerSession } from "next-auth/next";
-import type { NextRequest } from "next/server";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import Sidebar from "@/components/sidebar";
@@ -7,7 +6,7 @@ import PieChartGraph from "@/components/charts/pieChart";
 import axios from "axios";
 import { DashboardDisplays } from "@/components/displays";
 
-export default async function Home(req: NextRequest): Promise<any> {
+export default async function Home() {
   const session = await getServerSession(authOptions);
   if (session === null) {
     redirect("/login");

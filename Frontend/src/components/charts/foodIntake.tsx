@@ -14,8 +14,11 @@ import {
 import dynamic from "next/dynamic";
 import moment from "moment";
 
+type props = {
+  props: [{}];
+};
 
-export const BarChartGraph = (props: any) => {
+export const BarChartGraph = (props: props) => {
   const data = props.props;
 
   function formatXAxis(tickItem: string) {

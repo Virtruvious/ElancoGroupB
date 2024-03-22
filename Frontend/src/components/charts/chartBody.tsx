@@ -2,6 +2,17 @@
 import Sidebar from "../sidebar";
 import DateSelect from "../dateSelect";
 
+type props = {
+  title: string;
+  graph: React.FC;
+  data: [{}];
+  start: string;
+  end: string;
+  setStart: (start: string) => void;
+  setEnd: (end: string) => void;
+  submit: () => void;
+};
+
 export default function ChartBody({
   title,
   graph,
@@ -11,7 +22,7 @@ export default function ChartBody({
   setStart,
   setEnd,
   submit,
-}: any) {
+}: props) {
   return (
     <main className="min-h-dvh">
       <Sidebar />

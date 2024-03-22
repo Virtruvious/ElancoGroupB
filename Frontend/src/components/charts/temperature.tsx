@@ -12,7 +12,11 @@ import {
 } from "recharts";
 import moment from "moment";
 
-export const LineGraph = (props: any) => {
+type props = {
+  props: [{}];
+};
+
+export const LineGraph = (props: props) => {
   let realData = props.props;
 
   function formatXAxis(tickItem: string) {

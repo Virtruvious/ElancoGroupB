@@ -15,7 +15,7 @@ type Slide = {
   description: string;
   main: string;
   txtColour: string;
-  icon: any;
+  icon: string;
 };
 
 interface IconMap {

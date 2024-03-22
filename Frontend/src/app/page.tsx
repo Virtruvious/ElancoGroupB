@@ -68,7 +68,6 @@ export default function Home() {
 
   async function fetchLiveData() {
     const result = await DogEngine();
-    // @ts-ignore
     setLiveData(result);
   }
 
@@ -87,9 +86,8 @@ export default function Home() {
   }, 30000);
 
   const markRead = (index: number, id: number) => {
-    const temp = [...notifications];
+    const temp = [...notifications] as Notifications;
     temp[index].markedRead = true;
-    // @ts-ignore
     setNotifications(temp);
 
     readNotif(id);
@@ -136,8 +134,8 @@ export default function Home() {
 
   // Sourced from https://overreacted.io/making-setinterval-declarative-with-react-hooks/
   // Helps elviaite the the issues faced with setInterval
-  function useInterval(callback: any, delay: number) {
-    const savedCallback = useRef();
+  function useInterval(callback: () => void, delay: number) {
+    const savedCallback = useRef(callback);
 
     // Remember the latest callback.
     useEffect(() => {
@@ -147,7 +145,6 @@ export default function Home() {
     // Set up the interval.
     useEffect(() => {
       function tick() {
-        // @ts-ignore
         savedCallback.current();
       }
       if (delay !== null) {

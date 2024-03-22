@@ -1,9 +1,27 @@
 import moment from "moment";
 
-export function DogEngine() {
+type LiveData = {
+  behaviour: string;
+  stats: [
+    {
+      title: string;
+      value: number;
+    },
+    {
+      title: string;
+      value: number;
+    },
+    {
+      title: string;
+      value: number;
+    }
+  ];
+};
+
+export function DogEngine() : LiveData {
   let currentTime = moment().format("HH:mm:ss");
 
-  let newData = {
+  let newData: LiveData = {
     behaviour: "",
     stats: [
       {
@@ -40,8 +58,8 @@ export function DogEngine() {
 
   return newData;
 
-  function switchTree(int: number) {
-    let newData = {
+  function switchTree(int: number) : LiveData{
+    let newData : LiveData = {
       behaviour: "",
       stats: [
         {
