@@ -40,7 +40,7 @@ export default function ChartBody({
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
-                className="size-6 cursor-pointer"
+                className="size-6 sm:size-8 lg:size-10 cursor-pointer"
               >
                 <path
                   fill="none"
