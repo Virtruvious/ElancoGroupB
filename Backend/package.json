@@ -19,7 +19,7 @@
     "@types/node": "^20.11.16"
   },
   "scripts": {
-    "importData": "ts-node-dev --transpile-only processCSV.ts",
+    "importData": "ts-node-dev --transpile-only Scripts/processCSV.ts",
     "start": "ts-node-dev --transpile-only app.ts",
     "ml": "ts-node-dev --transpile-only Scripts/ml.ts"
   }

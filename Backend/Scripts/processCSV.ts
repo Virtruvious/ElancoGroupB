@@ -4,6 +4,7 @@ import { parse } from "csv-parse";
 import moment from "moment";
 require("dotenv").config();
 let mysql = require("mysql2");
+import bcrypt from "bcrypt";
 
 // Create a connection to the database, make sure ENV variables are set
 let con = mysql.createConnection({
@@ -16,7 +17,7 @@ let con = mysql.createConnection({
 
 let processedRecords = [];
 (() => {
-  const csvPath = path.resolve(__dirname, "activityData.csv");
+  const csvPath = path.resolve(__dirname, "../activityData.csv");
 
   const fileContent = fs.readFileSync(csvPath, "utf8");
   parse(fileContent, { columns: true }, (err, records) => {
@@ -30,7 +31,13 @@ let processedRecords = [];
       for (const key in record) {
         if (record[key] === "") {
           record[key] = 0;
-          console.log("Empty value found in " + key + " for " + record.DogID + " Setting to 0");
+          console.log(
+            "Empty value found in " +
+              key +
+              " for " +
+              record.DogID +
+              " Setting to 0"
+          );
         }
       }
 
@@ -81,16 +88,20 @@ con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 
-  // Inserting user accounts 
+  // Inserting user accounts
   let userSQL = "INSERT INTO user (id, username, password) VALUES ?";
+  // NOTE: Very insecure, however for sake of demonstration, we are using manual pre-hashed bcrypt passwords
+  // A production system would generate passwords when using the register endpoint
   let userValues = [
-    [1, "Susan", "password"],
-    [2, "Josh", "password"],
-    [3, "Philip", "password"],
+    [1, "Susan", "$2b$10$Dws1PwGvuQC814NUqwenHeHcrOGBHXBPrNvTLaZIQvpTSh2YuAQKO"],
+    [2, "Josh", "$2b$10$TZTjnYbLbihn9HPbC29t6.5NeMEoH0YstPjmPN3FIANw.Q5aDe8Ze"],
+    [3, "Philip", "$2b$10$FZ9FVLmGZ2CW5scwBdOKnu1EHjPxMvHLsZgHRXXfQBI0DHlV6SLZa"],
   ];
   con.query(userSQL, [userValues], function (err, result) {
     if (err) throw err;
-    console.log("USER ACCOUNTS: Number of records inserted: " + result.affectedRows);
+    console.log(
+      "USER ACCOUNTS: Number of records inserted: " + result.affectedRows
+    );
   });
 
   // Inserting dogs
@@ -104,7 +115,7 @@ con.connect(function (err) {
     if (err) throw err;
     console.log("DOGS: Number of records inserted: " + result.affectedRows);
   });
-  
+
   // Inserting logs
   let logSQL =
     "INSERT INTO doglog (weight, time, behaviour, steps, bpm, calorie, temperature, caloriesIntake, water, breathing, barking, Dog_id) VALUES ?";
